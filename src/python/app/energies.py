@@ -1,4 +1,4 @@
-
+import plot
 
 AU_183_FILE = '183_data.md'
 AU_187_FILE = '187_data.md'
@@ -30,8 +30,8 @@ class Extract_Data:
 
 def Main():
     w = Extract_Data.Get_Energies(AU_183_FILE)
-    print(w[0])
-    print(w[1])
+    plot.Plot_Maker.Create_Plot('test_plot_0.pdf', w[0])
+    plot.Plot_Maker.Create_Plot('test_plot_1.pdf', w[1])
 
 
 if __name__ == '__main__':
