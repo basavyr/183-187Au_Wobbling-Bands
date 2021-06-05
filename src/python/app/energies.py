@@ -30,8 +30,8 @@ class Extract_Data:
 
 def Main():
     w = Extract_Data.Get_Energies(AU_183_FILE)
-    plot.Plot_Maker.Create_Plot('test_plot_0.pdf', w[0])
-    plot.Plot_Maker.Create_Plot('test_plot_1.pdf', w[1])
+    plot.Plot_Maker.Create_Plot('test_plot_0.pdf', w[0], 'l1')
+    plot.Plot_Maker.Create_Plot('test_plot_1.pdf', w[1], 'l2')
 
 
 if __name__ == '__main__':
