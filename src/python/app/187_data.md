@@ -1,4 +1,4 @@
-# Experimental data for $^{187}$Au
+$^{187}$Au
 1 1 12
 0 1 13
 1 2 13

@@ -21,6 +21,8 @@ class Extract_Data:
         with open(data_file, 'r+') as data_reader:
             raw_data = data_reader.readlines()
 
+        label = str(raw_data[0]).strip()
+
         raw_data.pop(0)
 
         clean_data = [line.strip() for line in raw_data]
@@ -32,16 +34,18 @@ class Extract_Data:
             if(int(parity) == 0):
                 band0.append([spin, energy])
 
-        return band0, band1
+        return band0, band1, label
 
 
 def Main():
-    clean = False
+    clean = True
     count = 0
     for data in EXP_DATA:
         w_data = Extract_Data.Get_Energies(data)
-        print(w_data)
-        plot.Plot_Maker.Create_Plot(PLOT_FILES[count], w_data[0], 'label')
+        plot_label = w_data[2]
+        data_set = [w_data[0], w_data[1]]
+        print(plot_label)
+        plot.Plot_Maker.Create_Band_Plots(PLOT_FILES[count], data_set, plot_label)
         count += 1
 
     if(clean):

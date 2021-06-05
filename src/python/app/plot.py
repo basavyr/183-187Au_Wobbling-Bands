@@ -22,6 +22,11 @@ class Plot_Maker:
         plt.close()
 
     @staticmethod
+    def Create_Band_Plots(plot_file, data_set, plot_label):
+        for data in data_set:
+            print(data)
+
+    @staticmethod
     def Clean_Plots(plot_file):
         try:
             os.remove(plot_file)
