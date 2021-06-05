@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import os
 
 
 class Plot_Maker:
@@ -19,3 +20,10 @@ class Plot_Maker:
         fig.tight_layout()
         plt.savefig(plot_file, bbox_inches='tight', dpi=1200)
         plt.close()
+
+    @staticmethod
+    def Clean_Plots(plot_file):
+        try:
+            os.remove(plot_file)
+        except OSError:
+            pass
