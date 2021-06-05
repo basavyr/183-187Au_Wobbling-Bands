@@ -38,13 +38,12 @@ class Extract_Data:
 
 
 def Main():
-    clean = True
+    clean = False
     count = 0
     for data in EXP_DATA:
         w_data = Extract_Data.Get_Energies(data)
         plot_label = w_data[2]
         data_set = [w_data[0], w_data[1]]
-        print(plot_label)
         plot.Plot_Maker.Create_Band_Plots(PLOT_FILES[count], data_set, plot_label)
         count += 1
 

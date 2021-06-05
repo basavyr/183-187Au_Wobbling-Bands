@@ -23,8 +23,27 @@ class Plot_Maker:
 
     @staticmethod
     def Create_Band_Plots(plot_file, data_set, plot_label):
+
+        print(plot_label)
+
+        fig, ax = plt.subplots()
+
         for data in data_set:
-            print(data)
+            x = [data_point[0] for data_point in data]
+            y = [data_point[1] for data_point in data]
+
+            plt.plot(x, y, '-or', label=r'energies')
+
+        plt.xlabel(r'$I\ [\hbar]$')
+        plt.ylabel(r'$E\ [MeV]$')
+        ax.legend(loc='best')
+        ax.set_title(f'Wobbling energies for {plot_label}')
+        plt.text(0.80, 0.20, f'{plot_label}', horizontalalignment='center',
+                 verticalalignment='center', transform=ax.transAxes, fontsize=8)
+
+        plt.savefig(plot_file, bbox_inches='tight', dpi=400)
+        fig.tight_layout()
+        plt.close()
 
     @staticmethod
     def Clean_Plots(plot_file):
