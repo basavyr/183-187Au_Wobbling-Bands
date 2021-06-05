@@ -3,6 +3,13 @@ import plot
 AU_183_FILE = '183_data.md'
 AU_187_FILE = '187_data.md'
 
+AU_183_ENERGY_PLOT = '183_energies_plot.pdf'
+AU_187_ENERGY_PLOT = '187_energies_plot.pdf'
+
+
+EXP_DATA = [AU_183_FILE, AU_187_FILE]
+PLOT_FILES = [AU_183_ENERGY_PLOT, AU_187_ENERGY_PLOT]
+
 
 class Extract_Data:
 
@@ -29,11 +36,17 @@ class Extract_Data:
 
 
 def Main():
-    w = Extract_Data.Get_Energies(AU_183_FILE)
-    plot.Plot_Maker.Create_Plot('test_plot_0.pdf', w[0], 'l1')
-    plot.Plot_Maker.Create_Plot('test_plot_1.pdf', w[1], 'l2')
-    plot.Plot_Maker.Clean_Plots('test_plot_0.pdf')
-    plot.Plot_Maker.Clean_Plots('test_plot_1.pdf')
+    clean = False
+    count = 0
+    for data in EXP_DATA:
+        w_data = Extract_Data.Get_Energies(data)
+        print(w_data)
+        plot.Plot_Maker.Create_Plot(PLOT_FILES[count], w_data[0], 'label')
+        count += 1
+
+    if(clean):
+        for file in PLOT_FILES:
+            plot.Plot_Maker.Clean_Plots(file)
 
 
 if __name__ == '__main__':
