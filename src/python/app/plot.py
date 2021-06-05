@@ -28,11 +28,14 @@ class Plot_Maker:
 
         fig, ax = plt.subplots()
 
+        band_counter = 1
+
         for data in data_set:
             x = [data_point[0] for data_point in data]
             y = [data_point[1] for data_point in data]
 
-            plt.plot(x, y, '-or', label=r'energies')
+            plt.plot(x, y, '-or', label=f'band-{band_counter}')
+            band_counter += 1
 
         plt.xlabel(r'$I\ [\hbar]$')
         plt.ylabel(r'$E\ [MeV]$')
