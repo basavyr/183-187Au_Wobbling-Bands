@@ -6,11 +6,11 @@ data_directory = 'data/'
 plot_directory = 'plots/'
 
 
-AU_183_FILE = data_directory+'183_data.md'
-AU_187_FILE = data_directory+'187_data.md'
+AU_183_FILE = data_directory + '183_data.md'
+AU_187_FILE = data_directory + '187_data.md'
 
-AU_183_ENERGY_PLOT = plot_directory+'183_energies_plot.pdf'
-AU_187_ENERGY_PLOT = plot_directory+'187_energies_plot.pdf'
+AU_183_ENERGY_PLOT = plot_directory + '183_energies_plot.pdf'
+AU_187_ENERGY_PLOT = plot_directory + '187_energies_plot.pdf'
 
 
 EXP_DATA = [AU_183_FILE, AU_187_FILE]
