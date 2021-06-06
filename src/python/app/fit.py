@@ -10,6 +10,8 @@ p3 = 3
 x_data = np.arange(0, 10, 0.5)
 y_data = [energies.Energy_Formula.Energy1(x, p1, p2, p3) for x in x_data]
 
+y_data = [x + np.random.randint(-2, 2) for x in y_data]
+
 xdata = np.asarray(x_data)
 ydata = np.asarray(y_data)
 

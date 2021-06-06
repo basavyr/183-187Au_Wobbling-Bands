@@ -1,6 +1,6 @@
 import numpy as np
 import plot
-import fit
+
 
 data_directory = 'data/'
 plot_directory = 'plots/'
