@@ -1,4 +1,9 @@
 import plot
+import fit
+
+data_directory = 'data/'
+plot_directory = 'plots/'
+
 
 AU_183_FILE = '183_data.md'
 AU_187_FILE = '187_data.md'
@@ -44,7 +49,8 @@ def Main():
         w_data = Extract_Data.Get_Energies(data)
         plot_label = w_data[2]
         data_set = [w_data[0], w_data[1]]
-        plot.Plot_Maker.Create_Band_Plots(PLOT_FILES[count], data_set, plot_label)
+        plot.Plot_Maker.Create_Band_Plots(
+            PLOT_FILES[count], data_set, plot_label)
         count += 1
 
     if(clean):
