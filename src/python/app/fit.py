@@ -28,5 +28,3 @@ p1_new, p2_new, p3_new = params
 x_data = np.arange(0, 10, 0.5)
 y_data_new = [energies.Energy_Formula.Energy1(
     x, p1_new, p2_new, p3_new) for x in x_data]
-
-
