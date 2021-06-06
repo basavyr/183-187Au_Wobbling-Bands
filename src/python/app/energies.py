@@ -1,3 +1,4 @@
+import numpy as np
 import plot
 import fit
 
@@ -40,6 +41,21 @@ class Extract_Data:
                 band0.append([spin, energy])
 
         return band0, band1, label
+
+
+class Energy_Formula:
+    @staticmethod
+    def Energy1(x, param1, param2, param3):
+        y = param1 * x**2 + param2 * x + param3
+        return y
+
+    @staticmethod
+    def Energy2(x, param1, param2):
+        try:
+            y = param1 * np.log(x) + sin(param2) * param2 * x
+        except Exception:
+            y = 0
+        return y
 
 
 def Main():
