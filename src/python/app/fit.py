@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 import energies
 
+import plot
+
 p1 = 1
 p2 = 2
 p3 = 3
@@ -17,4 +19,14 @@ ydata = np.asarray(y_data)
 
 params, covariance = curve_fit(energies.Energy_Formula.Energy1, xdata, ydata)
 
-print(params)
+idx = 0
+for p in params:
+    idx += 1
+    print(f'p{idx} -> {p}')
+
+p1_new, p2_new, p3_new = params
+x_data = np.arange(0, 10, 0.5)
+y_data_new = [energies.Energy_Formula.Energy1(
+    x, p1_new, p2_new, p3_new) for x in x_data]
+
+
