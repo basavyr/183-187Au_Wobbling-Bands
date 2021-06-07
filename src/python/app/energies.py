@@ -6,8 +6,8 @@ class Files:
 
     # main directory where everything is stored
     blobs = 'assets/'
-    data_directory = 'data/'
-    plot_directory = 'plots/'
+    data_directory = blobs + 'data/'
+    plot_directory = blobs + 'plots/'
 
     AU_183_DATA = data_directory + '183_data.md'
     AU_187_DATA = data_directory + '187_data.md'
