@@ -2,19 +2,21 @@ import numpy as np
 import plot
 
 
-data_directory = 'data/'
-plot_directory = 'plots/'
+class Files:
 
+    # main directory where everything is stored
+    blobs = 'assets/'
+    data_directory = 'data/'
+    plot_directory = 'plots/'
 
-AU_183_FILE = data_directory + '183_data.md'
-AU_187_FILE = data_directory + '187_data.md'
+    AU_183_DATA = data_directory + '183_data.md'
+    AU_187_DATA = data_directory + '187_data.md'
 
-AU_183_ENERGY_PLOT = plot_directory + '183_energies_plot.pdf'
-AU_187_ENERGY_PLOT = plot_directory + '187_energies_plot.pdf'
+    AU_183_ENERGY_PLOT = plot_directory + '183_energies_plot.pdf'
+    AU_187_ENERGY_PLOT = plot_directory + '187_energies_plot.pdf'
 
-
-EXP_DATA = [AU_183_FILE, AU_187_FILE]
-PLOT_FILES = [AU_183_ENERGY_PLOT, AU_187_ENERGY_PLOT]
+    EXP_DATA_FILES = [AU_183_DATA, AU_187_DATA]
+    PLOT_FILES = [AU_183_ENERGY_PLOT, AU_187_ENERGY_PLOT]
 
 
 class Extract_Data:
@@ -36,9 +38,9 @@ class Extract_Data:
         for line in clean_data:
             parity, spin, energy = line.split(" ")
             if(int(parity) == 1):
-                band1.append([spin, energy])
+                band1.append([float(spin), float(energy)])
             if(int(parity) == 0):
-                band0.append([spin, energy])
+                band0.append([float(spin), float(energy)])
 
         return band0, band1, label
 
@@ -49,28 +51,20 @@ class Energy_Formula:
         y = param1 * x**2 + param2 * x + param3
         return y
 
-    @staticmethod
-    def Energy2(x, param1, param2):
-        try:
-            y = param1 * np.log(x) + sin(param2) * param2 * x
-        except Exception:
-            y = 0
-        return y
-
 
 def Main():
     clean = False
     count = 0
-    for data in EXP_DATA:
+    for data in Files.EXP_DATA_FILES:
         w_data = Extract_Data.Get_Energies(data)
         plot_label = w_data[2]
         data_set = [w_data[0], w_data[1]]
         plot.Plot_Maker.Create_Band_Plots(
-            PLOT_FILES[count], data_set, plot_label)
+            Files.PLOT_FILES[count], data_set, plot_label)
         count += 1
 
     if(clean):
-        for file in PLOT_FILES:
+        for file in Files.PLOT_FILES:
             plot.Plot_Maker.Clean_Plots(file)
 
 
