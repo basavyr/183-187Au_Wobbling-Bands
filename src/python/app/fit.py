@@ -65,6 +65,11 @@ class Mock_Fit:
 
         return fit_results
 
+    @staticmethod
+    def Check_Mock_Data(model, xdata, params):
+        ydata = [model(x, params[0], params[1], params[2]) for x in xdata]
+        return ydata
+
 
 def Main():
 

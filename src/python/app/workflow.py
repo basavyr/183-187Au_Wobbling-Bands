@@ -7,9 +7,9 @@ class Isotope:
     @staticmethod
     def Fit_Isotope(data):
         # spins
-        x_data = data[0]
+        # x_data = data[0]
         # energies (experimental energies)
-        ydata = data[1]
+        # ydata = data[1]
 
         try:
             nlm = fit.Mock_Fit.Fit(data, energies.Energy_Formula.Energy1)
@@ -21,6 +21,9 @@ class Isotope:
 
 
 def Main():
+
+    model = energies.Energy_Formula.Energy1
+
     for isotope in energies.Files.EXP_DATA_FILES:
         isotope_data = energies.Extract_Data.Get_Energies(isotope)
         print(f'Nucleus -> {isotope_data[2]}')
@@ -43,11 +46,16 @@ def Main():
         data_0 = [band_0_spins, band_0_energies]
         data_1 = [band_1_spins, band_1_energies]
 
-        print(data_0)
-        print(data_1)
+        # print(data_0)
+        # print(data_1)
 
         nlm_0 = Isotope.Fit_Isotope(data_0)
-        print(nlm_0)
+        nlm_1 = Isotope.Fit_Isotope(data_1)
+
+        print(nlm_0[0])
+
+        print(band_0_energies)
+        print(fit.Mock_Fit.Check_Mock_Data(model, band_0_spins, nlm_0[0]))
 
 
 if __name__ == '__main__':
