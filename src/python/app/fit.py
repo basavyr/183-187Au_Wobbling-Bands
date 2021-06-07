@@ -36,6 +36,16 @@ class Fit:
 class Mock_Fit:
 
     @staticmethod
+    def Generate_Data(model, params):
+        xdata = [int(x) for x in range(-1, 11)]
+        ydata = [model(
+            x, params[0], params[1], params[2]) for x in xdata]
+
+        data = [xdata, ydata]
+
+        return data
+
+    @staticmethod
     def Fit(mock_data, model):
 
         xdata = np.asarray(mock_data[0])
@@ -57,15 +67,11 @@ class Mock_Fit:
 
 
 def Main():
-    true_params = [1, 2, 3]
 
     model = energies.Energy_Formula.Energy1
+    params = [1, 2, 3]
+    mock_data = Mock_Fit.Generate_Data(model, params)
 
-    xdata = [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    ydata = [model(
-        x, true_params[0], true_params[1], true_params[2]) for x in xdata]
-
-    mock_data = [xdata, ydata]
     params = Mock_Fit.Fit(mock_data, model)[0]
     print(params)
 
