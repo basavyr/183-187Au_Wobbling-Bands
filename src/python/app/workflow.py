@@ -56,6 +56,8 @@ def Main():
 
         print(band_0_energies)
         print(fit.Mock_Fit.Check_Mock_Data(model, band_0_spins, nlm_0[0]))
+        print(band_1_energies)
+        print(fit.Mock_Fit.Check_Mock_Data(model, band_1_spins, nlm_1[0]))
 
 
 if __name__ == '__main__':
