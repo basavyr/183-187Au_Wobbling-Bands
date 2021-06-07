@@ -19,6 +19,19 @@ class Fit:
 
         return params, covariance
 
+    @staticmethod
+    def Data_Fit_P0(model, x_data_exp, y_data_exp, p_initial):
+        """
+        Create the fit procedure via curve_fit, using starting values for the fitting parameters."""
+
+        x_data = np.asarray(x_data_exp)
+        y_data = np.asarray(y_data_exp)
+
+        params, covariance = curve_fit(
+            model, x_data_exp, y_data_exp, p0=p_initial)
+
+        return params, covariance
+
 
 class Mock_Fit:
 
@@ -48,6 +61,9 @@ def Main():
     mock_data = [xdata, mock_ydata]
     params = Mock_Fit.Fit(mock_data, model)[0]
     print(params)
+
+    x = Fit.Data_Fit_P0(model, xdata, mock_ydata, [12, 12, 11])
+    print(x[0])
 
 
 if __name__ == '__main__':
