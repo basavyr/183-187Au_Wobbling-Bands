@@ -2,6 +2,24 @@ import energies
 import fit
 
 
+class Isotope:
+
+    @staticmethod
+    def Fit_Isotope(data):
+        # spins
+        x_data = data[0]
+        # energies (experimental energies)
+        ydata = data[1]
+
+        try:
+            nlm = fit.Mock_Fit.Fit(data, energies.Energy_Formula.Energy1)
+        except Exception:
+            nlm = -1
+            return nlm
+        else:
+            return nlm
+
+
 def Main():
     for isotope in energies.Files.EXP_DATA_FILES:
         isotope_data = energies.Extract_Data.Get_Energies(isotope)
@@ -27,6 +45,9 @@ def Main():
 
         print(data_0)
         print(data_1)
+
+        nlm_0 = Isotope.Fit_Isotope(data_0)
+        print(nlm_0)
 
 
 if __name__ == '__main__':
