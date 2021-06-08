@@ -67,7 +67,7 @@ def Main():
             model, band_0_spins, nlm_0[0])]
 
         plot.Plot_Maker.Create_Fit_Plot(
-            exp_data, th_data, f'assets/plots/{plot_name(idx)}', plot_name(idx))
+            exp_data, th_data, f'assets/plots/{plot_name(idx)}', plot_label)
 
         idx += 1
         # print(band_1_energies)
