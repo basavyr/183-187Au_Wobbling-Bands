@@ -1,5 +1,6 @@
 import energies
 import fit
+import plot
 
 
 class Isotope:
@@ -54,10 +55,14 @@ def Main():
 
         print(nlm_0[0])
 
-        print(band_0_energies)
-        print(fit.Mock_Fit.Check_Mock_Data(model, band_0_spins, nlm_0[0]))
-        print(band_1_energies)
-        print(fit.Mock_Fit.Check_Mock_Data(model, band_1_spins, nlm_1[0]))
+        exp_data = [band_0_spins, band_0_energies]
+        th_data = [band_0_spins, fit.Mock_Fit.Check_Mock_Data(
+            model, band_0_spins, nlm_0[0])]
+
+        plot.Plot_Maker.Create_Fit_Plot(
+            exp_data, th_data, 'assets/plots/fit_results.pdf', 'plot')
+        # print(band_1_energies)
+        # print(fit.Mock_Fit.Check_Mock_Data(model, band_1_spins, nlm_1[0]))
 
 
 if __name__ == '__main__':

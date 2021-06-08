@@ -57,8 +57,22 @@ class Plot_Maker:
         # the theoretical results -> energies
         y_2 = thdata[1]
 
+        fig, ax = plt.subplots()
+
         plt.plot(x_1, y_1, '-r', label='c1-exp')
         plt.plot(x_2, y_2, '-r', label='c2-th')
+
+        plt.xlabel(r'$I\ [\hbar]$')
+        plt.ylabel(r'$E\ [MeV]$')
+        ax.legend(loc='best')
+        ax.set_title(f'Wobbling energies for {plot_label}')
+
+        plt.text(0.80, 0.20, f'{plot_label}', horizontalalignment='center',
+                 verticalalignment='center', transform=ax.transAxes, fontsize=11)
+
+        plt.savefig(plot_file, bbox_inches='tight', dpi=400)
+        fig.tight_layout()
+        plt.close()
 
     @staticmethod
     def Clean_Plots(plot_file):
