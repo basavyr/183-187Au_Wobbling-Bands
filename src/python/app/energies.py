@@ -113,7 +113,9 @@ class Energy_Formula:
         t2_3 = 4.0 * I * j * np.power(A2, 2)
         T2 = t2_1 * t2_2 - t2_3
 
-        return T1 * T2
+        C = T1 * T2
+
+        return C
 
     @staticmethod
     def H_Min(spin, odd_spin, I1, I2, I3, V, gamma):
