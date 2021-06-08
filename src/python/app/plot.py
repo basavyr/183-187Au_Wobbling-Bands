@@ -46,6 +46,21 @@ class Plot_Maker:
         plt.close()
 
     @staticmethod
+    def Create_Fit_Plot(expdata, thdata, plot_file, plot_label):
+        # the experimental results -> spins
+        x_1 = expdata[0]
+        # the experimental results -> energies
+        y_1 = expdata[1]
+
+        # the theoretical results -> spins
+        x_2 = thdata[0]
+        # the theoretical results -> energies
+        y_2 = thdata[1]
+
+        plt.plot(x_1, y_1, '-r', label='c1-exp')
+        plt.plot(x_2, y_2, '-r', label='c2-th')
+
+    @staticmethod
     def Clean_Plots(plot_file):
         try:
             os.remove(plot_file)
