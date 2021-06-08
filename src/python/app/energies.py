@@ -82,7 +82,35 @@ class Energy_Formula:
             (2.0 * j - 1.0) / (j * (j + 1.0)) * 2 * rad3 * sing
 
         TERM = (t1 * t2) + (8.0 * A2 * A3 * I * j) + (t2 * t3)
-        
+
         return -1.0 * TERM
 
+    @staticmethod
+    def C_Term(spin, odd_spin, I1, I2, I3, V, gamma):
 
+        A1 = Energy_Formula.Inertia_Factor(I1)
+        A2 = Energy_Formula.Inertia_Factor(I2)
+        A3 = Energy_Formula.Inertia_Factor(I3)
+
+        I = spin
+        j = odd_spin
+        gm = Energy_Formula.Radians(gamma)
+        rad3 = np.sqrt(3.0)
+        cosg = np.cos(gm)
+        sing = np.sin(gm)
+
+        # sub_term1
+        t1_1 = (2.0 * I - 1.0) * (A3 - A1) + 2.0 * j * A1
+        t1_2 = (2.0 * j) * (A3 - A1) + 2.0 * I * A1 + V * \
+            (2.0 * j - 1.0) / (j * (j + 1.0)) * rad3 * (rad3 * cosg + sing)
+        t1_3 = 4.0 * I * j * np.power(A3, 2)
+        T1 = t1_1 * t1_2 - t1_3
+
+        # sub_term2
+        t2_1 = (2.0 * I - 1.0) * (A2 - A1) + 2.0 * j * A1
+        t2_2 = (2.0 * j - 1.0) * (A2 - A1) + 2.0 * I * A1 + V * \
+            (2.0 * j - 1.0) / (j * (j + 1.0)) * 2 * rad3 * sing
+        t2_3 = 4.0 * I * j * np.power(A2, 2)
+        T2 = t2_1 * t2_2 - t2_3
+
+        return T1 * T2
