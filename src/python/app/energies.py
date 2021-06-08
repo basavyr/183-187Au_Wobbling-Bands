@@ -46,7 +46,36 @@ class Extract_Data:
 
 
 class Energy_Formula:
+
+    @staticmethod
+    def Inertia_Factor(MOI):
+        return 1.0 / (2.0 * MOI)
+
+    @staticmethod
+    def Radians(angle):
+        return angle * np.pi / 180.0
+
     @staticmethod
     def Energy1(x, param1, param2, param3):
         y = param1 * x**2 + param2 * x + param3
         return y
+
+    @staticmethod
+    def B_Term(spin, odd_spin, I1, I2, I3, V, gamma):
+
+        A1 = Energy_Formula.Inertia_Factor(I1)
+        A2 = Energy_Formula.Inertia_Factor(I2)
+        A3 = Energy_Formula.Inertia_Factor(I3)
+
+        I = spin
+        j = odd_spin
+        gm = Energy_Formula.Radians(gamma)
+        rad3 = np.sqrt(3.0)
+        cosg = np.cos(gm)
+        sing = np.sin(gm)
+
+        t1 = (2.0 * spin - 1.0) * (A3 - A1) + 2.0 * j * A1
+        t2 = (2.0 * j - 1.0) * (A3 - A1) + 2.0 * I * A1 + V * \
+            (2.0 * j - 1.0) / (j * (j + 1.0)) * rad3 * (rad3 * cosg + sing)
+
+        return t1, t2

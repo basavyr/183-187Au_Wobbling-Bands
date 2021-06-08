@@ -7,10 +7,6 @@ class Isotope:
 
     @staticmethod
     def Fit_Isotope(data):
-        # spins
-        # x_data = data[0]
-        # energies (experimental energies)
-        # ydata = data[1]
 
         try:
             nlm = fit.Mock_Fit.Fit(data, energies.Energy_Formula.Energy1)
@@ -33,11 +29,14 @@ def Main():
         isotope_data = energies.Extract_Data.Get_Energies(isotope)
 
         plot_label = isotope_data[2]
-        print(f'Nucleus -> {plot_label}')
+
+        # print(f'Nucleus -> {plot_label}')
 
         # first band
         band_0 = isotope_data[0]
-        print(band_0)
+
+        # print(band_0)
+
         # generate x_data
         band_0_spins = [x[0] for x in band_0]
         # generate y_data
@@ -74,23 +73,9 @@ def Main():
         # print(fit.Mock_Fit.Check_Mock_Data(model, band_1_spins, nlm_1[0]))
 
 
-def none_none(arg):
-    x = arg
-    try:
-        assert x >= 0
-    except AssertionError:
-        return None
-    else:
-        return [1, 2]
+def none_none():
+    print(energies.Energy_Formula.B_Term(21.5, 6.5, 60, 5, 20, 8.1, 23))
 
 
 if __name__ == '__main__':
-    f = none_none(1)
-    print(f)
-    print(type(f))
-    try:
-        assert f is not None, 'not good'
-    except AssertionError as err:
-        print(f'Not OK | {err} -> {type(f)}')
-    else:
-        print(f'OK -> {f} -> {type(f)}')
+    none_none()
