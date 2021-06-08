@@ -81,9 +81,9 @@ class Energy_Formula:
         t4 = (2.0 * j - 1.0) * (A2 - A1) + 2.0 * I * A1 + V * \
             (2.0 * j - 1.0) / (j * (j + 1.0)) * 2 * rad3 * sing
 
-        TERM = (t1 * t2) + (8.0 * A2 * A3 * I * j) + (t2 * t3)
+        B = (t1 * t2) + (8.0 * A2 * A3 * I * j) + (t2 * t3)
 
-        return -1.0 * TERM
+        return -1.0 * B
 
     @staticmethod
     def C_Term(spin, odd_spin, I1, I2, I3, V, gamma):
@@ -114,3 +114,24 @@ class Energy_Formula:
         T2 = t2_1 * t2_2 - t2_3
 
         return T1 * T2
+
+    @staticmethod
+    def H_Min(spin, odd_spin, I1, I2, I3, V, gamma):
+
+        A1 = Energy_Formula.Inertia_Factor(I1)
+        A2 = Energy_Formula.Inertia_Factor(I2)
+        A3 = Energy_Formula.Inertia_Factor(I3)
+
+        I = spin
+        j = odd_spin
+        gm = Energy_Formula.Radians(gamma)
+        pi6 = np.pi / 6.0
+        sing = np.sin(gm)
+
+        T1 = (A2 + A3) * (I + j) / 2.0
+        T2 = A1 * np.power(I - j, 2)
+        T3 = V * (2.0 * j - 1.0) / (j + 1.0) * np.sin(pi6 + gm)
+
+        HMIN = T1 + T2 - T3
+
+        return HMIN
