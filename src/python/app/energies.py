@@ -137,3 +137,26 @@ class Energy_Formula:
         HMIN = T1 + T2 - T3
 
         return HMIN
+
+    @staticmethod
+    def Omega_Frequencies(spin, odd_spin, I1, I2, I3, V, gamma):
+        B = Energy_Formula.B_Term(spin, odd_spin, I1, I2, I3, V, gamma)
+        C = Energy_Formula.C_Term(spin, odd_spin, I1, I2, I3, V, gamma)
+
+        SQRT = np.sqrt(np.power(B, 2) - 4.0 * C)
+
+        try:
+            Omega_1 = np.sqrt(0.5 * (-B + SQRT))
+        except Exception:
+            Omega_1 = None
+        else:
+            pass
+
+        try:
+            Omega_2 = np.sqrt(0.5 * (-B - SQRT))
+        except Exception:
+            Omega_2 = None
+        else:
+            pass
+
+        return [Omega_1, Omega_2]
