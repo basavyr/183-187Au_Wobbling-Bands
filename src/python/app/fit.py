@@ -14,10 +14,13 @@ class Fit:
         x_data = np.asarray(xdata)
         y_data = np.asarray(ydata)
 
-        params, covariance = curve_fit(
-            model, x_data, y_data)
-
-        return params, covariance
+        try:
+            params, covariance = curve_fit(
+                model, x_data, y_data)
+        except Exception:
+            return None
+        else:
+            return params, covariance
 
     @staticmethod
     def Data_Fit_P0(model, xdata, ydata, initial_params):
@@ -27,10 +30,13 @@ class Fit:
         x_data = np.asarray(xdata)
         y_data = np.asarray(ydata)
 
-        params, covariance = curve_fit(
-            model, xdata, ydata, p0=initial_params)
-
-        return params, covariance
+        try:
+            params, covariance = curve_fit(
+                model, xdata, ydata, p0=initial_params)
+        except Exception:
+            return None
+        else:
+            return params, covariance
 
 
 class Mock_Fit:

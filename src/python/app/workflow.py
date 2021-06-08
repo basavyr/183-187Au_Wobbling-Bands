@@ -74,5 +74,15 @@ def Main():
         # print(fit.Mock_Fit.Check_Mock_Data(model, band_1_spins, nlm_1[0]))
 
 
+def none(arg):
+    x = arg
+    try:
+        assert x == 1
+    except Exception:
+        return None
+    else:
+        return [1, 2]
+
+
 if __name__ == '__main__':
-    Main()
+    print(none(-1))
