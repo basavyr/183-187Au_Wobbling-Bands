@@ -75,17 +75,3 @@ class Mock_Fit:
     def Check_Mock_Data(model, xdata, params):
         ydata = [model(x, params[0], params[1], params[2]) for x in xdata]
         return ydata
-
-
-def Main():
-
-    model = energies.Energy_Formula.Energy1
-    params = [1, 2, 3]
-    mock_data = Mock_Fit.Generate_Data(model, params)
-
-    params = Mock_Fit.Fit(mock_data, model)[0]
-    print(params)
-
-
-if __name__ == '__main__':
-    Main()

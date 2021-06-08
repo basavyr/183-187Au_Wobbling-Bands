@@ -79,10 +79,16 @@ def none(arg):
     try:
         assert x == 1
     except Exception:
-        return None
+        pass
     else:
         return [1, 2]
 
 
 if __name__ == '__main__':
-    print(none(-1))
+    f = none(-1)
+    try:
+        assert f != None, 'not good'
+    except AssertionError as err:
+        print(err)
+    else:
+        print(f'ok -> {f} -> {type(f)}')

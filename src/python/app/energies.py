@@ -50,23 +50,3 @@ class Energy_Formula:
     def Energy1(x, param1, param2, param3):
         y = param1 * x**2 + param2 * x + param3
         return y
-
-
-def Main():
-    clean = False
-    count = 0
-    for data in Files.EXP_DATA_FILES:
-        w_data = Extract_Data.Get_Energies(data)
-        plot_label = w_data[2]
-        data_set = [w_data[0], w_data[1]]
-        plot.Plot_Maker.Create_Band_Plots(
-            Files.PLOT_FILES[count], data_set, plot_label)
-        count += 1
-
-    if(clean):
-        for file in Files.PLOT_FILES:
-            plot.Plot_Maker.Clean_Plots(file)
-
-
-if __name__ == '__main__':
-    Main()

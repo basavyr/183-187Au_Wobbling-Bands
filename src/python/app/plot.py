@@ -48,19 +48,21 @@ class Plot_Maker:
     @staticmethod
     def Create_Fit_Plot(expdata, thdata, plot_file, plot_label):
         # the experimental results -> spins
-        x_1 = expdata[0]
+        x_data_exp = expdata[0]
         # the experimental results -> energies
-        y_1 = expdata[1]
+        y_data_exp = expdata[1]
 
         # the theoretical results -> spins
-        x_2 = thdata[0]
+        x_data_th = thdata[0]
         # the theoretical results -> energies
-        y_2 = thdata[1]
+        y_data_th = thdata[1]
 
         fig, ax = plt.subplots()
 
-        plt.plot(x_1, y_1, 'ok', label='Exp')
-        plt.plot(x_2, y_2, '-r', label='Th')
+        # plot the experimental curve
+        plt.plot(x_data_exp, y_data_exp, 'ok', label='Exp')
+        # plot the theoretical curve
+        plt.plot(x_data_th, y_data_th, '-r', label='Th')
 
         plt.xlabel(r'$I\ [\hbar]$')
         plt.ylabel(r'$E\ [MeV]$')
