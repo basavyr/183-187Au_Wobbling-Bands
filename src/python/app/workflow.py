@@ -74,7 +74,8 @@ def Main():
 
 
 def none_none():
-    print(energies.Energy_Formula.B_Term(21.5, 6.5, 60, 5, 20, 8.1, 23))
+    print(energies.Energy_Formula.Omega_Frequencies(
+        21.5, 6.5, 60, -5, 20, 8.1, 23))
 
 
 if __name__ == '__main__':
