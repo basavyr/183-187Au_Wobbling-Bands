@@ -59,8 +59,8 @@ class Plot_Maker:
 
         fig, ax = plt.subplots()
 
-        plt.plot(x_1, y_1, '-r', label='c1-exp')
-        plt.plot(x_2, y_2, '-r', label='c2-th')
+        plt.plot(x_1, y_1, 'ok', label='Exp')
+        plt.plot(x_2, y_2, '-r', label='Th')
 
         plt.xlabel(r'$I\ [\hbar]$')
         plt.ylabel(r'$E\ [MeV]$')

@@ -27,10 +27,13 @@ def Main():
 
     for isotope in energies.Files.EXP_DATA_FILES:
         isotope_data = energies.Extract_Data.Get_Energies(isotope)
-        print(f'Nucleus -> {isotope_data[2]}')
+
+        plot_label = isotope_data[2]
+        print(f'Nucleus -> {plot_label}')
 
         # first band
         band_0 = isotope_data[0]
+        print(band_0)
         # generate x_data
         band_0_spins = [x[0] for x in band_0]
         # generate y_data
@@ -60,7 +63,7 @@ def Main():
             model, band_0_spins, nlm_0[0])]
 
         plot.Plot_Maker.Create_Fit_Plot(
-            exp_data, th_data, 'assets/plots/fit_results.pdf', 'plot')
+            exp_data, th_data, 'assets/plots/fit_results.pdf', str(plot_label))
         # print(band_1_energies)
         # print(fit.Mock_Fit.Check_Mock_Data(model, band_1_spins, nlm_1[0]))
 
