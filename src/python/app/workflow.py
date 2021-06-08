@@ -74,21 +74,23 @@ def Main():
         # print(fit.Mock_Fit.Check_Mock_Data(model, band_1_spins, nlm_1[0]))
 
 
-def none(arg):
+def none_none(arg):
     x = arg
     try:
-        assert x == 1
-    except Exception:
-        pass
+        assert x >= 0
+    except AssertionError:
+        return None
     else:
         return [1, 2]
 
 
 if __name__ == '__main__':
-    f = none(-1)
+    f = none_none(1)
+    print(f)
+    print(type(f))
     try:
-        assert f != None, 'not good'
+        assert f is not None, 'not good'
     except AssertionError as err:
-        print(err)
+        print(f'Not OK | {err} -> {type(f)}')
     else:
-        print(f'ok -> {f} -> {type(f)}')
+        print(f'OK -> {f} -> {type(f)}')
