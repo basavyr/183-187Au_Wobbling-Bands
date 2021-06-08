@@ -25,6 +25,10 @@ def Main():
 
     model = energies.Energy_Formula.Energy1
 
+    def plot_name(idx): return f'fit_results_{idx}.pdf'
+
+    idx = 1
+
     for isotope in energies.Files.EXP_DATA_FILES:
         isotope_data = energies.Extract_Data.Get_Energies(isotope)
 
@@ -63,7 +67,9 @@ def Main():
             model, band_0_spins, nlm_0[0])]
 
         plot.Plot_Maker.Create_Fit_Plot(
-            exp_data, th_data, 'assets/plots/fit_results.pdf', str(plot_label))
+            exp_data, th_data, f'assets/plots/{plot_name(idx)}', plot_name(idx))
+
+        idx += 1
         # print(band_1_energies)
         # print(fit.Mock_Fit.Check_Mock_Data(model, band_1_spins, nlm_1[0]))
 
