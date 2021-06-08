@@ -74,8 +74,15 @@ class Energy_Formula:
         cosg = np.cos(gm)
         sing = np.sin(gm)
 
-        t1 = (2.0 * spin - 1.0) * (A3 - A1) + 2.0 * j * A1
-        t2 = (2.0 * j - 1.0) * (A3 - A1) + 2.0 * I * A1 + V * \
+        t1 = (2.0 * I - 1.0) * (A3 - A1) + 2.0 * j * A1
+        t2 = (2.0 * I - 1.0) * (A2 - A1) + 2.0 * j * A1
+        t3 = (2.0 * j - 1.0) * (A3 - A1) + 2.0 * I * A1 + V * \
             (2.0 * j - 1.0) / (j * (j + 1.0)) * rad3 * (rad3 * cosg + sing)
+        t4 = (2.0 * j - 1.0) * (A2 - A1) + 2.0 * I * A1 + V * \
+            (2.0 * j - 1.0) / (j * (j + 1.0)) * 2 * rad3 * sing
 
-        return t1, t2
+        TERM = (t1 * t2) + (8.0 * A2 * A3 * I * j) + (t2 * t3)
+        
+        return -1.0 * TERM
+
+
