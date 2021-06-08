@@ -145,18 +145,24 @@ class Energy_Formula:
 
         SQRT = np.sqrt(np.power(B, 2) - 4.0 * C)
 
+        step1 = False
+        step2 = False
+
         try:
             Omega_1 = np.sqrt(0.5 * (-B + SQRT))
         except Exception:
-            Omega_1 = None
+            step1 = False
         else:
-            pass
+            step1 = True
 
         try:
             Omega_2 = np.sqrt(0.5 * (-B - SQRT))
         except Exception:
-            Omega_2 = None
+            step2 = False
         else:
-            pass
+            step2 = True
 
-        return [Omega_1, Omega_2]
+        if(step1 and step2):
+            return [Omega_1, Omega_2]
+        else:
+            return []
