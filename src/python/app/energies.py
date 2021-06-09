@@ -143,37 +143,22 @@ class Energy_Formula:
         B = Energy_Formula.B_Term(spin, odd_spin, I1, I2, I3, V, gamma)
         C = Energy_Formula.C_Term(spin, odd_spin, I1, I2, I3, V, gamma)
 
-        try:
+        with np.errstate(invalid='ignore'):
             SQRT = np.sqrt(np.power(B, 2) - 4.0 * C)
-        except Exception:
-            return []
-        else:
-            pass
+            print(SQRT)
 
         step1 = False
         step2 = False
 
-        try:
-            with np.errstate(invalid='ignore'):
-                Omega_1 = np.sqrt(0.5 * (-B + SQRT))
-        except Exception:
-            step1 = False
-            Omega_1 = None
-        else:
-            step1 = True
+        with np.errstate(invalid='ignore'):
+            Omega_1 = np.sqrt(0.5 * (-B + SQRT))
 
-        try:
-            with np.errstate(invalid='ignore'):
-                Omega_2 = np.sqrt(0.5 * (-B - SQRT))
-        except Exception:
-            step2 = False
-            Omega_2 = None
-        else:
-            step2 = True
+        with np.errstate(invalid='ignore'):
+            Omega_2 = np.sqrt(0.5 * (-B - SQRT))
 
         print(Omega_1, Omega_2)
 
-        if(step1 and step2):
-            return [Omega_1, Omega_2]
-        else:
-            return []
+        # if(step1 and step2):
+        #     return [Omega_1, Omega_2]
+        # else:
+        #     return []
