@@ -22,7 +22,7 @@ def Main():
 
     model = energies.Energy_Formula.Energy1
 
-    plot_location = energies.Files.blobs+energies.Files.plot_directory
+    plot_location = energies.Files.blobs + energies.Files.plot_directory
 
     def plot_name(idx): return f'fit_results_{idx}.pdf'
 
@@ -83,12 +83,18 @@ def none_none():
 
     # print(energies.Energy_Formula.Omega_Frequencies(
     #     21.5, 6.5, 60, 2, 20, 8.1, 23))
-    argx = -4
+
+    argx = -1
 
     with energies.np.errstate(invalid='ignore'):
         x1 = energies.np.sqrt(argx)
-
-    print(argx, x1)
+        try:
+            assert energies.np.isnan(x1) == False
+        except AssertionError as err:
+            x1 = 6969
+            print(x1)
+        else:
+            print(x1)
 
 
 if __name__ == '__main__':

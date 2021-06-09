@@ -156,9 +156,6 @@ class Energy_Formula:
         try:
             with np.errstate(invalid='ignore'):
                 Omega_1 = np.sqrt(0.5 * (-B + SQRT))
-            assert np.isnan(Omega_1), 'NaN'
-        except AssertionError:
-            Omega_1 = None
         except Exception:
             step1 = False
             Omega_1 = None
@@ -168,16 +165,13 @@ class Energy_Formula:
         try:
             with np.errstate(invalid='ignore'):
                 Omega_2 = np.sqrt(0.5 * (-B - SQRT))
-            assert np.isnan(Omega_2), 'NaN'
-        except AssertionError:
-            Omega_2 = None
         except Exception:
             step2 = False
             Omega_2 = None
         else:
             step2 = True
 
-        print(Omega_1,Omega_2)
+        print(Omega_1, Omega_2)
 
         if(step1 and step2):
             return [Omega_1, Omega_2]
