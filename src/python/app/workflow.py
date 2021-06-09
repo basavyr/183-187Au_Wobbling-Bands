@@ -91,11 +91,16 @@ def none_none():
         try:
             assert energies.np.isnan(x1) == False
         except AssertionError as err:
-            x1 = 6969
-            print(x1)
+            x1 = None
         else:
-            print(x1)
+            return x1
+
+        return x1
 
 
 if __name__ == '__main__':
-    none_none()
+    w = none_none()
+    if(w is None):
+        print('none')
+    else:
+        print('all good')
