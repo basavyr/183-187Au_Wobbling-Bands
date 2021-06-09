@@ -78,9 +78,17 @@ def Main():
 
 
 def Omega_Tests():
-    energies.Energy_Formula.Omega_Frequencies(21.5, 6.5, 60, 100, 40, 3, 23)
-    energies.Energy_Formula.Omega_Frequencies(21.5, 6.5, 1, 2, 40, 3, 23)
-    energies.Energy_Formula.Omega_Frequencies(21.5, 6.5, 60, 80, 40, 3, 23)
+    w1 = energies.Energy_Formula.Omega_Frequencies(
+        21.5, 6.5, 60, 100, 40, 3, 23)
+    if(w1 is None):
+        print(w1)
+    w2 = energies.Energy_Formula.Omega_Frequencies(21.5, 6.5, 1, 2, 40, 3, 23)
+    if(w2 is None):
+        print(w2)
+    w3 = energies.Energy_Formula.Omega_Frequencies(
+        21.5, 6.5, 60, 80, 40, 3, 23)
+    if(w3 is None):
+        print(w3)
 
 
 if __name__ == '__main__':

@@ -169,8 +169,8 @@ class Energy_Formula:
             # print(f'{valid_2} ->v2')
 
         if(valid_1 is not None and valid_2 is not None):
-            print(f'valid frequencies -> [{Omega_1} , {Omega_2}]')
+            # print(f'valid frequencies -> [{Omega_1} , {Omega_2}]')
             return []
         else:
-            print(f'not good freqs -> [{Omega_1} , {Omega_2}]')
+            # print(f'not good freqs -> [{Omega_1} , {Omega_2}]')
             return [Omega_1, Omega_2]
