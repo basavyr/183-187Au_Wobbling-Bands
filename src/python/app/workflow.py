@@ -77,5 +77,12 @@ def Main():
         # print(fit.Mock_Fit.Check_Mock_Data(model, band_1_spins, nlm_1[0]))
 
 
+def Omega_Tests():
+    energies.Energy_Formula.Omega_Frequencies(21.5, 6.5, 60, 100, 40, 3, 23)
+    energies.Energy_Formula.Omega_Frequencies(21.5, 6.5, 1, 2, 40, 3, 23)
+    energies.Energy_Formula.Omega_Frequencies(21.5, 6.5, 60, 80, 40, 3, 23)
+
+
 if __name__ == '__main__':
-    Main()
+    # Main()
+    Omega_Tests()

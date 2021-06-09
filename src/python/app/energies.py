@@ -88,7 +88,8 @@ class Energy_Formula:
         t3 = (2.0 * j - 1.0) * (A3 - A1) + 2.0 * I * A1 + V * \
             (2.0 * j - 1.0) / (j * (j + 1.0)) * rad3 * (rad3 * cosg + sing)
         t4 = (2.0 * j - 1.0) * (A2 - A1) + 2.0 * I * A1 + V * \
-            (2.0 * j - 1.0) / (j * (j + 1.0)) * 2 * rad3 * sing
+            (2.0 * j - 1.0) / (j * (j + 1.0)) * 2 * \
+            rad3 * sing  # TODO check integrity for t4
 
         B = (t1 * t2) + (8.0 * A2 * A3 * I * j) + (t2 * t3)
 
@@ -137,7 +138,7 @@ class Energy_Formula:
         j = odd_spin
         gm = Energy_Formula.Radians(gamma)
         pi6 = np.pi / 6.0
-        sing = np.sin(gm)
+        sing = np.sin(gm)  # TODO check missing of the sing term
 
         T1 = (A2 + A3) * (I + j) / 2.0
         T2 = A1 * np.power(I - j, 2)
@@ -154,20 +155,22 @@ class Energy_Formula:
 
         with np.errstate(invalid='ignore'):
             SQRT = np.sqrt(np.power(B, 2) - 4.0 * C)
-            print(
-                f'SQRT TERM -> {SQRT} | {Energy_Formula.IsNAN_Asserter(SQRT, False)}')
+            # print(
+            #     f'SQRT TERM -> {SQRT} | {Energy_Formula.IsNAN_Asserter(SQRT, False)}')
 
         with np.errstate(invalid='ignore'):
             Omega_1 = np.sqrt(0.5 * (-B + SQRT))
             valid_1 = Energy_Formula.IsNAN_Asserter(Omega_1, False)
+            # print(f'{valid_1} ->v1')
 
         with np.errstate(invalid='ignore'):
             Omega_2 = np.sqrt(0.5 * (-B - SQRT))
             valid_2 = Energy_Formula.IsNAN_Asserter(Omega_2, False)
+            # print(f'{valid_2} ->v2')
 
         if(valid_1 is not None and valid_2 is not None):
-            print('valid frequencies')
+            print(f'valid frequencies -> [{Omega_1} , {Omega_2}]')
+            return []
         else:
             print(f'not good freqs -> [{Omega_1} , {Omega_2}]')
-
-        
+            return [Omega_1, Omega_2]
