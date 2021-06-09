@@ -150,35 +150,43 @@ class Energy_Formula:
 
     @staticmethod
     def Omega_Frequencies(spin, odd_spin, I1, I2, I3, V, gamma):
+
+        DEBUG_MODE = False
+
         B = Energy_Formula.B_Term(spin, odd_spin, I1, I2, I3, V, gamma)
         C = Energy_Formula.C_Term(spin, odd_spin, I1, I2, I3, V, gamma)
 
         with np.errstate(invalid='ignore'):
             SQRT = np.sqrt(np.power(B, 2) - 4.0 * C)
-            # print(
-            #     f'SQRT TERM -> {SQRT} | {Energy_Formula.IsNAN_Asserter(SQRT, False)}')
+            if(DEBUG_MODE):
+                print(
+                    f'SQRT TERM -> {SQRT} | {Energy_Formula.IsNAN_Asserter(SQRT, False)}')
 
         with np.errstate(invalid='ignore'):
             Omega_1 = np.sqrt(0.5 * (-B + SQRT))
             valid_1 = Energy_Formula.IsNAN_Asserter(Omega_1, False)
-            if(valid_1 is None):
-                print(f'Invalid Omega_1 | v1={valid_1}')
-            else:
-                print(f'Valid Omega_1 | v1={valid_1}')
+            if(DEBUG_MODE):
+                if(valid_1 is None):
+                    print(f'Invalid Omega_1 | v1={valid_1}')
+                else:
+                    print(f'Valid Omega_1 | v1={valid_1}')
 
         with np.errstate(invalid='ignore'):
             Omega_2 = np.sqrt(0.5 * (-B - SQRT))
             valid_2 = Energy_Formula.IsNAN_Asserter(Omega_2, False)
-            if(valid_2 is None):
-                print(f'Invalid Omega_2 | v2={valid_2}')
-            else:
-                print(f'Valid Omega_2 | v2={valid_2}')
+            if(DEBUG_MODE):
+                if(valid_2 is None):
+                    print(f'Invalid Omega_2 | v2={valid_2}')
+                else:
+                    print(f'Valid Omega_2 | v2={valid_2}')
 
         if(valid_1 is None or valid_2 is None):
             # print(f'valid frequencies -> [{Omega_1} , {Omega_2}]')
-            print('Invalid parameters for the wobbling frequencies ❌')
-            return []
+            if(DEBUG_MODE):
+                print('Invalid parameters for the wobbling frequencies ❌')
+                return []
         else:
             # print(f'not good freqs -> [{Omega_1} , {Omega_2}]')
-            print('Valid parameters for the wobbling frequencies ✅')
+            if(DEBUG_MODE):
+                print('Valid parameters for the wobbling frequencies ✅')
             return [Omega_1, Omega_2]

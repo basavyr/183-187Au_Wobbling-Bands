@@ -80,14 +80,9 @@ def Main():
 def Omega_Tests():
     w1 = energies.Energy_Formula.Omega_Frequencies(
         21.5, 6.5, 60, 100, 40, 3, 23)
-    # if(w1 == False):
-    print(w1)
     w2 = energies.Energy_Formula.Omega_Frequencies(21.5, 6.5, 1, 2, 40, 3, 23)
-    # if(w2 == False):
-    print(w2)
     w3 = energies.Energy_Formula.Omega_Frequencies(
         21.5, 6.5, 60, 80, 40, 3, 23)
-    # if(w3 == False):
     print([bool(x) for x in [w1, w2, w3]])
 
 
