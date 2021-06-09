@@ -23,9 +23,9 @@ def Main():
 
     model = energies.Energy_Formula.Energy1
 
-    plot_location = energies.Files.blobs + energies.Files.plot_directory
+    plot_location = energies.Files.plot_directory
 
-    def plot_name(idx): return f'fit_results_{idx}.pdf'
+    def plot_name(idx): return f'{plot_location}fit_results_{idx}.pdf'
 
     idx = 1
 
@@ -70,38 +70,12 @@ def Main():
             model, band_0_spins, nlm_0[0])]
 
         plot.Plot_Maker.Create_Fit_Plot(
-            exp_data, th_data, f'{plot_location}{plot_name(idx)}', plot_label)
+            exp_data, th_data, plot_name(idx), plot_label)
 
         idx += 1
         # print(band_1_energies)
         # print(fit.Mock_Fit.Check_Mock_Data(model, band_1_spins, nlm_1[0]))
 
 
-def none_none():
-
-    energies.Energy_Formula.Omega_Frequencies(21.5, 6.5, 60, -5, 20, 8.1, 23)
-    # energies.Energy_Formula.Omega_Frequencies(21.5, 6.5, 60, 2, 20, 8.1, 23)
-
-    # T = [energies.Energy_Formula.IsNAN_Asserter(
-    #     energies.np.random.choice([energies.np.nan, 1]), False) for _ in range(100)]
-    # print(T)
-
-#    try:
-#         argx = float(sys.argv[1])
-#     except Exception:
-#         argx = energies.np.random.choice([-1, 1])
-
-#     with energies.np.errstate(invalid='ignore'):
-#         x1 = energies.np.sqrt(argx)
-#         try:
-#             assert energies.np.isnan(x1) == False
-#         except AssertionError as err:
-#             x1 = None
-#         else:
-#             return x1
-
-#         return x1
-
-
 if __name__ == '__main__':
-    none_none()
+    Main()

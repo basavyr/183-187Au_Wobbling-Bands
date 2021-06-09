@@ -157,22 +157,17 @@ class Energy_Formula:
             print(
                 f'SQRT TERM -> {SQRT} | {Energy_Formula.IsNAN_Asserter(SQRT, False)}')
 
-        step1 = False
-        step2 = False
-
         with np.errstate(invalid='ignore'):
             Omega_1 = np.sqrt(0.5 * (-B + SQRT))
-            print(
-                f'Omega-1 -> {Omega_1} | {Energy_Formula.IsNAN_Asserter(Omega_1, False)}')
+            valid_1 = Energy_Formula.IsNAN_Asserter(Omega_1, False)
 
         with np.errstate(invalid='ignore'):
             Omega_2 = np.sqrt(0.5 * (-B - SQRT))
-            print(
-                f'Omega-2 -> {Omega_2} | {Energy_Formula.IsNAN_Asserter(Omega_2, False)}')
+            valid_2 = Energy_Formula.IsNAN_Asserter(Omega_2, False)
 
-        # print(Omega_1, Omega_2)
+        if(valid_1 is not None and valid_2 is not None):
+            print('valid frequencies')
+        else:
+            print(f'not good freqs -> [{Omega_1} , {Omega_2}]')
 
-        # if(step1 and step2):
-        #     return [Omega_1, Omega_2]
-        # else:
-        #     return []
+        
