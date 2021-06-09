@@ -48,6 +48,15 @@ class Extract_Data:
 class Energy_Formula:
 
     @staticmethod
+    def IsNAN_Asserter(arg, assert_value):
+        try:
+            assert np.isnan(arg) != assert_value
+        except AssertionError:
+            return None
+        else:
+            return arg
+
+    @staticmethod
     def Inertia_Factor(MOI):
         return 1.0 / (2.0 * MOI)
 

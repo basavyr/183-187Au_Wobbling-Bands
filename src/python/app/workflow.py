@@ -79,29 +79,28 @@ def Main():
 
 def none_none():
 
-    # print(energies.Energy_Formula.Omega_Frequencies(
-    #     21.5, 6.5, 60, -5, 20, 8.1, 23))
+    # energies.Energy_Formula.Omega_Frequencies(21.5, 6.5, 60, -5, 20, 8.1, 23)
+    # energies.Energy_Formula.Omega_Frequencies(21.5, 6.5, 60, 2, 20, 8.1, 23)
 
-    # print(energies.Energy_Formula.Omega_Frequencies(
-    #     21.5, 6.5, 60, 2, 20, 8.1, 23))
+    T = [energies.Energy_Formula.IsNAN_Asserter(
+        energies.np.random.choice([energies.np.nan, 1]), True) for _ in range(100)]
+    print(T)
+#    try:
+#         argx = float(sys.argv[1])
+#     except Exception:
+#         argx = energies.np.random.choice([-1, 1])
 
-    try:
-        argx = float(sys.argv[1])
-    except Exception:
-        argx = energies.np.random.choice([-1, 1])
+#     with energies.np.errstate(invalid='ignore'):
+#         x1 = energies.np.sqrt(argx)
+#         try:
+#             assert energies.np.isnan(x1) == False
+#         except AssertionError as err:
+#             x1 = None
+#         else:
+#             return x1
 
-    with energies.np.errstate(invalid='ignore'):
-        x1 = energies.np.sqrt(argx)
-        try:
-            assert energies.np.isnan(x1) == False
-        except AssertionError as err:
-            x1 = None
-        else:
-            return x1
-
-        return x1
+#         return x1
 
 
 if __name__ == '__main__':
-    w_array = [none_none() for _ in range(10)]
-    print(w_array)
+    none_none()
