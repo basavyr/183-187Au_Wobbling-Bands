@@ -1,3 +1,4 @@
+import sys
 from numpy import sqrt
 import energies
 import fit
@@ -84,7 +85,10 @@ def none_none():
     # print(energies.Energy_Formula.Omega_Frequencies(
     #     21.5, 6.5, 60, 2, 20, 8.1, 23))
 
-    argx = -1
+    try:
+        argx = float(sys.argv[1])
+    except Exception:
+        argx = energies.np.random.choice([-1, 1])
 
     with energies.np.errstate(invalid='ignore'):
         x1 = energies.np.sqrt(argx)
@@ -99,8 +103,5 @@ def none_none():
 
 
 if __name__ == '__main__':
-    w = none_none()
-    if(w is None):
-        print('none')
-    else:
-        print('all good')
+    w_array = [none_none() for _ in range(10)]
+    print(w_array)
