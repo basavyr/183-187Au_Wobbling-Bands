@@ -161,16 +161,24 @@ class Energy_Formula:
         with np.errstate(invalid='ignore'):
             Omega_1 = np.sqrt(0.5 * (-B + SQRT))
             valid_1 = Energy_Formula.IsNAN_Asserter(Omega_1, False)
-            # print(f'{valid_1} ->v1')
+            if(valid_1 is None):
+                print(f'Invalid Omega_1 | v1={valid_1}')
+            else:
+                print(f'Valid Omega_1 | v1={valid_1}')
 
         with np.errstate(invalid='ignore'):
             Omega_2 = np.sqrt(0.5 * (-B - SQRT))
             valid_2 = Energy_Formula.IsNAN_Asserter(Omega_2, False)
-            # print(f'{valid_2} ->v2')
+            if(valid_2 is None):
+                print(f'Invalid Omega_2 | v2={valid_2}')
+            else:
+                print(f'Valid Omega_2 | v2={valid_2}')
 
-        if(valid_1 is not None and valid_2 is not None):
+        if(valid_1 is None or valid_2 is None):
             # print(f'valid frequencies -> [{Omega_1} , {Omega_2}]')
+            print('Invalid parameters for the wobbling frequencies ❌')
             return []
         else:
             # print(f'not good freqs -> [{Omega_1} , {Omega_2}]')
+            print('Valid parameters for the wobbling frequencies ✅')
             return [Omega_1, Omega_2]
