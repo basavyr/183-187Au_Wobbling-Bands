@@ -50,7 +50,7 @@ class Energy_Formula:
     @staticmethod
     def IsNAN_Asserter(arg, assert_value):
         try:
-            assert np.isnan(arg) != assert_value
+            assert np.isnan(arg) == assert_value
         except AssertionError:
             return None
         else:
@@ -154,18 +154,23 @@ class Energy_Formula:
 
         with np.errstate(invalid='ignore'):
             SQRT = np.sqrt(np.power(B, 2) - 4.0 * C)
-            print(SQRT)
+            print(
+                f'SQRT TERM -> {SQRT} | {Energy_Formula.IsNAN_Asserter(SQRT, False)}')
 
         step1 = False
         step2 = False
 
         with np.errstate(invalid='ignore'):
             Omega_1 = np.sqrt(0.5 * (-B + SQRT))
+            print(
+                f'Omega-1 -> {Omega_1} | {Energy_Formula.IsNAN_Asserter(Omega_1, False)}')
 
         with np.errstate(invalid='ignore'):
             Omega_2 = np.sqrt(0.5 * (-B - SQRT))
+            print(
+                f'Omega-2 -> {Omega_2} | {Energy_Formula.IsNAN_Asserter(Omega_2, False)}')
 
-        print(Omega_1, Omega_2)
+        # print(Omega_1, Omega_2)
 
         # if(step1 and step2):
         #     return [Omega_1, Omega_2]

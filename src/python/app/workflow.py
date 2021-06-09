@@ -79,12 +79,13 @@ def Main():
 
 def none_none():
 
-    # energies.Energy_Formula.Omega_Frequencies(21.5, 6.5, 60, -5, 20, 8.1, 23)
+    energies.Energy_Formula.Omega_Frequencies(21.5, 6.5, 60, -5, 20, 8.1, 23)
     # energies.Energy_Formula.Omega_Frequencies(21.5, 6.5, 60, 2, 20, 8.1, 23)
 
-    T = [energies.Energy_Formula.IsNAN_Asserter(
-        energies.np.random.choice([energies.np.nan, 1]), True) for _ in range(100)]
-    print(T)
+    # T = [energies.Energy_Formula.IsNAN_Asserter(
+    #     energies.np.random.choice([energies.np.nan, 1]), False) for _ in range(100)]
+    # print(T)
+
 #    try:
 #         argx = float(sys.argv[1])
 #     except Exception:
