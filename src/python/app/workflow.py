@@ -1,3 +1,4 @@
+from numpy import sqrt
 import energies
 import fit
 import plot
@@ -20,6 +21,8 @@ class Isotope:
 def Main():
 
     model = energies.Energy_Formula.Energy1
+
+    plot_location = energies.Files.blobs+energies.Files.plot_directory
 
     def plot_name(idx): return f'fit_results_{idx}.pdf'
 
@@ -66,7 +69,7 @@ def Main():
             model, band_0_spins, nlm_0[0])]
 
         plot.Plot_Maker.Create_Fit_Plot(
-            exp_data, th_data, f'assets/plots/{plot_name(idx)}', plot_label)
+            exp_data, th_data, f'{plot_location}{plot_name(idx)}', plot_label)
 
         idx += 1
         # print(band_1_energies)
@@ -74,8 +77,18 @@ def Main():
 
 
 def none_none():
-    print(energies.Energy_Formula.Omega_Frequencies(
-        21.5, 6.5, 60, -5, 20, 8.1, 23))
+
+    # print(energies.Energy_Formula.Omega_Frequencies(
+    #     21.5, 6.5, 60, -5, 20, 8.1, 23))
+
+    # print(energies.Energy_Formula.Omega_Frequencies(
+    #     21.5, 6.5, 60, 2, 20, 8.1, 23))
+    argx = -4
+
+    with energies.np.errstate(invalid='ignore'):
+        x1 = energies.np.sqrt(argx)
+
+    print(argx, x1)
 
 
 if __name__ == '__main__':
