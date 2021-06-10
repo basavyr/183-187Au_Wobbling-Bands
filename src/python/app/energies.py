@@ -246,8 +246,11 @@ class Energy_Formula:
 
         return E_EXC
 
+
+class Models:
+
     @staticmethod
-    def Model_Energy(X, P_1, P_2, P_3, P_4, P_5):
+    def Model_Energy_h9_2(X, P_1, P_2, P_3, P_4, P_5):
         """This is the model function that needs to be numerically fitted
 
         The argument X represents the spin I and the wobbling phonon number n_w -> X=[I,n_w1]
@@ -256,6 +259,31 @@ class Energy_Formula:
         """
 
         SPIN_ZERO = 4.5
+        ODD_SPIN = 4.5
+
+        # unpack the spin and wobbling phonon number
+        spin, wobbling_phonon = X
+
+        try:
+            model_function = Energy_Formula.Excitation_Energy(
+                wobbling_phonon, 0, spin, SPIN_ZERO, ODD_SPIN, P_1, P_2, P_3, P_4, P_5)
+            assert model_function is not None, "the model function failed"
+        except AssertionError as err:
+            print(f'Problem with the model -> {err}')
+            return np.nan
+        else:
+            return model_function
+
+    @staticmethod
+    def Model_Energy_i13_2(X, P_1, P_2, P_3, P_4, P_5):
+        """This is the model function that needs to be numerically fitted
+
+        The argument X represents the spin I and the wobbling phonon number n_w -> X=[I,n_w1]
+
+        P represents the parameter set: P=[I1,I2,I3,V,gamma]
+        """
+
+        SPIN_ZERO = 6.5
         ODD_SPIN = 6.5
 
         # unpack the spin and wobbling phonon number
