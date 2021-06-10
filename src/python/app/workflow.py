@@ -78,9 +78,11 @@ def Main():
 
 
 def Get_Experimental_Data(isotope):
-    bands = energies.Extract_Data.Get_Energies(isotope)
-    for band in bands:
-        print(band)
+    YRAST, TW1, LABEL = energies.Extract_Data.Get_Energies(isotope)
+
+    print(f'****** ISOTOPE ******\n{LABEL}')
+    print(f'****** Yrast band ******\n{YRAST}')
+    print(f'****** TW1 band ******\n{TW1}')
 
 
 def Omega_Tests():
@@ -94,8 +96,7 @@ def Omega_Tests():
 
 
 if __name__ == '__main__':
-    # Main()
-    # Omega_Tests()
     AU_183 = energies.Files.AU_183_DATA
     AU_187 = energies.Files.AU_187_DATA
+
     Get_Experimental_Data(AU_183)
