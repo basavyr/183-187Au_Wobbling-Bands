@@ -170,13 +170,18 @@ def Energy_Function_Arrays():
 
     t3 = energies.Energy_Formula.Energy_Expression(
         wobbling_phonons, 0, spins, 1, 1, 1, 1, 1, 1)
-    t4 = energies.Energy_Formula.Excitation_Energy(
-        wobbling_phonons, 0, spins, 1, 1, 1, 1, 1, 1, 1)
-    # print(t1)
-    # print(t2)
-    # print(t3)
-    print(len(t4))
-    # print(t4)
+    try:
+        t4 = energies.Energy_Formula.Excitation_Energy(
+            wobbling_phonons, 0, spins, 1, 1, 1, 1, 1, 1, 1)
+        assert len(t4) > 0
+    except AssertionError:
+        print(-1)
+    else:
+        # print(t1)
+        # print(t2)
+        # print(t3)
+        print(len(t4))
+        # print(t4)
 
 
 if __name__ == '__main__':
