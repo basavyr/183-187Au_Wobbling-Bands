@@ -193,6 +193,7 @@ class Energy_Formula:
 
     @staticmethod
     def Energy_Expression(nw_1, nw_2, spin, odd_spin, I1, I2, I3, V, gamma):
+
         h0 = Energy_Formula.H_Min(spin, odd_spin, I1, I2, I3, V, gamma)
 
         Omega = Energy_Formula.Omega_Frequencies(
@@ -206,3 +207,16 @@ class Energy_Formula:
 
         E = h0+Omega_1*(nw_1+0.5)+Omega_2*(nw_2+0.5)
         return E
+
+    @staticmethod
+    def Excitation_Energy(nw_1, nw_2, spin, spin_zero, odd_spin, I1, I2, I3, V, gamma):
+
+        E_0 = Energy_Formula.Energy_Expression(
+            0, 0, spin_zero, odd_spin, I1, I2, I3, V, gamma)
+
+        E_I = Energy_Formula.Energy_Expression(
+            nw_1, nw_2, spin, odd_spin, I1, I2, I3, V, gamma)
+
+        E_EXC = E_I-E_0
+
+        return E_EXC
