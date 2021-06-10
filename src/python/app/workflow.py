@@ -97,19 +97,23 @@ def Get_Experimental_Data(isotope):
         print(f'****** TW1 band ******\n{TW1}')
         print(f'****** EXP DATA: ******\n{EXP_DATA}\n')
 
-    X_DATA = [[X[0], X[1]] for X in EXP_DATA]
+    X_DATA_SPINS = [X[0] for X in EXP_DATA]
+    X_DATA_PHONONS = [X[1] for X in EXP_DATA]
     Y_DATA = [X[2] for X in EXP_DATA]
 
     if(DEBUG_MODE):
-        print(X_DATA)
+        print([X_DATA_SPINS], [X_DATA_PHONONS])
         print(Y_DATA)
 
-    return [X_DATA, Y_DATA]
+    return [[X_DATA_SPINS, X_DATA_PHONONS], Y_DATA]
 
 
 def Fit_Model_Data(isotope):
     # unpack the experimental data for the isotope
     x_data, y_data = Get_Experimental_Data(isotope)
+
+    print(x_data)
+    print(y_data)
     # try:
     #     x_data, y_data = Get_Experimental_Data(isotope)
     # except Exception:
@@ -117,8 +121,11 @@ def Fit_Model_Data(isotope):
     # else:
     #     print(f'{x_data}\n{y_data}')
 
-    w = fit.Fit.Data_Fit(energies.Models.Model_Energy_i13_2, x_data, y_data)
-    print(f'Fit results-> {w}')
+    params = fit.Fit.Data_Fit(
+        energies.Models.Model_Energy_i13_2, x_data, y_data)[0]
+
+    print(f'Fit results-> {params}')
+    # return params
 
 
 def Omega_Tests():
@@ -139,4 +146,6 @@ if __name__ == '__main__':
     # Get_Experimental_Data(AU_183_POSITIVE)
 
     Fit_Model_Data(AU_183_POSITIVE)
+    # print(PARAMS)
+    # Fit_Model_Data(AU_183_NEGATIVE)
     # Get_Experimental_Data(AU_183_NEGATIVE)

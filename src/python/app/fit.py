@@ -15,8 +15,9 @@ class Fit:
 
         DEBUG_MODE = False
 
-        x1 = [e[0] for e in xdata]
-        x2 = [e[1] for e in xdata]
+        # x1 = [e[0] for e in xdata]
+        # x2 = [e[1] for e in xdata]
+        x1, x2 = xdata
         y_data = ydata
 
         if(DEBUG_MODE):
