@@ -48,7 +48,7 @@ class Fit:
 
         data.sort(key=operator.itemgetter(0))
 
-        print(data)
+        # print(data)
         return data
 
 

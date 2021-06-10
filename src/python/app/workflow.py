@@ -61,13 +61,13 @@ def Main():
         # print(data_1)
 
         nlm_0 = Isotope.Fit_Isotope(data_0)
-        nlm_1 = Isotope.Fit_Isotope(data_1)
+        # nlm_1 = Isotope.Fit_Isotope(data_1)
 
         print(nlm_0[0])
 
         exp_data = [band_0_spins, band_0_energies]
-        th_data = [band_0_spins, fit.Mock_Fit.Check_Mock_Data(
-            model, band_0_spins, nlm_0[0])]
+        # TODO change with proper theoretical data
+        th_data = [band_0_spins, band_0_energies]
 
         plot.Plot_Maker.Create_Fit_Plot(
             exp_data, th_data, plot_name(idx), plot_label)
@@ -78,18 +78,24 @@ def Main():
 
 
 def Get_Experimental_Data(isotope):
+    """Read the experimental data for a particular band sequence of an isotope
+    The data corresponds to the wobbling excitations of an isotope with a defined parity. Namely, there can be band sequences that correspond to positive parity and sequences which correspond to negative parity.
+
+    """
+
     DEBUG_MODE = True
 
     YRAST, TW1, LABEL = energies.Extract_Data.Get_Energies(isotope)
     YRAST = energies.Energy_Formula.MeV(YRAST)
     TW1 = energies.Energy_Formula.MeV(TW1)
 
-    fit.Fit.Concatenate_Data(YRAST, TW1)
+    EXP_DATA = fit.Fit.Concatenate_Data(YRAST, TW1)
 
     if(DEBUG_MODE):
         print(f'****** {LABEL} ******')
         print(f'****** Yrast band ******\n{YRAST}')
-        print(f'****** TW1 band ******\n{TW1}\n')
+        print(f'****** TW1 band ******\n{TW1}')
+        print(f'****** EXP DATA: ******\n{EXP_DATA}\n')
 
 
 def Omega_Tests():
@@ -106,5 +112,6 @@ if __name__ == '__main__':
     AU_183_POSITIVE = energies.Files.AU_183_DATA_POSITIVE
     AU_183_NEGATIVE = energies.Files.AU_183_DATA_NEGATIVE
 
+    # get the experimental data for the positive parity wobbling bands
     Get_Experimental_Data(AU_183_POSITIVE)
-    Get_Experimental_Data(AU_183_NEGATIVE)
+    # Get_Experimental_Data(AU_183_NEGATIVE)
