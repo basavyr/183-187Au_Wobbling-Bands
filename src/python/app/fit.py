@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 import energies
 
+import operator
+
 import plot
 
 
@@ -37,6 +39,10 @@ class Fit:
             return None
         else:
             return params, covariance
+        
+    @staticmethod
+    def Concatenate_Data(band1,band2):
+        return 1
 
 
 class Mock_Fit:

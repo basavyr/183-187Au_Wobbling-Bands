@@ -238,6 +238,10 @@ class Energy_Formula:
         return E_EXC
 
     @staticmethod
+    def MeV(energies):
+        return [[e[0], float(e[1] / 1000.0)] for e in energies]
+
+    @staticmethod
     def Model_Energy(X, P):
         """This is the model function that needs to be numerically fitted
 
