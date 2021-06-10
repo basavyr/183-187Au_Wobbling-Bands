@@ -118,8 +118,7 @@ def Fit_Model_Data(isotope):
     #     print(f'{x_data}\n{y_data}')
 
     w = fit.Fit.Data_Fit(energies.Models.Model_Energy_i13_2, x_data, y_data)
-
-    print(w)
+    print(f'Fit results-> {w}')
 
 
 def Omega_Tests():

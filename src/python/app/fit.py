@@ -13,13 +13,21 @@ class Fit:
     @staticmethod
     def Data_Fit(model, xdata, ydata):
 
-        x_data = np.asarray(xdata)
-        y_data = np.asarray(ydata)
+        DEBUG_MODE = False
+
+        x1 = [e[0] for e in xdata]
+        x2 = [e[1] for e in xdata]
+        y_data = ydata
+
+        if(DEBUG_MODE):
+            print(x1)
+            print(x2)
+            print(y_data)
 
         try:
-            params, covariance = curve_fit(
-                model, x_data, y_data)
-        except Exception:
+            params, covariance = curve_fit(model, xdata=(x1, x2), ydata=y_data)
+        except Exception as err:
+            print(f'Error while trying to fit the data -> {err}')
             return None
         else:
             return params, covariance

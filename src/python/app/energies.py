@@ -160,51 +160,58 @@ class Energy_Formula:
     @staticmethod
     def Omega_Frequencies(spin, odd_spin, I1, I2, I3, V, gamma):
 
-        DEBUG_MODE = True
+        DEBUG_MODE = False
 
         B = Energy_Formula.B_Term(spin, odd_spin, I1, I2, I3, V, gamma)
         C = Energy_Formula.C_Term(spin, odd_spin, I1, I2, I3, V, gamma)
 
         with np.errstate(invalid='ignore'):
             SQRT = np.sqrt(np.power(B, 2) - 4.0 * C)
-            valid_0 = Energy_Formula.IsNAN_Asserter(SQRT, False)
-            if(DEBUG_MODE):
-                if(valid_0 is None):
-                    print(f'Invalid SQRT term | v0={valid_0}')
-                else:
-                    print(f'Valid SQRT term | v0={valid_0}')
-
-        if(valid_0 is None):
-            return []
-
-        with np.errstate(invalid='ignore'):
             Omega_1 = np.sqrt(0.5 * (-B + SQRT))
-            valid_1 = Energy_Formula.IsNAN_Asserter(Omega_1, False)
-            if(DEBUG_MODE):
-                if(valid_1 is None):
-                    print(f'Invalid Omega_1 | v1={valid_1}')
-                else:
-                    print(f'Valid Omega_1 | v1={valid_1}')
-
-        with np.errstate(invalid='ignore'):
             Omega_2 = np.sqrt(0.5 * (-B - SQRT))
-            valid_2 = Energy_Formula.IsNAN_Asserter(Omega_2, False)
-            if(DEBUG_MODE):
-                if(valid_2 is None):
-                    print(f'Invalid Omega_2 | v2={valid_2}')
-                else:
-                    print(f'Valid Omega_2 | v2={valid_2}')
 
-        if(valid_1 is None or valid_2 is None):
-            if(DEBUG_MODE):
-                print('Invalid parameters for the wobbling frequencies ❌')
-                print(f'Omegas: -> [{Omega_1} , {Omega_2}]')
-                return []
-        else:
-            if(DEBUG_MODE):
-                print('Valid parameters for the wobbling frequencies ✅')
-                print(f'Omegas: -> [{Omega_1} , {Omega_2}]')
-            return [Omega_1, Omega_2]
+        # with np.errstate(invalid='ignore'):
+        #     SQRT = np.sqrt(np.power(B, 2) - 4.0 * C)
+        #     valid_0 = Energy_Formula.IsNAN_Asserter(SQRT, False)
+        #     if(DEBUG_MODE):
+        #         if(valid_0 is None):
+        #             print(f'Invalid SQRT term | v0={valid_0}')
+        #         else:
+        #             print(f'Valid SQRT term | v0={valid_0}')
+
+        # if(valid_0 is None):
+        #     return []
+
+        # with np.errstate(invalid='ignore'):
+        #     Omega_1 = np.sqrt(0.5 * (-B + SQRT))
+        #     valid_1 = Energy_Formula.IsNAN_Asserter(Omega_1, False)
+        #     if(DEBUG_MODE):
+        #         if(valid_1 is None):
+        #             print(f'Invalid Omega_1 | v1={valid_1}')
+        #         else:
+        #             print(f'Valid Omega_1 | v1={valid_1}')
+
+        # with np.errstate(invalid='ignore'):
+        #     Omega_2 = np.sqrt(0.5 * (-B - SQRT))
+        #     valid_2 = Energy_Formula.IsNAN_Asserter(Omega_2, False)
+        #     if(DEBUG_MODE):
+        #         if(valid_2 is None):
+        #             print(f'Invalid Omega_2 | v2={valid_2}')
+        #         else:
+        #             print(f'Valid Omega_2 | v2={valid_2}')
+
+        # if(valid_1 is None or valid_2 is None):
+        #     if(DEBUG_MODE):
+        #         print('Invalid parameters for the wobbling frequencies ❌')
+        #         print(f'Omegas: -> [{Omega_1} , {Omega_2}]')
+        #         return []
+        # else:
+        #     if(DEBUG_MODE):
+        #         print('Valid parameters for the wobbling frequencies ✅')
+        #         print(f'Omegas: -> [{Omega_1} , {Omega_2}]')
+        #     return [Omega_1, Omega_2]
+
+        return [Omega_1, Omega_2]
 
     @staticmethod
     def Energy_Expression(nw_1, nw_2, spin, odd_spin, I1, I2, I3, V, gamma):
@@ -214,8 +221,8 @@ class Energy_Formula:
         Omega = Energy_Formula.Omega_Frequencies(
             spin, odd_spin, I1, I2, I3, V, gamma)
 
-        if(len(Omega) == 0):
-            return None
+        # if(len(Omega) == 0):
+        #     return None
 
         Omega_1 = Omega[0]
         Omega_2 = Omega[1]
@@ -229,18 +236,18 @@ class Energy_Formula:
         E_0 = Energy_Formula.Energy_Expression(
             0, 0, spin_zero, odd_spin, I1, I2, I3, V, gamma)
 
-        try:
-            assert E_0 is not None
-        except AssertionError:
-            return None
+        # try:
+        #     assert E_0 is not None
+        # except AssertionError:
+        #     return None
 
         E_I = Energy_Formula.Energy_Expression(
             nw_1, nw_2, spin, odd_spin, I1, I2, I3, V, gamma)
 
-        try:
-            assert E_I is not None
-        except AssertionError:
-            return None
+        # try:
+        #     assert E_I is not None
+        # except AssertionError:
+        #     return None
 
         E_EXC = E_I - E_0
 
@@ -288,6 +295,7 @@ class Models:
 
         # unpack the spin and wobbling phonon number
         spin, wobbling_phonon = X
+        # print(f'in model ->{spin}\n{wobbling_phonon}')
 
         try:
             model_function = Energy_Formula.Excitation_Energy(
