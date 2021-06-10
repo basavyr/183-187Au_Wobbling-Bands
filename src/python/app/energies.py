@@ -190,3 +190,19 @@ class Energy_Formula:
                 print('Valid parameters for the wobbling frequencies ✅')
                 print(f'Omegas: -> [{Omega_1} , {Omega_2}]')
             return [Omega_1, Omega_2]
+
+    @staticmethod
+    def Energy_Expression(nw_1, nw_2, spin, odd_spin, I1, I2, I3, V, gamma):
+        h0 = Energy_Formula.H_Min(spin, odd_spin, I1, I2, I3, V, gamma)
+
+        Omega = Energy_Formula.Omega_Frequencies(
+            spin, odd_spin, I1, I2, I3, V, gamma)
+
+        if(len(Omega) == 0):
+            return None
+
+        Omega_1 = Omega[0]
+        Omega_2 = Omega[1]
+
+        E = h0+Omega_1*(nw_1+0.5)+Omega_2*(nw_2+0.5)
+        return E
