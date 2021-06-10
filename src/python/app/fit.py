@@ -52,39 +52,39 @@ class Fit:
         return data
 
 
-class Mock_Fit:
+# class Mock_Fit:
 
-    @staticmethod
-    def Generate_Data(model, params):
-        xdata = [int(x) for x in range(-1, 11)]
-        ydata = [model(
-            x, params[0], params[1], params[2]) for x in xdata]
+#     @staticmethod
+#     def Generate_Data(model, params):
+#         xdata = [int(x) for x in range(-1, 11)]
+#         ydata = [model(
+#             x, params[0], params[1], params[2]) for x in xdata]
 
-        data = [xdata, ydata]
+#         data = [xdata, ydata]
 
-        return data
+#         return data
 
-    @staticmethod
-    def Fit(mock_data, model):
+#     @staticmethod
+#     def Fit(mock_data, model):
 
-        xdata = np.asarray(mock_data[0])
-        ydata = np.asarray(mock_data[1])
+#         xdata = np.asarray(mock_data[0])
+#         ydata = np.asarray(mock_data[1])
 
-        fit_results = Fit.Data_Fit(model, xdata, ydata)
+#         fit_results = Fit.Data_Fit(model, xdata, ydata)
 
-        return fit_results
+#         return fit_results
 
-    @staticmethod
-    def Fit_P0(mock_data, model, initial_params):
+#     @staticmethod
+#     def Fit_P0(mock_data, model, initial_params):
 
-        xdata = np.asarray(mock_data[0])
-        ydata = np.asarray(mock_data[1])
+#         xdata = np.asarray(mock_data[0])
+#         ydata = np.asarray(mock_data[1])
 
-        fit_results = Fit.Data_Fit_P0(model, xdata, ydata, initial_params)
+#         fit_results = Fit.Data_Fit_P0(model, xdata, ydata, initial_params)
 
-        return fit_results
+#         return fit_results
 
-    @staticmethod
-    def Check_Mock_Data(model, xdata, params):
-        ydata = [model(x, params[0], params[1], params[2]) for x in xdata]
-        return ydata
+#     @staticmethod
+#     def Check_Mock_Data(model, xdata, params):
+#         ydata = [model(x, params[0], params[1], params[2]) for x in xdata]
+#         return ydata
