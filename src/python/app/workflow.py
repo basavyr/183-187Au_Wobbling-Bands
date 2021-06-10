@@ -104,6 +104,23 @@ def Get_Experimental_Data(isotope):
         print(X_DATA)
         print(Y_DATA)
 
+    return [X_DATA, Y_DATA]
+
+
+def Fit_Model_Data(isotope):
+    # unpack the experimental data for the isotope
+    x_data, y_data = Get_Experimental_Data(isotope)
+    # try:
+    #     x_data, y_data = Get_Experimental_Data(isotope)
+    # except Exception:
+    #     print('Failed getting the experimental data')
+    # else:
+    #     print(f'{x_data}\n{y_data}')
+
+    w = fit.Fit.Data_Fit(energies.Models.Model_Energy_i13_2, x_data, y_data)
+
+    print(w)
+
 
 def Omega_Tests():
     w1 = energies.Energy_Formula.Omega_Frequencies(
@@ -120,5 +137,7 @@ if __name__ == '__main__':
     AU_183_NEGATIVE = energies.Files.AU_183_DATA_NEGATIVE
 
     # get the experimental data for the positive parity wobbling bands
-    Get_Experimental_Data(AU_183_POSITIVE)
+    # Get_Experimental_Data(AU_183_POSITIVE)
+
+    Fit_Model_Data(AU_183_POSITIVE)
     # Get_Experimental_Data(AU_183_NEGATIVE)
