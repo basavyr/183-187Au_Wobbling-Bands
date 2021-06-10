@@ -39,10 +39,17 @@ class Fit:
             return None
         else:
             return params, covariance
-        
+
     @staticmethod
-    def Concatenate_Data(band1,band2):
-        return 1
+    def Concatenate_Data(band1, band2):
+        data = [b for b in band1]
+        for b in band2:
+            data.append(b)
+
+        data.sort(key=operator.itemgetter(1))
+
+        print(data)
+        return data
 
 
 class Mock_Fit:

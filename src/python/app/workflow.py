@@ -78,12 +78,18 @@ def Main():
 
 
 def Get_Experimental_Data(isotope):
+    DEBUG_MODE = False
+
     YRAST, TW1, LABEL = energies.Extract_Data.Get_Energies(isotope)
     YRAST = energies.Energy_Formula.MeV(YRAST)
     TW1 = energies.Energy_Formula.MeV(TW1)
-    print(f'****** {LABEL} ******')
-    print(f'****** Yrast band ******\n{YRAST}')
-    print(f'****** TW1 band ******\n{TW1}\n')
+
+    fit.Fit.Concatenate_Data(YRAST, TW1)
+
+    if(DEBUG_MODE):
+        print(f'****** {LABEL} ******')
+        print(f'****** Yrast band ******\n{YRAST}')
+        print(f'****** TW1 band ******\n{TW1}\n')
 
 
 def Omega_Tests():
@@ -101,4 +107,4 @@ if __name__ == '__main__':
     AU_187 = energies.Files.AU_187_DATA
 
     Get_Experimental_Data(AU_183)
-    Get_Experimental_Data(AU_187)
+    # Get_Experimental_Data(AU_187)
