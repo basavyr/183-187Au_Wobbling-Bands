@@ -77,6 +77,12 @@ def Main():
         # print(fit.Mock_Fit.Check_Mock_Data(model, band_1_spins, nlm_1[0]))
 
 
+def Get_Experimental_Data(isotope):
+    bands = energies.Extract_Data.Get_Energies(isotope)
+    for band in bands:
+        print(band)
+
+
 def Omega_Tests():
     w1 = energies.Energy_Formula.Omega_Frequencies(
         21.5, 6.5, 60, 100, 40, 3, 23)
@@ -89,4 +95,7 @@ def Omega_Tests():
 
 if __name__ == '__main__':
     # Main()
-    Omega_Tests()
+    # Omega_Tests()
+    AU_183 = energies.Files.AU_183_DATA
+    AU_187 = energies.Files.AU_187_DATA
+    Get_Experimental_Data(AU_183)
