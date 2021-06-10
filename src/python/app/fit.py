@@ -13,7 +13,7 @@ class Fit:
     @staticmethod
     def Data_Fit(model, xdata, ydata):
 
-        DEBUG_MODE = False
+        DEBUG_MODE = True
 
         # x1 = [e[0] for e in xdata]
         # x2 = [e[1] for e in xdata]
@@ -21,6 +21,7 @@ class Fit:
         y_data = ydata
 
         if(DEBUG_MODE):
+            print('In fitting procedure\n')
             print(x1)
             print(x2)
             print(y_data)

@@ -295,7 +295,7 @@ class Models:
 
         # unpack the spin and wobbling phonon number
         spin, wobbling_phonon = X
-        # print(f'in model ->{spin}\n{wobbling_phonon}')
+        print(f'in model ->{spin}\n{wobbling_phonon}')
 
         try:
             model_function = Energy_Formula.Excitation_Energy(
