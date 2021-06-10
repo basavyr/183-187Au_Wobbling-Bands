@@ -4,6 +4,8 @@ from scipy.optimize import curve_fit
 
 def func(X, a, b, c):
     x, y = X
+    print(x)
+    print(y)
     x = np.array(x)
     y = np.array(y)
     return np.log(a) + b * np.log(x) + c * np.log(y)
@@ -12,11 +14,11 @@ def func(X, a, b, c):
 # some artificially noisy data to fit
 x = np.linspace(0.1, 1.1, 100)
 y = np.linspace(1., 2., 100)
-print(x)
-print(y)
+# print(x)
+# print(y)
 a, b, c = 10., 4., 6.
 z = func((x, y), a, b, c) + np.random.random(100) / 100
-print(z)
+# print(z)
 
 # initial guesses for a,b,c:
 p0 = 8., 2., 7.

@@ -109,23 +109,19 @@ def Get_Experimental_Data(isotope):
     return [energies.np.meshgrid(X_DATA_SPINS, X_DATA_PHONONS), Y_DATA]
 
 
-def test_model(X, p1, p2, p3, p4, p5):
-    x, y = X
-    result= x * y + p1 + p2 + p3 + p4 + p5
-    return result.ravel()
-
-
 def Fit_Model_Data(isotope):
     # unpack the experimental data for the isotope
-    X = Get_Experimental_Data(isotope)[0]
-    Y = Get_Experimental_Data(isotope)[1]
-    print(X)
-    print(Y)
 
-    Z = test_model(X, 1, 1, 1, 1, 1)
+    # some artificially noisy data to fit
+    x = energies.np.linspace(0.1, 1.1, 101)
+    y = energies.np.linspace(1., 2., 101)
+    a, b, c = 10., 4., 6.
 
-    fit.curve_fit(test_model, X, Y)
-
+    z = energies.Models.Model_Energy_i13_2((x, y), 1, 1, 1, 1, 1)
+    # z = 1 + energies.np.random.random(101) / 100
+    # print(x)
+    # print(y)
+    # print(z)
     # print(x_data)
     # print(y_data)
 
