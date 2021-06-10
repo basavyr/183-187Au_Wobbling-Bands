@@ -52,6 +52,11 @@ class Extract_Data:
 class Energy_Formula:
 
     @staticmethod
+    def MeV(band):
+        band = [[e[0], e[1], float(e[2] / 1000.0)] for e in band]
+        return band
+
+    @staticmethod
     def IsNAN_Asserter(arg, assert_value):
         try:
             assert np.isnan(arg) == assert_value

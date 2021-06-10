@@ -78,11 +78,11 @@ def Main():
 
 
 def Get_Experimental_Data(isotope):
-    DEBUG_MODE = False
+    DEBUG_MODE = True
 
     YRAST, TW1, LABEL = energies.Extract_Data.Get_Energies(isotope)
-    # YRAST = energies.Energy_Formula.MeV(YRAST)
-    # TW1 = energies.Energy_Formula.MeV(TW1)
+    YRAST = energies.Energy_Formula.MeV(YRAST)
+    TW1 = energies.Energy_Formula.MeV(TW1)
 
     fit.Fit.Concatenate_Data(YRAST, TW1)
 
@@ -107,4 +107,4 @@ if __name__ == '__main__':
     AU_183_NEGATIVE = energies.Files.AU_183_DATA_NEGATIVE
 
     Get_Experimental_Data(AU_183_POSITIVE)
-    # Get_Experimental_Data(AU_183_NEGATIVE)
+    Get_Experimental_Data(AU_183_NEGATIVE)
