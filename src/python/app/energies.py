@@ -9,14 +9,16 @@ class Files:
     data_directory = blobs + 'data/'
     plot_directory = blobs + 'plots/'
 
-    AU_183_DATA = data_directory + '183_data.md'
-    AU_187_DATA = data_directory + '187_data.md'
+    AU_183_DATA_POSITIVE = data_directory + '183_positive_data.md'
+    AU_183_DATA_NEGATIVE = data_directory + '183_negative_data.md'
+    # AU_187_DATA = data_directory + '187_data.md'
 
-    AU_183_ENERGY_PLOT = plot_directory + '183_energies_plot.pdf'
-    AU_187_ENERGY_PLOT = plot_directory + '187_energies_plot.pdf'
+    AU_183_POSITIVE_ENERGY_PLOT = plot_directory + '183_positive_energies_plot.pdf'
+    AU_183_NEGATIVE_ENERGY_PLOT = plot_directory + '183_negative_energies_plot.pdf'
+    # AU_187_ENERGY_PLOT = plot_directory + '187_energies_plot.pdf'
 
-    EXP_DATA_FILES = [AU_183_DATA, AU_187_DATA]
-    PLOT_FILES = [AU_183_ENERGY_PLOT, AU_187_ENERGY_PLOT]
+    EXP_DATA_FILES = [AU_183_DATA_POSITIVE, AU_183_DATA_NEGATIVE]
+    PLOT_FILES = [AU_183_POSITIVE_ENERGY_PLOT, AU_183_NEGATIVE_ENERGY_PLOT]
 
 
 class Extract_Data:

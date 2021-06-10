@@ -103,8 +103,8 @@ def Omega_Tests():
 
 
 if __name__ == '__main__':
-    AU_183 = energies.Files.AU_183_DATA
-    AU_187 = energies.Files.AU_187_DATA
+    AU_183_POSITIVE = energies.Files.AU_183_DATA_POSITIVE
+    AU_183_NEGATIVE = energies.Files.AU_183_DATA_NEGATIVE
 
-    Get_Experimental_Data(AU_183)
-    # Get_Experimental_Data(AU_187)
+    Get_Experimental_Data(AU_183_POSITIVE)
+    # Get_Experimental_Data(AU_183_NEGATIVE)
