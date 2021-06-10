@@ -83,7 +83,7 @@ def Get_Experimental_Data(isotope):
 
     """
 
-    DEBUG_MODE = True
+    DEBUG_MODE = False
 
     YRAST, TW1, LABEL = energies.Extract_Data.Get_Energies(isotope)
     YRAST = energies.Energy_Formula.MeV(YRAST)
@@ -96,6 +96,13 @@ def Get_Experimental_Data(isotope):
         print(f'****** Yrast band ******\n{YRAST}')
         print(f'****** TW1 band ******\n{TW1}')
         print(f'****** EXP DATA: ******\n{EXP_DATA}\n')
+
+    X_DATA = [[X[0], X[1]] for X in EXP_DATA]
+    Y_DATA = [X[2] for X in EXP_DATA]
+
+    if(DEBUG_MODE):
+        print(X_DATA)
+        print(Y_DATA)
 
 
 def Omega_Tests():

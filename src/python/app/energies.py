@@ -255,9 +255,10 @@ class Energy_Formula:
         P represents the parameter set: P=[I1,I2,I3,V,gamma]
         """
 
-        SPIN_ZERO = 1
-        ODD_SPIN = 1
+        SPIN_ZERO = 4.5
+        ODD_SPIN = 6.5
 
+        # unpack the spin and wobbling phonon number
         spin, wobbling_phonon = X
 
         try:
