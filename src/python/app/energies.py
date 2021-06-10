@@ -299,7 +299,7 @@ class Models:
 
         model_function = Energy_Formula.Excitation_Energy(
             wobbling_phonon, 0, spin, SPIN_ZERO, ODD_SPIN, P_1, P_2, P_3, P_4, P_5)
-        print(model_function)
+        print(model_function)  # TODO: re-implement the safety blocks
         # try:
         #     model_function = Energy_Formula.Excitation_Energy(
         #         wobbling_phonon, 0, spin, SPIN_ZERO, ODD_SPIN, P_1, P_2, P_3, P_4, P_5)

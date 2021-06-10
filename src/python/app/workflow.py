@@ -159,6 +159,16 @@ def Omega_Tests():
     print(ww)
 
 
+def Energy_Function_Arrays():
+    x = energies.np.linspace(0.1, 1.1, 101)
+    y = energies.np.linspace(1., 2., 101)
+    # print(x)
+    # print(y)
+    t1 = energies.Energy_Formula.H_Min(x, 1, 1, 1, 1, 1, 1)
+
+    print(t1)
+
+
 if __name__ == '__main__':
     AU_183_POSITIVE = energies.Files.AU_183_DATA_POSITIVE
     AU_183_NEGATIVE = energies.Files.AU_183_DATA_NEGATIVE
@@ -166,7 +176,8 @@ if __name__ == '__main__':
     # get the experimental data for the positive parity wobbling bands
     # Get_Experimental_Data(AU_183_POSITIVE)
 
-    Fit_Model_Data(AU_183_POSITIVE)
+    # Fit_Model_Data(AU_183_POSITIVE)
+    Energy_Function_Arrays()
     # print(PARAMS)
     # Fit_Model_Data(AU_183_NEGATIVE)
     # Get_Experimental_Data(AU_183_NEGATIVE)
