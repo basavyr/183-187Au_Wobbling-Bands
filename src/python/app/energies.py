@@ -181,12 +181,12 @@ class Energy_Formula:
                     print(f'Valid Omega_2 | v2={valid_2}')
 
         if(valid_1 is None or valid_2 is None):
-            # print(f'valid frequencies -> [{Omega_1} , {Omega_2}]')
             if(DEBUG_MODE):
                 print('Invalid parameters for the wobbling frequencies ❌')
+                print(f'Omegas: -> [{Omega_1} , {Omega_2}]')
                 return []
         else:
-            # print(f'not good freqs -> [{Omega_1} , {Omega_2}]')
             if(DEBUG_MODE):
                 print('Valid parameters for the wobbling frequencies ✅')
+                print(f'Omegas: -> [{Omega_1} , {Omega_2}]')
             return [Omega_1, Omega_2]

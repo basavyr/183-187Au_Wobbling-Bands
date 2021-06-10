@@ -1,3 +1,4 @@
 *.python-version
 *Pipfile
 *Pipfile.lock
+src/python/app/assets/.DS_Store
