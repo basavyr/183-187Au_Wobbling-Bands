@@ -164,8 +164,9 @@ class Energy_Formula:
                     print(f'Invalid SQRT term | v0={valid_0}')
                 else:
                     print(f'Valid SQRT term | v0={valid_0}')
-                # print(
-                #     f'SQRT TERM -> {SQRT} | {Energy_Formula.IsNAN_Asserter(SQRT, False)}')
+
+        if(valid_0 is None):
+            return []
 
         with np.errstate(invalid='ignore'):
             Omega_1 = np.sqrt(0.5 * (-B + SQRT))
@@ -199,7 +200,7 @@ class Energy_Formula:
     @staticmethod
     def Energy_Expression(nw_1, nw_2, spin, odd_spin, I1, I2, I3, V, gamma):
 
-        h0 = Energy_Formula.H_Min(spin, odd_spin, I1, I2, I3, V, gamma)
+        H_MIN = Energy_Formula.H_Min(spin, odd_spin, I1, I2, I3, V, gamma)
 
         Omega = Energy_Formula.Omega_Frequencies(
             spin, odd_spin, I1, I2, I3, V, gamma)
@@ -210,7 +211,7 @@ class Energy_Formula:
         Omega_1 = Omega[0]
         Omega_2 = Omega[1]
 
-        E = h0 + Omega_1 * (nw_1 + 0.5) + Omega_2 * (nw_2 + 0.5)
+        E = H_MIN + Omega_1 * (nw_1 + 0.5) + Omega_2 * (nw_2 + 0.5)
         return E
 
     @staticmethod
@@ -219,8 +220,18 @@ class Energy_Formula:
         E_0 = Energy_Formula.Energy_Expression(
             0, 0, spin_zero, odd_spin, I1, I2, I3, V, gamma)
 
+        try:
+            assert E_0 is not None
+        except AssertionError:
+            return None
+
         E_I = Energy_Formula.Energy_Expression(
             nw_1, nw_2, spin, odd_spin, I1, I2, I3, V, gamma)
+
+        try:
+            assert E_I is not None
+        except AssertionError:
+            return None
 
         E_EXC = E_I - E_0
 

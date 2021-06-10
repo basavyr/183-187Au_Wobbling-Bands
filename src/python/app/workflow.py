@@ -83,7 +83,8 @@ def Omega_Tests():
     w2 = energies.Energy_Formula.Omega_Frequencies(21.5, 6.5, 1, 2, 40, 3, 23)
     w3 = energies.Energy_Formula.Omega_Frequencies(
         21.5, 6.5, 60, 80, 40, 3, 23)
-    print([bool(x) for x in [w1, w2, w3]])
+    ww = [bool(x) for x in [w1, w2, w3]]
+    print(ww)
 
 
 if __name__ == '__main__':
