@@ -166,7 +166,8 @@ def Energy_Function_Arrays():
     # print(y)
     t1 = energies.Energy_Formula.H_Min(x, 1, 1, 1, 1, 1, 1)
 
-    print(t1)
+    t2 = energies.Energy_Formula.Omega_Frequencies(x, 1, 1, 1, 1, 1, 1)
+    print(t1, t2)
 
 
 if __name__ == '__main__':
