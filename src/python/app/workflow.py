@@ -81,8 +81,8 @@ def Get_Experimental_Data(isotope):
     DEBUG_MODE = False
 
     YRAST, TW1, LABEL = energies.Extract_Data.Get_Energies(isotope)
-    YRAST = energies.Energy_Formula.MeV(YRAST)
-    TW1 = energies.Energy_Formula.MeV(TW1)
+    # YRAST = energies.Energy_Formula.MeV(YRAST)
+    # TW1 = energies.Energy_Formula.MeV(TW1)
 
     fit.Fit.Concatenate_Data(YRAST, TW1)
 

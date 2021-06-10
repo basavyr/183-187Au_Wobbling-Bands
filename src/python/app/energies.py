@@ -25,8 +25,8 @@ class Extract_Data:
 
     @staticmethod
     def Get_Energies(data_file):
-        band0 = []
-        band1 = []
+        YRAST = []
+        WOBB = []
 
         with open(data_file, 'r+') as data_reader:
             raw_data = data_reader.readlines()
@@ -38,13 +38,15 @@ class Extract_Data:
         clean_data = [line.strip() for line in raw_data]
 
         for line in clean_data:
-            parity, spin, energy = line.split(" ")
-            if(int(parity) == 1):
-                band1.append([float(spin), float(energy)])
-            if(int(parity) == 0):
-                band0.append([float(spin), float(energy)])
+            wobbling_phonon, spin, energy = line.split(" ")
+            if(int(wobbling_phonon) == 1):
+                WOBB.append(
+                    [float(spin), int(wobbling_phonon), float(energy)])
+            if(int(wobbling_phonon) == 0):
+                YRAST.append(
+                    [float(spin), int(wobbling_phonon), float(energy)])
 
-        return band0, band1, label
+        return YRAST, WOBB, label
 
 
 class Energy_Formula:
@@ -238,10 +240,6 @@ class Energy_Formula:
         E_EXC = E_I - E_0
 
         return E_EXC
-
-    @staticmethod
-    def MeV(energies):
-        return [[e[0], float(e[1] / 1000.0)] for e in energies]
 
     @staticmethod
     def Model_Energy(X, P):

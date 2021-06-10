@@ -46,7 +46,7 @@ class Fit:
         for b in band2:
             data.append(b)
 
-        data.sort(key=operator.itemgetter(1))
+        data.sort(key=operator.itemgetter(0))
 
         print(data)
         return data
