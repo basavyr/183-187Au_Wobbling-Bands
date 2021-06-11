@@ -108,7 +108,7 @@ def Energy_Function_Arrays(x_data_1, x_data_2, y_data):
         print(f_xy_data)
 
     fit_results = fit.curve_fit(
-        energies.Models.Model_Energy_i13_2, (spins, wobbling_phonons), f_xy_data, p0=[60.0, 20.0, 10.0, 10.0, 30.0])
+        energies.Models.Model_Energy_i13_2, (spins, wobbling_phonons), f_xy_data, p0=[80.0, 5.0, 10.0, 5.0, 20.0], bounds=([1, 1, 1, 0.01, 19.0], [100, 100, 100, 10, 25]))
 
     if(DEBUG_MODE):
         print(fit_results)
