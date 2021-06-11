@@ -189,7 +189,8 @@ def Energy_Function_Arrays():
 
     f_model_data = energies.Models.Model_Energy_i13_2((x, y), 60, 20, 4, 4, 20)
     print(len(f_model_data))
-    fit.curve_fit(energies.Models.Model_Energy_i13_2, (x, y), f_model_data)
+    w=fit.curve_fit(energies.Models.Model_Energy_i13_2, (x, y), f_model_data)
+    print(w)
 
 
 if __name__ == '__main__':
