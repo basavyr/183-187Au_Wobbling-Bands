@@ -221,9 +221,6 @@ class Energy_Formula:
         Omega = Energy_Formula.Omega_Frequencies(
             spin, odd_spin, I1, I2, I3, V, gamma)
 
-        # if(len(Omega) == 0):
-        #     return None
-
         Omega_1 = Omega[0]
         Omega_2 = Omega[1]
 
@@ -236,18 +233,8 @@ class Energy_Formula:
         E_0 = Energy_Formula.Energy_Expression(
             0, 0, spin_zero, odd_spin, I1, I2, I3, V, gamma)
 
-        # try:
-        #     assert E_0 is not None
-        # except AssertionError:
-        #     return None
-
         E_I = Energy_Formula.Energy_Expression(
             nw_1, nw_2, spin, odd_spin, I1, I2, I3, V, gamma)
-
-        # try:
-        #     assert E_I is not None
-        # except AssertionError:
-        #     return None
 
         E_EXC = E_I - E_0
 
@@ -264,22 +251,23 @@ class Models:
 
         P represents the parameter set: P=[I1,I2,I3,V,gamma]
         """
+        DEBUG_MODE = False
 
         SPIN_ZERO = 4.5
         ODD_SPIN = 4.5
 
         # unpack the spin and wobbling phonon number
-        spin, wobbling_phonon = X
+        spins, phonons = X
 
-        try:
-            model_function = Energy_Formula.Excitation_Energy(
-                wobbling_phonon, 0, spin, SPIN_ZERO, ODD_SPIN, P_1, P_2, P_3, P_4, P_5)
-            assert model_function is not None, "the model function failed"
-        except AssertionError as err:
-            print(f'Problem with the model -> {err}')
-            return np.nan
-        else:
-            return model_function
+        if(DEBUG_MODE):
+            print(f'in model ->Spins: {spins}\n nw_1: {phonons}')
+
+        model_function = Energy_Formula.Excitation_Energy(
+            phonons, 0, spins, SPIN_ZERO, ODD_SPIN, P_1, P_2, P_3, P_4, P_5)
+
+        if(DEBUG_MODE):
+            print(f'E_EXC(X,P) -> {model_function}')
+        return model_function
 
     @staticmethod
     def Model_Energy_i13_2(X, P_1, P_2, P_3, P_4, P_5):
@@ -300,11 +288,9 @@ class Models:
         if(DEBUG_MODE):
             print(f'in model ->Spins: {spins}\n nw_1: {phonons}')
 
-        try:
-            model_function = Energy_Formula.Excitation_Energy(
-                phonons, 0, spins, SPIN_ZERO, ODD_SPIN, P_1, P_2, P_3, P_4, P_5)
-            assert len(model_function >= 0)
-        except AssertionError:
-            return np.nan
-        else:
-            return model_function
+        model_function = Energy_Formula.Excitation_Energy(
+            phonons, 0, spins, SPIN_ZERO, ODD_SPIN, P_1, P_2, P_3, P_4, P_5)
+
+        if(DEBUG_MODE):
+            print(f'E_EXC(X,P) -> {model_function}')
+        return model_function
