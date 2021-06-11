@@ -51,6 +51,8 @@ class Extract_Data:
 
 class Energy_Formula:
 
+    FAIL_VALUE = 6969.6969
+
     @staticmethod
     def MeV(band):
         band = [[e[0], e[1], float(e[2] / 1000.0)] for e in band]
@@ -98,9 +100,9 @@ class Energy_Formula:
             (2.0 * j - 1.0) / (j * (j + 1.0)) * rad3 * (rad3 * cosg + sing)
         t4 = (2.0 * j - 1.0) * (A2 - A1) + 2.0 * I * A1 + V * \
             (2.0 * j - 1.0) / (j * (j + 1.0)) * 2 * \
-            rad3 * sing  # TODO check integrity for t4
+            rad3 * sing
 
-        B = (t1 * t2) + (8.0 * A2 * A3 * I * j) + (t2 * t3)
+        B = (t1 * t2) + (8.0 * A2 * A3 * I * j) + (t3 * t4)
 
         return -1.0 * B
 
@@ -147,20 +149,17 @@ class Energy_Formula:
         j = odd_spin
         gm = Energy_Formula.Radians(gamma)
         pi6 = np.pi / 6.0
-        sing = np.sin(gm)  # TODO check missing of the sing term
 
         T1 = (A2 + A3) * (I + j) / 2.0
         T2 = A1 * np.power(I - j, 2)
         T3 = V * (2.0 * j - 1.0) / (j + 1.0) * np.sin(pi6 + gm)
 
-        HMIN = T1 + T2 - T3
+        H_MIN = T1 + T2 - T3
 
-        return HMIN
+        return H_MIN
 
     @staticmethod
     def Omega_Frequencies(spin, odd_spin, I1, I2, I3, V, gamma):
-
-        DEBUG_MODE = False
 
         B = Energy_Formula.B_Term(spin, odd_spin, I1, I2, I3, V, gamma)
         C = Energy_Formula.C_Term(spin, odd_spin, I1, I2, I3, V, gamma)
