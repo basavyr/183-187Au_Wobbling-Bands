@@ -5,20 +5,6 @@ import fit
 import plot
 
 
-class Isotope:
-
-    @staticmethod
-    def Fit_Isotope(data):
-
-        try:
-            nlm = fit.Mock_Fit.Fit(data, energies.Energy_Formula.Energy1)
-        except Exception:
-            nlm = -1
-            return nlm
-        else:
-            return nlm
-
-
 def Main():
 
     model = energies.Energy_Formula.Energy1
@@ -30,6 +16,7 @@ def Main():
     idx = 1
 
     for isotope in energies.Files.EXP_DATA_FILES:
+
         isotope_data = energies.Extract_Data.Get_Energies(isotope)
 
         plot_label = isotope_data[2]
@@ -59,22 +46,6 @@ def Main():
 
         # print(data_0)
         # print(data_1)
-
-        nlm_0 = Isotope.Fit_Isotope(data_0)
-        # nlm_1 = Isotope.Fit_Isotope(data_1)
-
-        print(nlm_0[0])
-
-        exp_data = [band_0_spins, band_0_energies]
-        # TODO change with proper theoretical data
-        th_data = [band_0_spins, band_0_energies]
-
-        plot.Plot_Maker.Create_Fit_Plot(
-            exp_data, th_data, plot_name(idx), plot_label)
-
-        idx += 1
-        # print(band_1_energies)
-        # print(fit.Mock_Fit.Check_Mock_Data(model, band_1_spins, nlm_1[0]))
 
 
 def Get_Experimental_Data(isotope):
@@ -111,52 +82,7 @@ def Get_Experimental_Data(isotope):
 
 def Fit_Model_Data(isotope):
     # unpack the experimental data for the isotope
-
-    # some artificially noisy data to fit
-    x = energies.np.linspace(0.1, 1.1, 101)
-    y = energies.np.linspace(1., 2., 101)
-    a, b, c = 10., 4., 6.
-
-    z = energies.Models.Model_Energy_i13_2((x, y), 1, 1, 1, 1, 1)
-    # z = 1 + energies.np.random.random(101) / 100
-    # print(x)
-    # print(y)
-    # print(z)
-    # print(x_data)
-    # print(y_data)
-
-    # spins, phonons = x_data
-
-    # print(spins)
-    # print(phonons)
-    # print(y_data)
-    # try:
-    #     x_data, y_data = Get_Experimental_Data(isotope)
-    # except Exception:
-    #     print('Failed getting the experimental data')
-    # else:
-    #     print(f'{x_data}\n{y_data}')
-
-    # params = fit.Fit.Data_Fit(
-    #     energies.Models.Model_Energy_i13_2, X, Y)[0]
-
-    # print(f'Fit results-> {params}')
-
-    # y_data_th = [energies.Models.Model_Energy_i13_2(
-    #     x, params[0], params[1], params[2], params[3], params[4]) for x in x_data]
-
-    # print(y_data_th)
-    # return params
-
-
-def Omega_Tests():
-    w1 = energies.Energy_Formula.Omega_Frequencies(
-        21.5, 6.5, 60, 100, 40, 3, 23)
-    w2 = energies.Energy_Formula.Omega_Frequencies(21.5, 6.5, 1, 2, 40, 3, 23)
-    w3 = energies.Energy_Formula.Omega_Frequencies(
-        21.5, 6.5, 60, 80, 40, 3, 23)
-    ww = [bool(x) for x in [w1, w2, w3]]
-    print(ww)
+    return 1
 
 
 def Energy_Function_Arrays():
@@ -164,33 +90,14 @@ def Energy_Function_Arrays():
     spins = energies.np.linspace(0.1, 1.1, 101)
     wobbling_phonons = energies.np.linspace(1., 2., 101)
 
-    x = spins
-    y = wobbling_phonons
-    # print(x)
-    # print(y)
-    t1 = energies.Energy_Formula.H_Min(spins, 1, 1, 1, 1, 1, 1)
+    # evaluation of the excitation energy for all the spins and wobbling phonon numbers of the band
+    # this is a 1-D array that results from applying E_exc on the entire set of spins and wobbling phonons
+    f_xy_data = energies.Models.Model_Energy_i13_2(
+        (spins, wobbling_phonons), 60, 20, 4, 4, 20)
 
-    t2 = energies.Energy_Formula.Omega_Frequencies(spins, 1, 1, 1, 1, 1, 1)
-
-    t3 = energies.Energy_Formula.Energy_Expression(
-        wobbling_phonons, 0, spins, 1, 1, 1, 1, 1, 1)
-    try:
-        t4 = energies.Energy_Formula.Excitation_Energy(
-            wobbling_phonons, 0, spins, 1, 1, 1, 1, 1, 1, 1)
-        assert len(t4) > 0
-    except AssertionError:
-        print(-1)
-    else:
-        # print(t1)
-        # print(t2)
-        # print(t3)
-        print(len(t4))
-        # print(t4)
-
-    f_model_data = energies.Models.Model_Energy_i13_2((x, y), 60, 20, 4, 4, 20)
-    print(len(f_model_data))
-    w=fit.curve_fit(energies.Models.Model_Energy_i13_2, (x, y), f_model_data)
-    print(w)
+    fit_results = fit.curve_fit(
+        energies.Models.Model_Energy_i13_2, (spins, wobbling_phonons), f_xy_data)
+    print(fit_results)
 
 
 if __name__ == '__main__':

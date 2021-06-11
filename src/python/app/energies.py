@@ -294,15 +294,15 @@ class Models:
         SPIN_ZERO = 6.5
         ODD_SPIN = 6.5
 
-        # unpack the spin and wobbling phonon number
-        spin, wobbling_phonon = X
+        # unpack the spins and the wobbling phonon numbers from the experimental data of the band
+        spins, phonons = X
 
         if(DEBUG_MODE):
-            print(f'in model ->Spins: {spin}\n nw_1: {wobbling_phonon}')
+            print(f'in model ->Spins: {spins}\n nw_1: {phonons}')
 
         try:
             model_function = Energy_Formula.Excitation_Energy(
-                wobbling_phonon, 0, spin, SPIN_ZERO, ODD_SPIN, P_1, P_2, P_3, P_4, P_5)
+                phonons, 0, spins, SPIN_ZERO, ODD_SPIN, P_1, P_2, P_3, P_4, P_5)
             assert len(model_function >= 0)
         except AssertionError:
             return np.nan
