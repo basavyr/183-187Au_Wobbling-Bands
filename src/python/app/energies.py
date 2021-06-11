@@ -289,17 +289,20 @@ class Models:
 
         P represents the parameter set: P=[I1,I2,I3,V,gamma]
         """
+        DEBUG_MODE=False
 
         SPIN_ZERO = 6.5
         ODD_SPIN = 6.5
 
         # unpack the spin and wobbling phonon number
         spin, wobbling_phonon = X
-        print(f'in model ->Spins: {spin}\n nw_1: {wobbling_phonon}')
+        if(DEBUG_MODE):
+            print(f'in model ->Spins: {spin}\n nw_1: {wobbling_phonon}')
 
         model_function = Energy_Formula.Excitation_Energy(
             wobbling_phonon, 0, spin, SPIN_ZERO, ODD_SPIN, P_1, P_2, P_3, P_4, P_5)
-        print(model_function)  # TODO: re-implement the safety blocks
+        # print(model_function)  # TODO: re-implement the safety blocks
+        return model_function
         # try:
         #     model_function = Energy_Formula.Excitation_Energy(
         #         wobbling_phonon, 0, spin, SPIN_ZERO, ODD_SPIN, P_1, P_2, P_3, P_4, P_5)
