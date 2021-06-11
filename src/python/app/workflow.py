@@ -99,18 +99,30 @@ def Energy_Function_Arrays(x_data_1, x_data_2, y_data):
     # this is a 1-D array that results from applying E_exc on the entire set of spins and wobbling phonons
     f_xy_data = energies.np.asarray(y_data)
 
+    f_test = energies.np.asarray([0., 2.65511172, 9.27626784, 23.83623061, 19.8575748,
+                                  37.55463158, 34.38114219, 55.32986331, 52.82229088, 77.11898071,
+                                  75.15538507, 102.87826647, 101.35777296, 132.56958519, 131.41132131,
+                                  165.30232372, 203.02071677, 244.55918631, 289.91240571, 339.07645901])
+
     if(DEBUG_MODE):
         print(f_xy_data)
 
     fit_results = fit.curve_fit(
-        energies.Models.Model_Energy_i13_2, (spins, wobbling_phonons), f_xy_data)
-    print(fit_results)
+        energies.Models.Model_Energy_i13_2, (spins, wobbling_phonons), f_test)
 
-    
+    if(DEBUG_MODE):
+        print(fit_results)
 
-    #plot the obtained data
+    params = fit_results[0]
+    print(f'Params-> {params}')
+
+    y_data_th = energies.Models.Model_Energy_i13_2(
+        (spins, wobbling_phonons), 2, params[1], params[2], params[3], params[4])
+    print(f'Data-> {y_data_th}')
+
+    # plot the obtained data
     plot.Plot_Maker.Create_Fit_Plot(
-        [spins, f_xy_data], [spins, f_xy_data], energies.Files.AU_183_POSITIVE_ENERGY_PLOT, '+band')
+        [spins, f_test], [spins, y_data_th], energies.Files.AU_183_POSITIVE_ENERGY_PLOT, '+band')
 
 
 if __name__ == '__main__':
