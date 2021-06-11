@@ -87,17 +87,17 @@ def Fit_Model_Data(isotope):
 
 def Energy_Function_Arrays():
 
-    spins = energies.np.linspace(0.1, 1.1, 101)
-    wobbling_phonons = energies.np.linspace(1., 2., 101)
+    spins = energies.np.arange(4.5, 28.8, 2)
+    wobbling_phonons = [0 if x % 2 == 0 else 1 for x in range(len(spins))]
 
     # evaluation of the excitation energy for all the spins and wobbling phonon numbers of the band
     # this is a 1-D array that results from applying E_exc on the entire set of spins and wobbling phonons
     f_xy_data = energies.Models.Model_Energy_i13_2(
-        (spins, wobbling_phonons), 60, 20, 4, 4, 20)
+        (spins,spins), 60, 20, 4, 4, 20)
 
-    fit_results = fit.curve_fit(
-        energies.Models.Model_Energy_i13_2, (spins, wobbling_phonons), f_xy_data)
-    print(fit_results)
+    # fit_results = fit.curve_fit(
+    #     energies.Models.Model_Energy_i13_2, (spins, wobbling_phonons), f_xy_data)
+    # print(fit_results)
 
 
 if __name__ == '__main__':
