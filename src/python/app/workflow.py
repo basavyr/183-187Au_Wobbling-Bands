@@ -160,6 +160,7 @@ def Omega_Tests():
 
 
 def Energy_Function_Arrays():
+
     spins = energies.np.linspace(0.1, 1.1, 101)
     wobbling_phonons = energies.np.linspace(1., 2., 101)
 
@@ -185,10 +186,8 @@ def Energy_Function_Arrays():
         # print(t3)
         print(len(t4))
         # print(t4)
-    
+
     model = energies.Models.Model_Energy_i13_2((x, y), 60, 20, 4, 4, 20)
-
-
 
 
 if __name__ == '__main__':
