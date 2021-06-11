@@ -77,7 +77,7 @@ def Get_Experimental_Data(isotope):
         print(Y_DATA)
 
     # return [[X_DATA_SPINS, X_DATA_PHONONS], Y_DATA]
-    return [energies.np.meshgrid(X_DATA_SPINS, X_DATA_PHONONS), Y_DATA]
+    return [X_DATA_SPINS, X_DATA_PHONONS, Y_DATA]
 
 
 def Fit_Model_Data(isotope):
@@ -85,22 +85,22 @@ def Fit_Model_Data(isotope):
     return 1
 
 
-def Energy_Function_Arrays():
+def Energy_Function_Arrays(x_data_1, x_data_2, y_data):
 
     DEBUG_MODE = False
 
-    spins = energies.np.arange(4.5, 28.8, 2)
-    wobbling_phonons = [0 if x % 2 == 0 else 1 for x in range(len(spins))]
+    # spins = energies.np.arange(4.5, 28.8, 2)
+    # wobbling_phonons = [0 if x % 2 == 0 else 1 for x in range(len(spins))]
 
-    wobbling_phonons = energies.np.asarray(wobbling_phonons)
+    spins = energies.np.asarray(x_data_1)
+    wobbling_phonons = energies.np.asarray(x_data_2)
     if(DEBUG_MODE):
         print(spins)
         print(wobbling_phonons)
 
     # evaluation of the excitation energy for all the spins and wobbling phonon numbers of the band
     # this is a 1-D array that results from applying E_exc on the entire set of spins and wobbling phonons
-    f_xy_data = energies.Models.Model_Energy_i13_2(
-        (spins, wobbling_phonons), 60, 20, 10, 4, 20)
+    f_xy_data = energies.np.asarray(y_data)
 
     print(f_xy_data)
 
@@ -110,14 +110,12 @@ def Energy_Function_Arrays():
 
 
 if __name__ == '__main__':
+
     AU_183_POSITIVE = energies.Files.AU_183_DATA_POSITIVE
     AU_183_NEGATIVE = energies.Files.AU_183_DATA_NEGATIVE
 
     # get the experimental data for the positive parity wobbling bands
-    # Get_Experimental_Data(AU_183_POSITIVE)
+    x_data_1, x_data_2, y_data = Get_Experimental_Data(AU_183_POSITIVE)
 
     # Fit_Model_Data(AU_183_POSITIVE)
-    Energy_Function_Arrays()
-    # print(PARAMS)
-    # Fit_Model_Data(AU_183_NEGATIVE)
-    # Get_Experimental_Data(AU_183_NEGATIVE)
+    Energy_Function_Arrays(x_data_1, x_data_2, y_data)

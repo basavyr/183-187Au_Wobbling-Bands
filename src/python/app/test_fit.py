@@ -4,7 +4,7 @@ from scipy.optimize import curve_fit
 
 def func3(X, p1, p2, p3):
     x1, x2, x3 = X
-    return p1*x1+p2*x2+p3*x3
+    return p1 * x1 + p2 * x2 + p3 * x3
 
 
 # some artificially noisy data to fit
