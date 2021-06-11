@@ -185,8 +185,10 @@ def Energy_Function_Arrays():
         # print(t3)
         print(len(t4))
         # print(t4)
+    
+    model = energies.Models.Model_Energy_i13_2((x, y), 60, 20, 4, 4, 20)
 
-    model = energies.Models.Model_Energy_i13_2((x, y), 1, 1, 1, 1, 1)
+
 
 
 if __name__ == '__main__':
