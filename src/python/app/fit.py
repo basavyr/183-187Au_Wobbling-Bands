@@ -63,6 +63,8 @@ class Fit:
 
     @staticmethod
     def RMS(exp_data, th_data):
+        DEBUG_MODE = False
+
         try:
             assert len(exp_data) == len(th_data)
         except AssertionError:
@@ -71,6 +73,11 @@ class Fit:
             diffs = [np.power(abs(exp_data[idx] - th_data[idx]), 2)
                      for idx in range(len(exp_data))]
             rms = sum(diffs) / (len(exp_data) + 1)
+            if(DEBUG_MODE):
+                print(diffs)
+                print(rms)
+                print(np.sqrt(rms))
+                print(len(exp_data))
             return np.sqrt(rms)
 
 
