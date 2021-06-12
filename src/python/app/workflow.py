@@ -81,6 +81,7 @@ def Fit_Model(model, x_data_1, x_data_2, y_data, plot_location):
 
     params = fit_results[0]
     params = [round(p, 3) for p in params]
+    print(params)
 
     th_data = model(
         (spins, wobbling_phonons), params[0], params[1], params[2], params[3], params[4])
@@ -127,18 +128,14 @@ def Create_Band_Sequence(isotope, th_data):
     return band1, band2
 
 
-def Main_183():
-
+def Positive_Pipeline():
     PLOT_POSITIVE = plot_name('183Au_positive')
-    PLOT_NEGATIVE = plot_name('183Au_negative')
-
-    # Experimental data for $^{183}$Au
+    # Experimental data for $^{183}$Au - POSITIVE PARITY BANDS
     AU_183_POSITIVE = energies.Files.AU_183_DATA_POSITIVE
-    AU_183_NEGATIVE = energies.Files.AU_183_DATA_NEGATIVE
-
     # get the experimental data for the positive parity wobbling bands
     x_data_1, x_data_2, y_data = Get_Experimental_Data(AU_183_POSITIVE)
     # fit the theoretical model to the experimental data extracted at the previous step for the isotope
+    print('Positive Parity')
     th_data = Fit_Model(model=energies.Models.Model_Energy_i13_2,
                         x_data_1=x_data_1, x_data_2=x_data_2, y_data=y_data, plot_location=PLOT_POSITIVE)
 
@@ -148,6 +145,30 @@ def Main_183():
     band1, band2 = Create_Band_Sequence(AU_183_POSITIVE, th_data)
     # create a graphical representation with both bands on the same plot
     Plot_Fit_Results(band1, band2, PLOT_POSITIVE, r'$^{183}$Au$^+$')
+
+
+def Negative_Pipeline():
+    PLOT_NEGATIVE = plot_name('183Au_negative')
+    # Experimental data for $^{183}$Au - NEGATIVE PARITY BANDS
+    AU_183_NEGATIVE = energies.Files.AU_183_DATA_NEGATIVE
+    # get the experimental data for the negative parity wobbling bands
+    x_data_1, x_data_2, y_data = Get_Experimental_Data(AU_183_NEGATIVE)
+    # fit the theoretical model to the experimental data extracted at the previous step for the isotope
+    print('Negative Parity')
+    th_data = Fit_Model(model=energies.Models.Model_Energy_h9_2,
+                        x_data_1=x_data_1, x_data_2=x_data_2, y_data=y_data, plot_location=PLOT_NEGATIVE)
+
+    # generate a pair of bands that will be plotted via the plot module
+    # each band represents a tuple SPIN,E_EXP,E_TH
+    # the energy is the excitation energy
+    band1, band2 = Create_Band_Sequence(AU_183_NEGATIVE, th_data)
+    # create a graphical representation with both bands on the same plot
+    Plot_Fit_Results(band1, band2, PLOT_NEGATIVE, r'$^{183}$Au$^-$')
+
+
+def Main_183():
+    Positive_Pipeline()
+    # Negative_Pipeline()
 
 
 if __name__ == '__main__':
