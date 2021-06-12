@@ -75,4 +75,4 @@ class Fit:
                 print(np.sqrt(rms))
                 print(len(exp_data))
 
-            return np.sqrt(rms)
+            return round(np.sqrt(rms), 4)

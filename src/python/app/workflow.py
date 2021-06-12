@@ -83,13 +83,25 @@ def Fit_Model(model, x_data_1, x_data_2, y_data, plot_location):
 
     th_data = model(
         (spins, wobbling_phonons), params[0], params[1], params[2], params[3], params[4])
+    th_data = [round(th, 3) for th in th_data]
     if(DEBUG_MODE):
         print(f'Data-> {th_data}')
 
+    th_data_1 = []
+    th_data_2 = []
+    # extract the theoretical data for the band1
+    for idx in range(len(wobbling_phonons)):
+        if(wobbling_phonons[idx] == 0):
+            th_data_1.append(th_data[idx])
+        else:
+            th_data_2.append(th_data[idx])
+
+    # extract the theoretical data for the band2
+
     print(f'RMS -> {fit.Fit.RMS(exp_data_normed, th_data)}')
 
-    band1 = [x_data_1, x_data_2]
-    print(band1)
+    print(th_data_1)
+    print(th_data_2)
 
 
 def Create_Band_Sequence(isotope, th_data):
@@ -128,13 +140,13 @@ def Main_183():
     AU_183_POSITIVE = energies.Files.AU_183_DATA_POSITIVE
     AU_183_NEGATIVE = energies.Files.AU_183_DATA_NEGATIVE
 
-    print(Create_Band_Sequence(AU_183_POSITIVE, [[1], [1]]))
+    # print(Create_Band_Sequence(AU_183_POSITIVE, [[1], [1]]))
 
     # get the experimental data for the positive parity wobbling bands
-    # x_data_1, x_data_2, y_data = Get_Experimental_Data(AU_183_POSITIVE)
+    x_data_1, x_data_2, y_data = Get_Experimental_Data(AU_183_POSITIVE)
     # fit the theoretical model to the experimental data extracted at the previous step for the isotope
-    # Fit_Model(model=energies.Models.Model_Energy_i13_2,
-    #           x_data_1=x_data_1, x_data_2=x_data_2, y_data=y_data, plot_location=PLOT_POSITIVE)
+    Fit_Model(model=energies.Models.Model_Energy_i13_2,
+              x_data_1=x_data_1, x_data_2=x_data_2, y_data=y_data, plot_location=PLOT_POSITIVE)
 
 
 if __name__ == '__main__':
