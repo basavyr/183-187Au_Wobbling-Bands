@@ -1,22 +1,37 @@
 import numpy as np
 from scipy.optimize import curve_fit
+import warnings
 
 
-def func3(X, p1, p2, p3):
-    x1, x2, x3 = X
-    return p1 * x1 + p2 * x2 + p3 * x3
+def func(X, a, b, c):
+    x, y = X
+    print(f'x-> {x}')
+    print(f'y-> {y}')
+    with np.errstate(divide="ignore"):
+        result = x + y
+    print(f'ravel-> {result.ravel()}')
+    return result.ravel()
 
 
-# some artificially noisy data to fit
-x1 = [i for i in range(0, 100)]
-x2 = [i for i in range(0, 100)]
-x3 = [i for i in range(0, 100)]
-W = [i for i in range(0, 100)]
-
+y = np.arange(0, 5, 1)
+x = np.arange(0, 5, 1)
+mesh = np.meshgrid(x, y)
 a, b, c = 10., 4., 6.
 
-X = (x1, x2, x3)
+with open('x.dat', 'w+') as writer:
+    for x in mesh:
+        writer.write(str(x))
+        writer.write('\n')
+    writer.write(str(len(mesh[0])))
+    writer.write('\n')
+    writer.write(str(mesh[0][0]))
+    writer.write('\n')
+    writer.write(str(mesh[1][0]))
+    writer.write('\n')
+    writer.write(str(mesh[1][1]))
 
-p0 = 8., 2., 7.
+func(mesh, a, b, c)
+# z = func(X, a, b, c) * 1 + np.random.random(xdim * ydim) / 100
 
-print(curve_fit(func3, X, W, p0))
+# p0 = 8., 2., 7.
+# print(curve_fit(func, X, z, p0))

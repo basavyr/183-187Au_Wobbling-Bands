@@ -63,7 +63,7 @@ class Fit:
 
     @staticmethod
     def RMS(exp_data, th_data):
-        DEBUG_MODE = False
+        DEBUG_MODE = True
 
         try:
             assert len(exp_data) == len(th_data)
