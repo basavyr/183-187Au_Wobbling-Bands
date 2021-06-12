@@ -77,6 +77,32 @@ class Plot_Maker:
         plt.close()
 
     @staticmethod
+    def Plot_Bands(band1, band2, plot_file, plot_label):
+        # create the data sets for the first band
+        xdata_b0 = band1[0]
+        ydata_b0_exp = band1[1]
+        ydata_b0_th = band1[2]
+
+        fig, ax = plt.subplots()
+
+        # plot the experimental curve for the first band
+        plt.plot(xdata_b0, ydata_b0_exp, 'ok', label='Exp')
+        # plot the theoretical curve for the first band
+        plt.plot(xdata_b0, ydata_b0_th, '-b', label='Th')
+
+        plt.xlabel(r'$I\ [\hbar]$')
+        plt.ylabel(r'$E\ [MeV]$')
+        ax.legend(loc='best')
+        ax.set_title(f'Wobbling energies')
+
+        plt.text(0.80, 0.20, f'{plot_label}', horizontalalignment='center',
+                 verticalalignment='center', transform=ax.transAxes, fontsize=11)
+
+        plt.savefig(plot_file, bbox_inches='tight', dpi=400)
+        fig.tight_layout()
+        plt.close()
+
+    @staticmethod
     def Clean_Plots(plot_file):
         try:
             os.remove(plot_file)

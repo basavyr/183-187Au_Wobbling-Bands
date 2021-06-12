@@ -69,7 +69,7 @@ def Fit_Model(x_data_1, x_data_2, y_data):
     params = fit_results[0]
     params = [round(p, 3) for p in params]
 
-    # parameter set from mathematica
+    # parameter set from Mathematica
     # params_math = [83.4294, 3.64419, 25.7625, 1.99236, 19]
     print(f'Params -> {params}')
 
