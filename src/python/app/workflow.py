@@ -80,12 +80,7 @@ def Get_Experimental_Data(isotope):
     return [X_DATA_SPINS, X_DATA_PHONONS, Y_DATA]
 
 
-def Fit_Model_Data(isotope):
-    # unpack the experimental data for the isotope
-    return 1
-
-
-def Energy_Function_Arrays(x_data_1, x_data_2, y_data):
+def Fit_Model(x_data_1, x_data_2, y_data):
 
     DEBUG_MODE = False
 
@@ -111,7 +106,7 @@ def Energy_Function_Arrays(x_data_1, x_data_2, y_data):
         print(exp_data)
 
     fit_results = fit.curve_fit(
-        energies.Models.Model_Energy_i13_2, (spins, wobbling_phonons), exp_data_normed, p0=[40.0, 2.0, 3.0, 5.0, 20.0], bounds=([1, 1, 1, 0.1, 19.0], [100, 100, 100, 9.0, 25.0]))
+        energies.Models.Model_Energy_i13_2, (spins, wobbling_phonons), exp_data_normed, p0=[80.0, 3.0, 25.0, 1.9, 19.0], bounds=([1, 1, 1, 0.1, 19.0], [100, 100, 100, 9.0, 25.0]))
 
     if(DEBUG_MODE):
         print(fit_results)
@@ -119,14 +114,16 @@ def Energy_Function_Arrays(x_data_1, x_data_2, y_data):
     params = fit_results[0]
     params = [round(p, 3) for p in params]
 
-    params = [83.4294, 3.64419, 25.7625, 1.99236, 19]
+    # parameter set from mathematica
+    # params_math = [83.4294, 3.64419, 25.7625, 1.99236, 19]
     print(f'Params -> {params}')
 
     th_data = energies.Models.Model_Energy_i13_2(
         (spins, wobbling_phonons), params[0], params[1], params[2], params[3], params[4])
-    print(f'Data-> {th_data}')
+    if(DEBUG_MODE):
+        print(f'Data-> {th_data}')
 
-    print(f'RMS -> {fit.Fit.RMS(exp_data, th_data)}')
+    print(f'RMS -> {fit.Fit.RMS(exp_data_normed, th_data)}')
 
     # plot the obtained data
     plot.Plot_Maker.Create_Fit_Plot(
@@ -140,9 +137,4 @@ if __name__ == '__main__':
 
     # get the experimental data for the positive parity wobbling bands
     x_data_1, x_data_2, y_data = Get_Experimental_Data(AU_183_POSITIVE)
-
-    print(x_data_1)
-    print(x_data_2)
-    print(y_data)
-    # Fit_Model_Data(AU_183_POSITIVE)
-    Energy_Function_Arrays(x_data_1, x_data_2, y_data)
+    Fit_Model(x_data_1, x_data_2, y_data)
