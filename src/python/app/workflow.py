@@ -39,6 +39,10 @@ def Get_Experimental_Data(isotope):
     return [X_DATA_SPINS, X_DATA_PHONONS, Y_DATA]
 
 
+def Plot_Fit_Results(band1, band2, plot_location, label):
+    plot.Plot_Maker.Plot_Bands(band1, band2, plot_location, label)
+
+
 def Fit_Model(model, x_data_1, x_data_2, y_data, plot_location):
 
     DEBUG_MODE = False
@@ -84,6 +88,34 @@ def Fit_Model(model, x_data_1, x_data_2, y_data, plot_location):
 
     print(f'RMS -> {fit.Fit.RMS(exp_data_normed, th_data)}')
 
+    band1 = [x_data_1, x_data_2]
+    print(band1)
+
+
+def Create_Band_Sequence(isotope, th_data):
+    b1exp, b2exp, _ = energies.Extract_Data.Get_Energies(isotope)
+
+    # the band head energy
+    e0 = b1exp[0][2]
+
+    # calculations for first band (experimental)
+    spins = [e[0] for e in b1exp]
+    expdata = [e[2] for e in b1exp]
+    expdata = [x - e0 for x in expdata]
+
+    band1 = [spins, expdata]
+    band1.append(th_data[0])
+
+    # calculations for second band (experimental)
+    spins = [e[0] for e in b2exp]
+    expdata = [e[2] for e in b2exp]
+    expdata = [x - e0 for x in expdata]
+
+    band2 = [spins, expdata]
+    band2.append(th_data[1])
+
+    return band1, band2
+
 
 def Main_183():
 
@@ -96,11 +128,13 @@ def Main_183():
     AU_183_POSITIVE = energies.Files.AU_183_DATA_POSITIVE
     AU_183_NEGATIVE = energies.Files.AU_183_DATA_NEGATIVE
 
+    print(Create_Band_Sequence(AU_183_POSITIVE, [[1], [1]]))
+
     # get the experimental data for the positive parity wobbling bands
-    x_data_1, x_data_2, y_data = Get_Experimental_Data(AU_183_POSITIVE)
+    # x_data_1, x_data_2, y_data = Get_Experimental_Data(AU_183_POSITIVE)
     # fit the theoretical model to the experimental data extracted at the previous step for the isotope
-    Fit_Model(model=energies.Models.Model_Energy_i13_2,
-              x_data_1=x_data_1, x_data_2=x_data_2, y_data=y_data, plot_location=PLOT_POSITIVE)
+    # Fit_Model(model=energies.Models.Model_Energy_i13_2,
+    #           x_data_1=x_data_1, x_data_2=x_data_2, y_data=y_data, plot_location=PLOT_POSITIVE)
 
 
 if __name__ == '__main__':

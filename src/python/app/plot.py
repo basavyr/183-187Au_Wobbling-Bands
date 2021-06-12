@@ -79,16 +79,16 @@ class Plot_Maker:
     @staticmethod
     def Plot_Bands(band1, band2, plot_file, plot_label):
         # create the data sets for the first band
-        xdata_b0 = band1[0]
-        ydata_b0_exp = band1[1]
-        ydata_b0_th = band1[2]
+        xdata_b1 = band1[0]
+        ydata_b1_exp = band1[1]
+        ydata_b1_th = band1[2]
 
         fig, ax = plt.subplots()
 
         # plot the experimental curve for the first band
-        plt.plot(xdata_b0, ydata_b0_exp, 'ok', label='Exp')
+        plt.plot(xdata_b1, ydata_b1_exp, 'ok', label='Exp')
         # plot the theoretical curve for the first band
-        plt.plot(xdata_b0, ydata_b0_th, '-b', label='Th')
+        plt.plot(xdata_b1, ydata_b1_th, '-b', label='Th')
 
         plt.xlabel(r'$I\ [\hbar]$')
         plt.ylabel(r'$E\ [MeV]$')
