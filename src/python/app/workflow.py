@@ -99,15 +99,12 @@ def Energy_Function_Arrays(x_data_1, x_data_2, y_data):
     # this is a 1-D array that results from applying E_exc on the entire set of spins and wobbling phonons
     exp_data = energies.np.asarray(y_data)
 
-    # f_test = energies.np.asarray([0., 2.65511172, 9.27626784, 23.83623061, 19.8575748,
-    #                               37.55463158, 34.38114219, 55.32986331, 52.82229088, 77.11898071,
-    #                               75.15538507, 102.87826647, 101.35777296, 132.56958519, 131.41132131,
-    #                               165.30232372, 203.02071677, 244.55918631, 289.91240571, 339.07645901])
-
-    print(f'Band Head -> {exp_data[0]}')
+    if(DEBUG_MODE):
+        print(f'Band Head -> {exp_data[0]}')
 
     band_head = exp_data[0]
-    # normalize the experimental data
+
+    # normalize the experimental data to the band-head
     exp_data_normed = [x - band_head for x in exp_data]
 
     if(DEBUG_MODE):
@@ -127,18 +124,11 @@ def Energy_Function_Arrays(x_data_1, x_data_2, y_data):
         (spins, wobbling_phonons), params[0], params[1], params[2], params[3], params[4])
     print(f'Data-> {th_data}')
 
-    print(energies.Energy_Formula.Omega_Frequencies(spins, 6.5,
-                                                    params[0], params[1], params[2], params[3], params[4]))
-    print(energies.Energy_Formula.B_Term(spins, 6.5,
-                                         params[0], params[1], params[2], params[3], params[4]))
-    print(energies.Energy_Formula.C_Term(spins, 6.5,
-                                         params[0], params[1], params[2], params[3], params[4]))
-
     print(f'RMS -> {fit.Fit.RMS(exp_data, th_data)}')
 
     # plot the obtained data
     plot.Plot_Maker.Create_Fit_Plot(
-        [spins, exp_data_normed], [spins, th_data], energies.Files.AU_183_POSITIVE_ENERGY_PLOT, '+band')
+        [spins, exp_data_normed], [spins, th_data], energies.Files.AU_183_POSITIVE_ENERGY_PLOT, 'Positive-Parity')
 
 
 if __name__ == '__main__':
