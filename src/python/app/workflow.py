@@ -68,8 +68,13 @@ def Fit_Model(model, x_data_1, x_data_2, y_data, plot_location):
     if(DEBUG_MODE):
         print(exp_data)
 
+    # define a set of starting parameters and the corresponding limits for every parameter
+    INITIAL_PARAMS = [80.0, 3.0, 25.0, 1.9, 20.0]
+    PARAMS_BOUNDS = ([1, 1, 1, 0.1, 19.0], [100, 100, 100, 9.0, 25.0])
+
+    # Use the curve_fit function to find the best parameter set for the current experimental data-set
     fit_results = fit.curve_fit(
-        model, (spins, wobbling_phonons), exp_data_normed, p0=[80.0, 3.0, 25.0, 1.9, 20.0], bounds=([1, 1, 1, 0.1, 19.0], [100, 100, 100, 9.0, 25.0]))
+        model, (spins, wobbling_phonons), exp_data_normed, p0=INITIAL_PARAMS, bounds=PARAMS_BOUNDS)
 
     if(DEBUG_MODE):
         print(fit_results)
@@ -77,19 +82,15 @@ def Fit_Model(model, x_data_1, x_data_2, y_data, plot_location):
     params = fit_results[0]
     params = [round(p, 3) for p in params]
 
-    # parameter set from Mathematica
-    params_math = [83.4294, 3.64419, 25.7625, 1.99236, 19]
-    print(f'Params -> {params}')
-
     th_data = model(
         (spins, wobbling_phonons), params[0], params[1], params[2], params[3], params[4])
     th_data = [round(th, 3) for th in th_data]
     if(DEBUG_MODE):
         print(f'Data-> {th_data}')
 
+    # extract the theoretical data for the band1 and band2
     th_data_1 = []
     th_data_2 = []
-    # extract the theoretical data for the band1 and band2
     for idx in range(len(wobbling_phonons)):
         if(wobbling_phonons[idx] == 0):
             th_data_1.append(th_data[idx])
@@ -141,7 +142,11 @@ def Main_183():
     th_data = Fit_Model(model=energies.Models.Model_Energy_i13_2,
                         x_data_1=x_data_1, x_data_2=x_data_2, y_data=y_data, plot_location=PLOT_POSITIVE)
 
+    # generate a pair of bands that will be plotted via the plot module
+    # each band represents a tuple SPIN,E_EXP,E_TH
+    # the energy is the excitation energy
     band1, band2 = Create_Band_Sequence(AU_183_POSITIVE, th_data)
+    # create a graphical representation with both bands on the same plot
     Plot_Fit_Results(band1, band2, PLOT_POSITIVE, r'$^{183}$Au$^+$')
 
 
