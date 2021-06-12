@@ -78,7 +78,7 @@ def Fit_Model(model, x_data_1, x_data_2, y_data, plot_location):
     params = [round(p, 3) for p in params]
 
     # parameter set from Mathematica
-    # params_math = [83.4294, 3.64419, 25.7625, 1.99236, 19]
+    params_math = [83.4294, 3.64419, 25.7625, 1.99236, 19]
     print(f'Params -> {params}')
 
     th_data = model(
@@ -89,19 +89,16 @@ def Fit_Model(model, x_data_1, x_data_2, y_data, plot_location):
 
     th_data_1 = []
     th_data_2 = []
-    # extract the theoretical data for the band1
+    # extract the theoretical data for the band1 and band2
     for idx in range(len(wobbling_phonons)):
         if(wobbling_phonons[idx] == 0):
             th_data_1.append(th_data[idx])
         else:
             th_data_2.append(th_data[idx])
 
-    # extract the theoretical data for the band2
-
     print(f'RMS -> {fit.Fit.RMS(exp_data_normed, th_data)}')
 
-    print(th_data_1)
-    print(th_data_2)
+    return [th_data_1, th_data_2]
 
 
 def Create_Band_Sequence(isotope, th_data):
@@ -113,7 +110,7 @@ def Create_Band_Sequence(isotope, th_data):
     # calculations for first band (experimental)
     spins = [e[0] for e in b1exp]
     expdata = [e[2] for e in b1exp]
-    expdata = [x - e0 for x in expdata]
+    expdata = [(x - e0) / 1000 for x in expdata]
 
     band1 = [spins, expdata]
     band1.append(th_data[0])
@@ -121,7 +118,7 @@ def Create_Band_Sequence(isotope, th_data):
     # calculations for second band (experimental)
     spins = [e[0] for e in b2exp]
     expdata = [e[2] for e in b2exp]
-    expdata = [x - e0 for x in expdata]
+    expdata = [(x - e0) / 1000 for x in expdata]
 
     band2 = [spins, expdata]
     band2.append(th_data[1])
@@ -131,22 +128,21 @@ def Create_Band_Sequence(isotope, th_data):
 
 def Main_183():
 
-    PLOT_POSITIVE = energies.Files.plot_directory + \
-        plot_name('183Au_positive')
-    PLOT_NEGATIVE = energies.Files.plot_directory + \
-        plot_name('183Au_negative')
+    PLOT_POSITIVE = plot_name('183Au_positive')
+    PLOT_NEGATIVE = plot_name('183Au_negative')
 
     # Experimental data for $^{183}$Au
     AU_183_POSITIVE = energies.Files.AU_183_DATA_POSITIVE
     AU_183_NEGATIVE = energies.Files.AU_183_DATA_NEGATIVE
 
-    # print(Create_Band_Sequence(AU_183_POSITIVE, [[1], [1]]))
-
     # get the experimental data for the positive parity wobbling bands
     x_data_1, x_data_2, y_data = Get_Experimental_Data(AU_183_POSITIVE)
     # fit the theoretical model to the experimental data extracted at the previous step for the isotope
-    Fit_Model(model=energies.Models.Model_Energy_i13_2,
-              x_data_1=x_data_1, x_data_2=x_data_2, y_data=y_data, plot_location=PLOT_POSITIVE)
+    th_data = Fit_Model(model=energies.Models.Model_Energy_i13_2,
+                        x_data_1=x_data_1, x_data_2=x_data_2, y_data=y_data, plot_location=PLOT_POSITIVE)
+
+    band1, band2 = Create_Band_Sequence(AU_183_POSITIVE, th_data)
+    Plot_Fit_Results(band1, band2, PLOT_POSITIVE, 'Positive-Parity')
 
 
 if __name__ == '__main__':
