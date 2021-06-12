@@ -104,11 +104,17 @@ def Energy_Function_Arrays(x_data_1, x_data_2, y_data):
     #                               75.15538507, 102.87826647, 101.35777296, 132.56958519, 131.41132131,
     #                               165.30232372, 203.02071677, 244.55918631, 289.91240571, 339.07645901])
 
+    print(f'Band Head -> {exp_data[0]}')
+
+    band_head = exp_data[0]
+    # normalize the experimental data
+    exp_data_normed = [x - band_head for x in exp_data]
+
     if(DEBUG_MODE):
         print(exp_data)
 
     fit_results = fit.curve_fit(
-        energies.Models.Model_Energy_i13_2, (spins, wobbling_phonons), exp_data, p0=[40.0, 2.0, 3.0, 5.0, 20.0], bounds=([1, 1, 1, 0, -30.0], [100, 100, 100, 9, 25]))
+        energies.Models.Model_Energy_i13_2, (spins, wobbling_phonons), exp_data_normed, p0=[40.0, 2.0, 3.0, 5.0, 20.0], bounds=([1, 1, 1, 0.1, 19.0], [100, 100, 100, 9.0, 25.0]))
 
     if(DEBUG_MODE):
         print(fit_results)
@@ -116,15 +122,15 @@ def Energy_Function_Arrays(x_data_1, x_data_2, y_data):
     params = fit_results[0]
     print(f'Params -> {params}')
 
-    y_data_th = energies.Models.Model_Energy_i13_2(
+    th_data = energies.Models.Model_Energy_i13_2(
         (spins, wobbling_phonons), params[0], params[1], params[2], params[3], params[4])
     # print(f'Data-> {y_data_th}')
 
-    print(f'RMS -> {fit.Fit.RMS(exp_data, y_data_th)}')
+    print(f'RMS -> {fit.Fit.RMS(exp_data, th_data)}')
 
     # plot the obtained data
     plot.Plot_Maker.Create_Fit_Plot(
-        [spins, exp_data], [spins, y_data_th], energies.Files.AU_183_POSITIVE_ENERGY_PLOT, '+band')
+        [spins, exp_data_normed], [spins, th_data], energies.Files.AU_183_POSITIVE_ENERGY_PLOT, '+band')
 
 
 if __name__ == '__main__':
