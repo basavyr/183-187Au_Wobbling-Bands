@@ -142,7 +142,7 @@ def Main_183():
                         x_data_1=x_data_1, x_data_2=x_data_2, y_data=y_data, plot_location=PLOT_POSITIVE)
 
     band1, band2 = Create_Band_Sequence(AU_183_POSITIVE, th_data)
-    Plot_Fit_Results(band1, band2, PLOT_POSITIVE, 'Positive-Parity')
+    Plot_Fit_Results(band1, band2, PLOT_POSITIVE, r'$^{183}$Au$^+$')
 
 
 if __name__ == '__main__':

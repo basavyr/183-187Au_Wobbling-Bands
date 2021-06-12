@@ -103,7 +103,7 @@ class Plot_Maker:
         plt.xlabel(r'$I\ [\hbar]$')
         plt.ylabel(r'$E\ [MeV]$')
         ax.legend(loc='best')
-        ax.set_title(f'Wobbling energies')
+        ax.set_title(f'Wobbling energies: {plot_label}')
 
         plt.text(0.80, 0.20, f'{plot_label}', horizontalalignment='center',
                  verticalalignment='center', transform=ax.transAxes, fontsize=11)
