@@ -9,16 +9,19 @@ class Files:
     data_directory = blobs + 'data/'
     plot_directory = blobs + 'plots/'
 
+    # store the experimental data for 183Au
     AU_183_DATA_POSITIVE = data_directory + '183_positive_data.md'
     AU_183_DATA_NEGATIVE = data_directory + '183_negative_data.md'
-    # AU_187_DATA = data_directory + '187_data.md'
+    # store the experimental data for 187Au
+    AU_187_DATA_POSITIVE = data_directory + '187_positive_data.md'
+    AU_187_DATA_NEGATIVE = data_directory + '187_negative_data.md'
 
+    # store the plots for 183Au
     AU_183_POSITIVE_ENERGY_PLOT = plot_directory + '183_positive_energies_plot.pdf'
     AU_183_NEGATIVE_ENERGY_PLOT = plot_directory + '183_negative_energies_plot.pdf'
-    # AU_187_ENERGY_PLOT = plot_directory + '187_energies_plot.pdf'
-
-    EXP_DATA_FILES = [AU_183_DATA_POSITIVE, AU_183_DATA_NEGATIVE]
-    PLOT_FILES = [AU_183_POSITIVE_ENERGY_PLOT, AU_183_NEGATIVE_ENERGY_PLOT]
+    # store the plots for 187Au
+    AU_187_POSITIVE_ENERGY_PLOT = plot_directory + '187_positive_energies_plot.pdf'
+    AU_187_NEGATIVE_ENERGY_PLOT = plot_directory + '187_negative_energies_plot.pdf'
 
 
 class Extract_Data:
@@ -26,7 +29,7 @@ class Extract_Data:
     @staticmethod
     def Get_Energies(data_file):
         YRAST = []
-        WOBB = []
+        TW1 = []
 
         with open(data_file, 'r+') as data_reader:
             raw_data = data_reader.readlines()
@@ -40,13 +43,13 @@ class Extract_Data:
         for line in clean_data:
             wobbling_phonon, spin, energy = line.split(" ")
             if(int(wobbling_phonon) == 1):
-                WOBB.append(
+                TW1.append(
                     [float(spin), int(wobbling_phonon), float(energy)])
             if(int(wobbling_phonon) == 0):
                 YRAST.append(
                     [float(spin), int(wobbling_phonon), float(energy)])
 
-        return YRAST, WOBB, label
+        return YRAST, TW1, label
 
 
 class Energy_Formula:
