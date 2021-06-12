@@ -120,11 +120,19 @@ def Energy_Function_Arrays(x_data_1, x_data_2, y_data):
         print(fit_results)
 
     params = fit_results[0]
+    params = [round(p, 3) for p in params]
     print(f'Params -> {params}')
 
     th_data = energies.Models.Model_Energy_i13_2(
         (spins, wobbling_phonons), params[0], params[1], params[2], params[3], params[4])
-    # print(f'Data-> {y_data_th}')
+    print(f'Data-> {th_data}')
+
+    print(energies.Energy_Formula.Omega_Frequencies(spins, 6.5,
+                                                    params[0], params[1], params[2], params[3], params[4]))
+    print(energies.Energy_Formula.B_Term(spins, 6.5,
+                                         params[0], params[1], params[2], params[3], params[4]))
+    print(energies.Energy_Formula.C_Term(spins, 6.5,
+                                         params[0], params[1], params[2], params[3], params[4]))
 
     print(f'RMS -> {fit.Fit.RMS(exp_data, th_data)}')
 
