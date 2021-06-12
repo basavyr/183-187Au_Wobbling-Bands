@@ -118,6 +118,8 @@ def Energy_Function_Arrays(x_data_1, x_data_2, y_data):
 
     params = fit_results[0]
     params = [round(p, 3) for p in params]
+
+    params = [83.4294, 3.64419, 25.7625, 1.99236, 19]
     print(f'Params -> {params}')
 
     th_data = energies.Models.Model_Energy_i13_2(
@@ -139,5 +141,8 @@ if __name__ == '__main__':
     # get the experimental data for the positive parity wobbling bands
     x_data_1, x_data_2, y_data = Get_Experimental_Data(AU_183_POSITIVE)
 
+    print(x_data_1)
+    print(x_data_2)
+    print(y_data)
     # Fit_Model_Data(AU_183_POSITIVE)
     Energy_Function_Arrays(x_data_1, x_data_2, y_data)
