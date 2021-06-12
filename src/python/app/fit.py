@@ -61,6 +61,18 @@ class Fit:
         # print(data)
         return data
 
+    @staticmethod
+    def RMS(exp_data, th_data):
+        try:
+            assert len(exp_data) == len(th_data)
+        except AssertionError:
+            return np.inf
+        else:
+            diffs = [np.power(abs(exp_data[idx] - th_data[idx]), 2)
+                     for idx in range(exp_data)]
+            rms = sum(diffs) / (len(exp_data) + 1)
+            return np.sqrt(rms)
+
 
 # class Mock_Fit:
 
