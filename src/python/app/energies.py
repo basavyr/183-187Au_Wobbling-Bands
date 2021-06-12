@@ -210,7 +210,7 @@ class Energy_Formula:
         #         print(f'Omegas: -> [{Omega_1} , {Omega_2}]')
         #     return [Omega_1, Omega_2]
 
-        return [Omega_1, Omega_2]
+        return [Omega_2, Omega_1]
 
     @staticmethod
     def Energy_Expression(nw_1, nw_2, spin, odd_spin, I1, I2, I3, V, gamma):
