@@ -83,12 +83,22 @@ class Plot_Maker:
         ydata_b1_exp = band1[1]
         ydata_b1_th = band1[2]
 
+        # create the data sets for the second band
+        xdata_b2 = band2[0]
+        ydata_b2_exp = band2[1]
+        ydata_b2_th = band2[2]
+
         fig, ax = plt.subplots()
 
         # plot the experimental curve for the first band
-        plt.plot(xdata_b1, ydata_b1_exp, 'ok', label='Exp')
+        plt.plot(xdata_b1, ydata_b1_exp, 'ok', label='Yrast-Exp')
         # plot the theoretical curve for the first band
-        plt.plot(xdata_b1, ydata_b1_th, '-b', label='Th')
+        plt.plot(xdata_b1, ydata_b1_th, '-r', label='Yrast-Th')
+
+        # plot the experimental curve for the second band
+        plt.plot(xdata_b2, ydata_b2_exp, '+k', label='TW1-Exp')
+        # plot the theoretical curve for the second band
+        plt.plot(xdata_b2, ydata_b2_th, '-b', label='TW1-Th')
 
         plt.xlabel(r'$I\ [\hbar]$')
         plt.ylabel(r'$E\ [MeV]$')
