@@ -4,17 +4,21 @@ import warnings
 
 
 def func(X, a, b, c):
+    DEBUG_MODE = False
     x, y = X
-    print(f'x-> {x}')
-    print(f'y-> {y}')
+    if(DEBUG_MODE):
+        print(f'x-> {x}')
+        print(f'y-> {y}')
     with np.errstate(divide="ignore"):
-        result = x + y
-    print(f'ravel-> {result.ravel()}')
+        result = a * x + b * y + c
+    if(DEBUG_MODE):
+        print(f'ravel-> {result.ravel()}')
     return result.ravel()
 
 
-y = np.arange(0, 5, 1)
-x = np.arange(0, 5, 1)
+y = np.arange(1, 5, 1)
+x = np.arange(1, 5, 1)
+
 mesh = np.meshgrid(x, y)
 a, b, c = 10., 4., 6.
 
@@ -30,8 +34,8 @@ with open('x.dat', 'w+') as writer:
     writer.write('\n')
     writer.write(str(mesh[1][1]))
 
-func(mesh, a, b, c)
-# z = func(X, a, b, c) * 1 + np.random.random(xdim * ydim) / 100
 
-# p0 = 8., 2., 7.
-# print(curve_fit(func, X, z, p0))
+z = func(mesh, a, b, c) + np.random.random(len(x) * len(y))
+# print(z)
+p0 = 1., 1., 1.
+print(curve_fit(func, mesh, z, p0))
