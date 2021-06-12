@@ -97,7 +97,7 @@ def Energy_Function_Arrays(x_data_1, x_data_2, y_data):
 
     # evaluation of the excitation energy for all the spins and wobbling phonon numbers of the band
     # this is a 1-D array that results from applying E_exc on the entire set of spins and wobbling phonons
-    f_xy_data = energies.np.asarray(y_data)
+    exp_data = energies.np.asarray(y_data)
 
     # f_test = energies.np.asarray([0., 2.65511172, 9.27626784, 23.83623061, 19.8575748,
     #                               37.55463158, 34.38114219, 55.32986331, 52.82229088, 77.11898071,
@@ -105,26 +105,26 @@ def Energy_Function_Arrays(x_data_1, x_data_2, y_data):
     #                               165.30232372, 203.02071677, 244.55918631, 289.91240571, 339.07645901])
 
     if(DEBUG_MODE):
-        print(f_xy_data)
+        print(exp_data)
 
     fit_results = fit.curve_fit(
-        energies.Models.Model_Energy_i13_2, (spins, wobbling_phonons), f_xy_data, p0=[80.0, 5.0, 10.0, 5.0, 20.0], bounds=([1, 1, 1, 0, -30.0], [100, 100, 100, 9, 25]))
+        energies.Models.Model_Energy_i13_2, (spins, wobbling_phonons), exp_data, p0=[40.0, 2.0, 3.0, 5.0, 20.0], bounds=([1, 1, 1, 0, -30.0], [100, 100, 100, 9, 25]))
 
     if(DEBUG_MODE):
         print(fit_results)
 
     params = fit_results[0]
-    print(f'Params-> {params}')
+    print(f'Params -> {params}')
 
     y_data_th = energies.Models.Model_Energy_i13_2(
         (spins, wobbling_phonons), params[0], params[1], params[2], params[3], params[4])
-    print(f'Data-> {y_data_th}')
+    # print(f'Data-> {y_data_th}')
 
-    print(fit.Fit.RMS(f_xy_data, y_data_th))
+    print(f'RMS -> {fit.Fit.RMS(exp_data, y_data_th)}')
 
     # plot the obtained data
     plot.Plot_Maker.Create_Fit_Plot(
-        [spins, f_xy_data], [spins, y_data_th], energies.Files.AU_183_POSITIVE_ENERGY_PLOT, '+band')
+        [spins, exp_data], [spins, y_data_th], energies.Files.AU_183_POSITIVE_ENERGY_PLOT, '+band')
 
 
 if __name__ == '__main__':
