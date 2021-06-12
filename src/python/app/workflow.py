@@ -85,13 +85,13 @@ def Fit_Model(x_data_1, x_data_2, y_data):
         [spins, exp_data_normed], [spins, th_data], energies.Files.AU_183_POSITIVE_ENERGY_PLOT, 'Positive-Parity')
 
 
-def Main():
+def Main_183():
 
     model = energies.Energy_Formula.Excitation_Energy
 
     plot_location = energies.Files.plot_directory
 
-    def plot_name(idx): return f'{plot_location}fit_results_{idx}.pdf'
+    def plot_name(label): return f'{plot_location}fit_results_{label}.pdf'
 
     # Experimental data for $^{183}$Au
     AU_183_POSITIVE = energies.Files.AU_183_DATA_POSITIVE
@@ -104,4 +104,4 @@ def Main():
 
 
 if __name__ == '__main__':
-    Main()
+    Main_183()
