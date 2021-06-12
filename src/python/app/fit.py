@@ -69,7 +69,7 @@ class Fit:
             return np.inf
         else:
             diffs = [np.power(abs(exp_data[idx] - th_data[idx]), 2)
-                     for idx in range(exp_data)]
+                     for idx in range(len(exp_data))]
             rms = sum(diffs) / (len(exp_data) + 1)
             return np.sqrt(rms)
 

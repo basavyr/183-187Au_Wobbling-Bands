@@ -120,6 +120,8 @@ def Energy_Function_Arrays(x_data_1, x_data_2, y_data):
         (spins, wobbling_phonons), params[0], params[1], params[2], params[3], params[4])
     print(f'Data-> {y_data_th}')
 
+    print(fit.Fit.RMS(f_xy_data, y_data_th))
+
     # plot the obtained data
     plot.Plot_Maker.Create_Fit_Plot(
         [spins, f_xy_data], [spins, y_data_th], energies.Files.AU_183_POSITIVE_ENERGY_PLOT, '+band')
