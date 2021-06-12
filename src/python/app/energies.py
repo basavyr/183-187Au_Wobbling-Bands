@@ -226,6 +226,9 @@ class Energy_Formula:
 
     @staticmethod
     def Excitation_Energy(nw_1, nw_2, spin, spin_zero, odd_spin, I1, I2, I3, V, gamma):
+        """
+        Calculates the wobbling energy of a state with given spin, belonging to a particular band, by subtracting from its absolute value the value of the yrast band-head state with I=spin_zero.
+        """
 
         E_0 = Energy_Formula.Energy_Expression(
             0, 0, spin_zero, odd_spin, I1, I2, I3, V, gamma)
@@ -242,15 +245,20 @@ class Models:
 
     @staticmethod
     def Model_Energy_h9_2(X, P_1, P_2, P_3, P_4, P_5):
-        """This is the model function that needs to be numerically fitted
+        """
+        Describes the analytical expressions for the energies that correspond to the negative parity states.
+        This is the model function that needs to be numerically fitted.
 
-        The argument X represents the spin I and the wobbling phonon number n_w -> X=[I,n_w1]
+        The argument X represents the spin I and the wobbling phonon number n_w -> X = [I, n_w1].
 
-        P represents the parameter set: P=[I1,I2,I3,V,gamma]
+        P represents the parameter set: P = [I1, I2, I3, V, gamma].
         """
         DEBUG_MODE = False
 
+        # The band head of the negative parity sequences
+        # Band head corresponds to the first level of the yrast band
         SPIN_ZERO = 4.5
+        # The odd single-particle angular momentum which couples to the triaxial even-even core
         ODD_SPIN = 4.5
 
         # unpack the spin and wobbling phonon number
@@ -268,15 +276,20 @@ class Models:
 
     @staticmethod
     def Model_Energy_i13_2(X, P_1, P_2, P_3, P_4, P_5):
-        """This is the model function that needs to be numerically fitted
+        """
+        Describes the analytical expressions for the energies that correspond to the positive parity states.
+        This is the model function that needs to be numerically fitted.
 
-        The argument X represents the spin I and the wobbling phonon number n_w -> X=[I,n_w1]
+        The argument X represents the spin I and the wobbling phonon number n_w -> X = [I, n_w1].
 
-        P represents the parameter set: P=[I1,I2,I3,V,gamma]
+        P represents the parameter set: P = [I1, I2, I3, V, gamma].
         """
         DEBUG_MODE = False
 
+        # The band head of the positive parity sequences
+        # Band head corresponds to the first level of the yrast band
         SPIN_ZERO = 6.5
+        # The odd single-particle angular momentum which couples to the triaxial even-even core
         ODD_SPIN = 6.5
 
         # unpack the spins and the wobbling phonon numbers from the experimental data of the band
