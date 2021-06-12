@@ -76,11 +76,6 @@ class Energy_Formula:
         return angle * np.pi / 180.0
 
     @staticmethod
-    def Energy1(x, param1, param2, param3):
-        y = param1 * x**2 + param2 * x + param3
-        return y
-
-    @staticmethod
     def B_Term(spin, odd_spin, I1, I2, I3, V, gamma):
 
         A1 = Energy_Formula.Inertia_Factor(I1)
