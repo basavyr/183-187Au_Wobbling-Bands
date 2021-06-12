@@ -122,7 +122,7 @@ class Energy_Formula:
 
         # sub_term1
         t1_1 = (2.0 * I - 1.0) * (A3 - A1) + 2.0 * j * A1
-        t1_2 = (2.0 * j) * (A3 - A1) + 2.0 * I * A1 + V * \
+        t1_2 = (2.0 * j - 1.0) * (A3 - A1) + 2.0 * I * A1 + V * \
             (2.0 * j - 1.0) / (j * (j + 1.0)) * rad3 * (rad3 * cosg + sing)
         t1_3 = 4.0 * I * j * np.power(A3, 2)
         T1 = t1_1 * t1_2 - t1_3
