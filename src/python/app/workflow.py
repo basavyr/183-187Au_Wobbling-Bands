@@ -39,6 +39,32 @@ def Get_Experimental_Data(isotope, debug_mode=False):
     return [X_DATA_SPINS, X_DATA_PHONONS, Y_DATA]
 
 
+def Create_Band_Sequence(isotope, th_data):
+    b1exp, b2exp, _ = energies.Extract_Data.Get_Energies(
+        isotope)
+
+    # the band head energy
+    e0 = b1exp[0][2]
+
+    # calculations for first band (experimental)
+    spins = [e[0] for e in b1exp]
+    expdata = [e[2] for e in b1exp]
+    expdata = [(x - e0) / 1000 for x in expdata]
+
+    band1 = [spins, expdata]
+    band1.append(th_data[0])
+
+    # calculations for second band (experimental)
+    spins = [e[0] for e in b2exp]
+    expdata = [e[2] for e in b2exp]
+    expdata = [(x - e0) / 1000 for x in expdata]
+
+    band2 = [spins, expdata]
+    band2.append(th_data[1])
+
+    return band1, band2
+
+
 def Plot_Fit_Results(band1, band2, plot_location, label):
     plot.Plot_Maker.Plot_Bands(band1, band2, plot_location, label)
 
@@ -103,32 +129,6 @@ def Fit_Model(model, initial_params, param_bounds, x_data_1, x_data_2, y_data):
     return [th_data_1, th_data_2]
 
 
-def Create_Band_Sequence(isotope, th_data):
-    b1exp, b2exp, _ = energies.Extract_Data.Get_Energies(
-        isotope)
-
-    # the band head energy
-    e0 = b1exp[0][2]
-
-    # calculations for first band (experimental)
-    spins = [e[0] for e in b1exp]
-    expdata = [e[2] for e in b1exp]
-    expdata = [(x - e0) / 1000 for x in expdata]
-
-    band1 = [spins, expdata]
-    band1.append(th_data[0])
-
-    # calculations for second band (experimental)
-    spins = [e[0] for e in b2exp]
-    expdata = [e[2] for e in b2exp]
-    expdata = [(x - e0) / 1000 for x in expdata]
-
-    band2 = [spins, expdata]
-    band2.append(th_data[1])
-
-    return band1, band2
-
-
 def Positive_Pipeline():
     PLOT_POSITIVE = plot_name('183Au_positive')
 
@@ -156,7 +156,7 @@ def Positive_Pipeline():
     Plot_Fit_Results(band1, band2, PLOT_POSITIVE, r'$^{183}$Au$^+$')
 
 
-def Negative_Pipeline():
+def Negative_Pipeline(debug_mode=False):
     PLOT_NEGATIVE = plot_name('183Au_negative')
     # Experimental data for $^{183}$Au - NEGATIVE PARITY BANDS
     AU_183_NEGATIVE = energies.Files.AU_183_DATA_NEGATIVE
@@ -164,7 +164,8 @@ def Negative_Pipeline():
     x_data_1, x_data_2, y_data = Get_Experimental_Data(
         AU_183_NEGATIVE)
 
-    print('Negative Parity')
+    if(debug_mode):
+        print('Negative Parity')
     # define a set of starting parameters and the corresponding limits for every parameter
     INITIAL_PARAMS = [10.0, 10.0, 10.0, 1, 20.0]
     PARAMS_BOUNDS = ([1, 1, 1, 0.1, 19.0], [100, 100, 100, 9.0, 25.0])
@@ -182,8 +183,10 @@ def Negative_Pipeline():
 
 
 def Main_183():
+    print("Starting fitting procedure for $^{183}$AU")
     # Positive_Pipeline()
-    Negative_Pipeline()
+    Negative_Pipeline(debug_mode=True)
+    print('Finished the fitting procedure...')
 
 
 if __name__ == '__main__':
