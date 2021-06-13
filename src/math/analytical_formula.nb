@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     68873,       1767]
-NotebookOptionsPosition[     66257,       1712]
-NotebookOutlinePosition[     66597,       1727]
-CellTagsIndexPosition[     66554,       1724]
+NotebookDataLength[     67004,       1729]
+NotebookOptionsPosition[     64387,       1674]
+NotebookOutlinePosition[     64727,       1689]
+CellTagsIndexPosition[     64684,       1686]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1014,8 +1014,9 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{"plotFunction", "[", 
-    RowBox[{"band_", ",", "params_", ",", "spins_", ",", "expData_"}], "]"}], 
-   ":=", 
+    RowBox[{
+    "band_", ",", "params_", ",", "spins_", ",", "expData_", ",", "label_"}], 
+    "]"}], ":=", 
    RowBox[{"ListPlot", "[", 
     RowBox[{
      RowBox[{"{", 
@@ -1086,15 +1087,27 @@ Cell[BoxData[{
        RowBox[{"Red", ",", "Black"}], "}"}]}], ",", 
      RowBox[{"PlotMarkers", "\[Rule]", 
       RowBox[{"{", 
-       RowBox[{"Automatic", ",", " ", "Medium"}], "}"}]}]}], "]"}]}], 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"Automatic", ",", "10"}], "}"}], ",", "None"}], "}"}]}], ",", 
+     RowBox[{"Epilog", "\[Rule]", 
+      RowBox[{"Inset", "[", 
+       RowBox[{
+        RowBox[{"Style", "[", 
+         RowBox[{"label", ",", "19", ",", "Black", ",", "Bold", ",", 
+          RowBox[{"FontFamily", "\[Rule]", "\"\<Times\>\""}]}], "]"}], ",", 
+        RowBox[{"Scaled", "[", 
+         RowBox[{"{", 
+          RowBox[{"0.8", ",", "0.2"}], "}"}], "]"}]}], "]"}]}]}], "]"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"pPlus", "=", 
+  RowBox[{"pPlus1", "=", 
    RowBox[{"plotFunction", "[", 
     RowBox[{
-    "band1Plus", ",", "paramSetPlus", ",", "s1Plus", ",", "yrastPlus"}], 
-    "]"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{"Show", "[", "pPlus", "]"}], "\[IndentingNewLine]", 
+    "band1Plus", ",", "paramSetPlus", ",", "s1Plus", ",", "yrastPlus", ",", 
+     "\"\<\!\(\*SubscriptBox[\(i\), \(13/2\)]\)-bands\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Show", "[", "pPlus1", "]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"(*", 
    RowBox[{"plotFunction", "[", 
@@ -1103,9 +1116,10 @@ Cell[BoxData[{
  CellChangeTimes->{{3.832560943493456*^9, 3.8325611938438873`*^9}, 
    3.832562147472727*^9, {3.832562263476439*^9, 3.832562268003153*^9}, {
    3.832567661496908*^9, 3.8325676822864447`*^9}, {3.832568667451569*^9, 
-   3.832568671691249*^9}, {3.832568729284943*^9, 3.83256888880269*^9}},
- CellLabel->
-  "In[145]:=",ExpressionUUID->"7b7271fb-6c1a-4666-9f30-58d49434b735"],
+   3.832568671691249*^9}, {3.832568729284943*^9, 3.83256888880269*^9}, {
+   3.8325919206096287`*^9, 3.832591962916094*^9}, {3.8325920286517363`*^9, 
+   3.8325921905021477`*^9}},ExpressionUUID->"7b7271fb-6c1a-4666-9f30-\
+58d49434b735"],
 
 Cell[BoxData[
  TagBox[
@@ -1136,25 +1150,7 @@ Cell[BoxData[
          2.953}}, {{22.5, 3.606}}, {{24.5, 4.284}}, {{26.5, 4.975}}, {{28.5, 
          5.673}}, {{30.5, 6.401}}, {{32.5, 7.146}}}]}, 
        {GrayLevel[0], PointSize[0.012833333333333334`], AbsoluteThickness[
-        1.6], GeometricTransformationBox[InsetBox[
-          FormBox[
-           StyleBox[
-            GraphicsBox[
-             {EdgeForm[None], 
-              PolygonBox[{{-1, -1}, {1, -1}, {1, 1}, {-1, 1}}]}],
-            StripOnInput->False,
-            GraphicsBoxOptions->{DefaultBaseStyle->Directive[
-              PointSize[0.012833333333333334`], 
-              AbsoluteThickness[1.6], 
-              GrayLevel[0]]}],
-           TraditionalForm], {0., 0.}, Automatic, Offset[10]], {{{6.5, 
-         0.}}, {{8.5, 0.26899410219098674`}}, {{10.5, 0.5869118486822018}}, {{
-         12.5, 0.9536808458939073}}, {{14.5, 1.3691811475452738`}}, {{16.5, 
-         1.8332953721665954`}}, {{18.5, 2.345920575703426}}, {{20.5, 
-         2.906969715321953}}, {{22.5, 3.51637015728758}}, {{24.5, 
-         4.1740615181831515`}}, {{26.5, 4.879993570145729}}, {{28.5, 
-         5.634124421292237}}, {{30.5, 6.4364190028347075`}}, {{32.5, 
-         7.286847834886652}}}]}}, {
+        1.6]}}, {
        {RGBColor[1, 0, 0], PointSize[0.012833333333333334`], 
         AbsoluteThickness[1.6]}, 
        {GrayLevel[0], PointSize[0.012833333333333334`], AbsoluteThickness[
@@ -1200,7 +1196,7 @@ Cell[BoxData[
                     Rational[1, 2], 
                     Rational[1, 2]}], 
                     Scaled[{0.5, 0.5}]], Automatic, 
-                    Scaled[1]]}}}, AspectRatio -> Full, ImageSize -> {10, 10},
+                    Scaled[1]]}}}, AspectRatio -> Full, ImageSize -> {20, 10},
                      PlotRangePadding -> None, ImagePadding -> Automatic, 
                     BaselinePosition -> (Scaled[-0.17900000000000002`] -> 
                     Baseline)], #}, {
@@ -1221,28 +1217,9 @@ Cell[BoxData[
                     GrayLevel[0]]], 
                     PointSize[0.5], 
                     AbsoluteThickness[1.6], 
-                    GrayLevel[0]], {
-                    InsetBox[
-                    GraphicsBox[{
-                    EdgeForm[], 
-                    PolygonBox[{{-1, -1}, {1, -1}, {1, 1}, {-1, 1}}]}, {
-                    DefaultBaseStyle -> {"Graphics", {
-                    AbsolutePointSize[6]}, 
-                    Directive[
-                    EdgeForm[
-                    Directive[
-                    Opacity[0.3], 
-                    GrayLevel[0]]], 
-                    PointSize[0.5], 
-                    AbsoluteThickness[1.6], 
-                    GrayLevel[0]]}}], 
-                    NCache[
-                    Scaled[{
-                    Rational[1, 2], 
-                    Rational[1, 2]}], 
-                    Scaled[{0.5, 0.5}]], Automatic, 
-                    Scaled[1]]}}}, AspectRatio -> Full, ImageSize -> {20, 10},
-                     PlotRangePadding -> None, ImagePadding -> Automatic, 
+                    GrayLevel[0]], {}}}, AspectRatio -> Full, 
+                    ImageSize -> {20, 10}, PlotRangePadding -> None, 
+                    ImagePadding -> Automatic, 
                     BaselinePosition -> (Scaled[-0.17900000000000002`] -> 
                     Baseline)], #2}}, 
                  GridBoxAlignment -> {
@@ -1371,12 +1348,8 @@ Cell[BoxData[
                     DiskBox[{0, 0}]}], ",", 
                     RowBox[{"Offset", "[", "10", "]"}]}], "}"}], ",", 
                  RowBox[{"{", 
-                   RowBox[{
-                    GraphicsBox[{
-                    EdgeForm[], 
-                    PolygonBox[{{-1, -1}, {1, -1}, {1, 1}, {-1, 1}}]}], ",", 
-                    RowBox[{"Offset", "[", "10", "]"}]}], "}"}]}], "}"}]}], 
-           ",", 
+                   RowBox[{"None", ",", "Automatic"}], "}"}]}], "}"}]}], ",", 
+           
            RowBox[{"Joined", "\[Rule]", 
              RowBox[{"{", 
                RowBox[{"False", ",", "True"}], "}"}]}], ",", 
@@ -1433,6 +1406,13 @@ Cell[BoxData[
    AxesLabel->{None, None},
    AxesOrigin->{5.958333333333334, 0},
    DisplayFunction->Identity,
+   Epilog->InsetBox[
+     BoxData[
+      FormBox[
+       StyleBox["\"\\!\\(\\*SubscriptBox[\\(i\\), \\(13/2\\)]\\)-bands\"", 19, 
+        GrayLevel[0], Bold, FontFamily -> "Times", StripOnInput -> False], 
+       TraditionalForm]], 
+     Scaled[{0.8, 0.2}]],
    Frame->{{True, True}, {True, True}},
    FrameLabel->{{
       FormBox[
@@ -1503,24 +1483,7 @@ Cell[BoxData[
          Directive[
           PointSize[0.012833333333333334`], 
           AbsoluteThickness[1.6], 
-          GrayLevel[0]], 
-         GeometricTransformation[
-          Inset[
-           Style[
-            Graphics[{
-              EdgeForm[], 
-              Polygon[{{-1, -1}, {1, -1}, {1, 1}, {-1, 1}}]}], 
-            GraphicsBoxOptions -> {DefaultBaseStyle -> Directive[
-                PointSize[0.012833333333333334`], 
-                AbsoluteThickness[1.6], 
-                GrayLevel[0]]}], {0., 0.}, Automatic, 
-           Offset[10]], {{{6.5, 0.}}, {{8.5, 0.26899410219098674`}}, {{10.5, 
-          0.5869118486822018}}, {{12.5, 0.9536808458939073}}, {{14.5, 
-          1.3691811475452738`}}, {{16.5, 1.8332953721665954`}}, {{18.5, 
-          2.345920575703426}}, {{20.5, 2.906969715321953}}, {{22.5, 
-          3.51637015728758}}, {{24.5, 4.1740615181831515`}}, {{26.5, 
-          4.879993570145729}}, {{28.5, 5.634124421292237}}, {{30.5, 
-          6.4364190028347075`}}, {{32.5, 7.286847834886652}}}]}}, {{
+          GrayLevel[0]]}}, {{
          Directive[
           PointSize[0.012833333333333334`], 
           AbsoluteThickness[1.6], 
@@ -1540,7 +1503,10 @@ Cell[BoxData[
      DisplayFunction -> Identity, DisplayFunction -> Identity, AspectRatio -> 
       0.8, Axes -> {False, False}, AxesLabel -> {None, None}, 
       AxesOrigin -> {5.958333333333334, 0}, DisplayFunction :> Identity, 
-      Frame -> {{True, True}, {True, True}}, 
+      Epilog -> Inset[
+        Style["\!\(\*SubscriptBox[\(i\), \(13/2\)]\)-bands", 19, 
+         GrayLevel[0], Bold, FontFamily -> "Times"], 
+        Scaled[{0.8, 0.2}]], Frame -> {{True, True}, {True, True}}, 
       FrameLabel -> {{"\!\(\*SubscriptBox[\(E\), \(Exc\)]\) [MeV]", None}, {
         "I [\[HBar]]", None}}, FrameStyle -> Directive[
         Thickness[Large], 
@@ -1580,21 +1546,17 @@ Cell[BoxData[
           Graphics[{
             EdgeForm[], 
             Disk[{0, 0}]}], 
-          Offset[10]}, {
-          Graphics[{
-            EdgeForm[], 
-            Polygon[{{-1, -1}, {1, -1}, {1, 1}, {-1, 1}}]}], 
-          Offset[10]}}, Joined -> {False, True}, LabelStyle -> {19, 
+          Offset[10]}, {None, Automatic}}, Joined -> {False, True}, 
+       LabelStyle -> {19, 
          GrayLevel[0], Bold, FontFamily -> "Times"}, LegendLayout -> 
        "Column"]], {0.25, 0.75}, Identity]]& ],
   AutoDelete->True,
   Editable->True,
   SelectWithContents->False,
   Selectable->True]], "Output",
- CellChangeTimes->{
-  3.832568672121553*^9, {3.832568734210882*^9, 3.832568889095744*^9}},
+ CellChangeTimes->{{3.832592110326213*^9, 3.832592167931332*^9}},
  CellLabel->
-  "Out[147]=",ExpressionUUID->"7d6a32d1-b9a6-45ad-81a6-5a4c098c6034"]
+  "Out[180]=",ExpressionUUID->"a185a38e-b1f3-4177-a7ef-d30d121e1105"]
 }, Open  ]]
 }, Open  ]],
 
@@ -1761,13 +1723,13 @@ Cell[33744, 935, 2505, 63, 136, "Input",ExpressionUUID->"75ee75d6-926b-4173-881d
 Cell[CellGroupData[{
 Cell[36310, 1005, 154, 3, 67, "Section",ExpressionUUID->"eea07c71-2be9-4dc8-adcb-4cfdc0722a75"],
 Cell[CellGroupData[{
-Cell[36489, 1012, 3684, 95, 178, "Input",ExpressionUUID->"7b7271fb-6c1a-4666-9f30-58d49434b735"],
-Cell[40176, 1109, 22166, 487, 322, "Output",ExpressionUUID->"7d6a32d1-b9a6-45ad-81a6-5a4c098c6034"]
+Cell[36489, 1012, 4287, 109, 199, "Input",ExpressionUUID->"7b7271fb-6c1a-4666-9f30-58d49434b735"],
+Cell[40779, 1123, 19693, 435, 322, "Output",ExpressionUUID->"a185a38e-b1f3-4177-a7ef-d30d121e1105"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[62391, 1602, 186, 3, 67, "Section",ExpressionUUID->"5bf86901-a994-49c6-851d-442597fe463c"],
-Cell[62580, 1607, 3661, 102, 94, "Input",ExpressionUUID->"c9d543b6-d8d1-4f19-bcd7-887dcb26fc91"]
+Cell[60521, 1564, 186, 3, 67, "Section",ExpressionUUID->"5bf86901-a994-49c6-851d-442597fe463c"],
+Cell[60710, 1569, 3661, 102, 94, "Input",ExpressionUUID->"c9d543b6-d8d1-4f19-bcd7-887dcb26fc91"]
 }, Open  ]]
 }
 ]
