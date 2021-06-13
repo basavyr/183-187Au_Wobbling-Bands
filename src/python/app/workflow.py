@@ -176,10 +176,9 @@ def Negative_Pipeline():
     # generate a pair of bands that will be plotted via the plot module
     # each band represents a tuple SPIN,E_EXP,E_TH
     # the energy is the excitation energy
-    # band1, band2 = Create_Band_Sequence(AU_183_NEGATIVE, th_data)
-
+    band1, band2 = Create_Band_Sequence(AU_183_NEGATIVE, th_data)
     # create a graphical representation with both bands on the same plot
-    # Plot_Fit_Results(band1, band2, PLOT_NEGATIVE, r'$^{183}$Au$^-$')
+    Plot_Fit_Results(band1, band2, PLOT_NEGATIVE, r'$^{183}$Au$^-$')
 
 
 def Main_183():
