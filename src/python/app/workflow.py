@@ -166,6 +166,7 @@ def Negative_Pipeline(debug_mode=False):
 
     if(debug_mode):
         print('Negative Parity')
+
     # define a set of starting parameters and the corresponding limits for every parameter
     INITIAL_PARAMS = [10.0, 10.0, 10.0, 1, 20.0]
     PARAMS_BOUNDS = ([1, 1, 1, 0.1, 19.0], [100, 100, 100, 9.0, 25.0])
@@ -178,6 +179,12 @@ def Negative_Pipeline(debug_mode=False):
     # each band represents a tuple SPIN,E_EXP,E_TH
     # the energy is the excitation energy
     band1, band2 = Create_Band_Sequence(AU_183_NEGATIVE, th_data)
+    if(debug_mode):
+        print('First wobbling band')
+        print(band1)
+        print('Second wobbling band')
+        print(band2)
+
     # create a graphical representation with both bands on the same plot
     Plot_Fit_Results(band1, band2, PLOT_NEGATIVE, r'$^{183}$Au$^-$')
 
