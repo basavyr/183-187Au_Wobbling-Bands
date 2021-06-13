@@ -192,7 +192,10 @@ def Negative_Pipeline(debug_mode=False):
 def Main_183():
     print("Starting fitting procedure for $^{183}$AU")
     # Positive_Pipeline()
-    Negative_Pipeline(debug_mode=True)
+    # Negative_Pipeline(debug_mode=True)
+    energies.Energy_Formula.Energy_Expression(
+        0, 0, 6.5, 6.5, 60, 20, 3, 2.2, 19)
+
     print('Finished the fitting procedure...')
 
 
