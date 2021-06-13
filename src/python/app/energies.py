@@ -217,15 +217,11 @@ class Energy_Formula:
 
         H_MIN = Energy_Formula.H_Min(spin, odd_spin, I1, I2, I3, V, gamma)
 
-        # TODO: change the omega ordering
-
+        # Use the reversed variable for the wobbling frequency ordering.
+        # Depending on its value, the frequencies will be interchanged for further computations
         reversed = True
-
-        Omega = Energy_Formula.Omega_Frequencies(
+        Omega_1, Omega_2 = Energy_Formula.Omega_Frequencies(
             spin, odd_spin, I1, I2, I3, V, gamma, reversed)
-
-        Omega_1 = Omega[0]
-        Omega_2 = Omega[1]
 
         print(Omega_1)
         print(Omega_2)
