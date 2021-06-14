@@ -119,7 +119,7 @@ def Fit_Model(model_function, initial_params, param_bounds, x_data_1, x_data_2, 
     if(debug_mode):
         print(f'RMS -> {fit.Fit.RMS(exp_data_normed, th_data)}')
 
-    return [th_data_1, th_data_2]
+    return [th_data_1, th_data_2], params
 
 
 def Positive_Pipeline():
@@ -137,7 +137,7 @@ def Positive_Pipeline():
     PARAMS_BOUNDS = ([1, 1, 1, 0.1, 19.0], [100, 100, 100, 9.0, 25.0])
 
     # fit the theoretical model to the experimental data extracted at the previous step for the isotope
-    th_data = Fit_Model(model=energies.Models.Model_Energy_i13_2, initial_params=INITIAL_PARAMS, param_bounds=PARAMS_BOUNDS,
+    th_data = Fit_Model(model_function=energies.Models.Model_Energy_i13_2, initial_params=INITIAL_PARAMS, param_bounds=PARAMS_BOUNDS,
                         x_data_1=x_data_1, x_data_2=x_data_2, y_data=y_data)
 
     # generate a pair of bands that will be plotted via the plot module
@@ -168,10 +168,15 @@ def Negative_Pipeline(initial_params, debug_mode=False):
     th_data = Fit_Model(model_function=energies.Models.Model_Energy_h9_2, initial_params=INITIAL_PARAMS, param_bounds=PARAMS_BOUNDS,
                         x_data_1=x_data_1, x_data_2=x_data_2, y_data=y_data)
 
+    # get the fitting parameters for the isotope
+    fit_parameters = th_data[1]
+    if(debug_mode):
+        print(fit_parameters)
+
     # generate a pair of bands that will be plotted via the plot module
     # each band represents a tuple SPIN,E_EXP,E_TH
     # the energy is the excitation energy
-    band1, band2 = Create_Band_Sequence(AU_183_NEGATIVE, th_data)
+    band1, band2 = Create_Band_Sequence(AU_183_NEGATIVE, th_data[0])
     if(debug_mode):
         print('First wobbling band')
         print(band1)
@@ -185,9 +190,9 @@ def Negative_Pipeline(initial_params, debug_mode=False):
 def Main_183():
     print("Starting fitting procedure for $^{183}$AU")
     # Positive_Pipeline()
-    Negative_Pipeline([70.0, 10.0, 3.0, 0.4, 20.0])
-    Negative_Pipeline([75.0, 20.0, 4.0, 0.3, 20.0])
-    Negative_Pipeline([50.0, 20.0, 4.0, 0.4, 20.0])
+    Negative_Pipeline([70.0, 10.0, 3.0, 0.4, 20.0], True)
+    # Negative_Pipeline([75.0, 20.0, 4.0, 0.3, 20.0])
+    # Negative_Pipeline([50.0, 20.0, 4.0, 0.4, 20.0])
     print('Finished the fitting procedure...')
 
 
