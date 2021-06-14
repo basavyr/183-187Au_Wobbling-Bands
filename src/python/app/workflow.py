@@ -5,92 +5,200 @@ import fit
 import plot
 
 
-class Isotope:
+def plot_name(label):
+    return f'{energies.Files.plot_directory}{label}.pdf'
 
-    @staticmethod
-    def Fit_Isotope(data):
 
-        try:
-            nlm = fit.Mock_Fit.Fit(data, energies.Energy_Formula.Energy1)
-        except Exception:
-            nlm = -1
-            return nlm
+def Get_Experimental_Data(isotope, debug_mode=False):
+    """Read the experimental data for a particular band sequence of an isotope.
+    The data corresponds to the wobbling excitations of an isotope with a defined parity. Namely, there can be band sequences that correspond to positive parity and sequences which correspond to negative parity.
+    """
+
+    # DEBUG_MODE = False
+
+    YRAST, TW1, LABEL = energies.Extract_Data.Get_Energies(isotope)
+    YRAST = energies.Energy_Formula.MeV(YRAST)
+    TW1 = energies.Energy_Formula.MeV(TW1)
+
+    # YRAST = [[e[0], e[1], round(e[2], 3)] for e in YRAST]
+    # TW1 = [[e[0], e[1], round(e[2], 3)] for e in TW1]
+
+    EXP_DATA = fit.Fit.Concatenate_Data(YRAST, TW1)
+
+    if(debug_mode):
+        print(f'****** {LABEL} ******')
+        print(f'****** Yrast band ******\n{YRAST}')
+        print(f'****** TW1 band ******\n{TW1}')
+        print(f'****** EXP DATA: ******\n{EXP_DATA}\n')
+
+    X_DATA_SPINS = [X[0] for X in EXP_DATA]
+    X_DATA_PHONONS = [X[1] for X in EXP_DATA]
+    Y_DATA = [X[2] for X in EXP_DATA]
+
+    if(debug_mode):
+        print([X_DATA_SPINS], [X_DATA_PHONONS])
+        print(Y_DATA)
+
+    return [X_DATA_SPINS, X_DATA_PHONONS, Y_DATA]
+
+
+def Create_Band_Sequence(isotope, th_data):
+    b1exp, b2exp, _ = energies.Extract_Data.Get_Energies(
+        isotope)
+
+    # the band head energy
+    e0 = b1exp[0][2]
+
+    # calculations for first band (experimental)
+    spins = [e[0] for e in b1exp]
+    expdata = [e[2] for e in b1exp]
+    expdata = [round((x - e0) / 1000, 3) for x in expdata]
+
+    band1 = [spins, expdata]
+    band1.append(th_data[0])
+
+    # calculations for second band (experimental)
+    spins = [e[0] for e in b2exp]
+    expdata = [e[2] for e in b2exp]
+    expdata = [round((x - e0) / 1000, 3) for x in expdata]
+
+    band2 = [spins, expdata]
+    band2.append(th_data[1])
+
+    return band1, band2
+
+
+def Plot_Fit_Results(band1, band2, plot_location, label):
+    plot.Plot_Maker.Plot_Bands(band1, band2, plot_location, label)
+
+
+def Fit_Model(model, initial_params, param_bounds, x_data_1, x_data_2, y_data):
+
+    DEBUG_MODE = False
+
+    spins = energies.np.asarray(x_data_1)
+    wobbling_phonons = energies.np.asarray(x_data_2)
+    if(DEBUG_MODE):
+        print(spins)
+        print(wobbling_phonons)
+
+    # evaluation of the excitation energy for all the spins and wobbling phonon numbers of the band
+    # this is a 1-D array that results from applying E_exc on the entire set of spins and wobbling phonons
+    exp_data = energies.np.asarray(y_data)
+
+    if(DEBUG_MODE):
+        print(f'Band Head -> {exp_data[0]}')
+
+    band_head = exp_data[0]
+
+    # normalize the experimental data to the band-head
+    exp_data_normed = [e - band_head for e in exp_data]
+
+    if(DEBUG_MODE):
+        print(exp_data)
+
+    # Use the curve_fit function to find the best parameter set for the current experimental data-set
+    # the curve fit uses the analytical expression of the band
+    # the X-data is a tuple of arrays: the spins and wobbling phonon numbers
+    # the fitting procedure uses an initial set of parameters (guessed values)
+    # the fitting procedure adopts fixed bounds
+    fit_results = fit.curve_fit(
+        model, (spins, wobbling_phonons), exp_data_normed, p0=initial_params, bounds=param_bounds)  # Pure curve_fit
+
+    if(DEBUG_MODE):
+        print(fit_results)
+
+    params = fit_results[0]
+    params = [round(p, 3) for p in params]
+    print(params)
+
+    th_data = model(
+        (spins, wobbling_phonons), params[0], params[1], params[2], params[3], params[4])
+    th_data = [round(th, 3) for th in th_data]
+    if(DEBUG_MODE):
+        print(f'Data-> {th_data}')
+
+    # extract the theoretical data for the band1 and band2
+    th_data_1 = []
+    th_data_2 = []
+    for idx in range(len(wobbling_phonons)):
+        if(wobbling_phonons[idx] == 0):
+            th_data_1.append(th_data[idx])
         else:
-            return nlm
+            th_data_2.append(th_data[idx])
+
+    print(f'RMS -> {fit.Fit.RMS(exp_data_normed, th_data)}')
+
+    return [th_data_1, th_data_2]
 
 
-def Main():
+def Positive_Pipeline():
+    PLOT_POSITIVE = plot_name('183Au_positive')
 
-    model = energies.Energy_Formula.Energy1
+    # Experimental data for $^{183}$Au - POSITIVE PARITY BANDS
+    AU_183_POSITIVE = energies.Files.AU_183_DATA_POSITIVE
 
-    plot_location = energies.Files.plot_directory
+    # get the experimental data for the positive parity wobbling bands
+    x_data_1, x_data_2, y_data = Get_Experimental_Data(AU_183_POSITIVE)
 
-    def plot_name(idx): return f'{plot_location}fit_results_{idx}.pdf'
+    print('Positive Parity')
+    # define a set of starting parameters and the corresponding limits for every parameter
+    INITIAL_PARAMS = [80.0, 3.0, 25.0, 1.9, 20.0]
+    PARAMS_BOUNDS = ([1, 1, 1, 0.1, 19.0], [100, 100, 100, 9.0, 25.0])
 
-    idx = 1
+    # fit the theoretical model to the experimental data extracted at the previous step for the isotope
+    th_data = Fit_Model(model=energies.Models.Model_Energy_i13_2, initial_params=INITIAL_PARAMS, param_bounds=PARAMS_BOUNDS,
+                        x_data_1=x_data_1, x_data_2=x_data_2, y_data=y_data)
 
-    for isotope in energies.Files.EXP_DATA_FILES:
-        isotope_data = energies.Extract_Data.Get_Energies(isotope)
+    # generate a pair of bands that will be plotted via the plot module
+    # each band represents a tuple SPIN,E_EXP,E_TH
+    # the energy is the excitation energy
+    band1, band2 = Create_Band_Sequence(AU_183_POSITIVE, th_data)
 
-        plot_label = isotope_data[2]
-
-        # print(f'Nucleus -> {plot_label}')
-
-        # first band
-        band_0 = isotope_data[0]
-
-        # print(band_0)
-
-        # generate x_data
-        band_0_spins = [x[0] for x in band_0]
-        # generate y_data
-        band_0_energies = [x[1] for x in band_0]
-
-        # second band
-        # first band
-        band_1 = isotope_data[1]
-        # generate x_data
-        band_1_spins = [x[0] for x in band_1]
-        # generate y_data
-        band_1_energies = [x[1] for x in band_1]
-
-        data_0 = [band_0_spins, band_0_energies]
-        data_1 = [band_1_spins, band_1_energies]
-
-        # print(data_0)
-        # print(data_1)
-
-        nlm_0 = Isotope.Fit_Isotope(data_0)
-        nlm_1 = Isotope.Fit_Isotope(data_1)
-
-        print(nlm_0[0])
-
-        exp_data = [band_0_spins, band_0_energies]
-        th_data = [band_0_spins, fit.Mock_Fit.Check_Mock_Data(
-            model, band_0_spins, nlm_0[0])]
-
-        plot.Plot_Maker.Create_Fit_Plot(
-            exp_data, th_data, plot_name(idx), plot_label)
-
-        idx += 1
-        # print(band_1_energies)
-        # print(fit.Mock_Fit.Check_Mock_Data(model, band_1_spins, nlm_1[0]))
+    # create a graphical representation with both bands on the same plot
+    Plot_Fit_Results(band1, band2, PLOT_POSITIVE, r'$^{183}$Au$^+$')
 
 
-def Omega_Tests():
-    w1 = energies.Energy_Formula.Omega_Frequencies(
-        21.5, 6.5, 60, 100, 40, 3, 23)
-    if(w1 is None):
-        print(w1)
-    w2 = energies.Energy_Formula.Omega_Frequencies(21.5, 6.5, 1, 2, 40, 3, 23)
-    if(w2 is None):
-        print(w2)
-    w3 = energies.Energy_Formula.Omega_Frequencies(
-        21.5, 6.5, 60, 80, 40, 3, 23)
-    if(w3 is None):
-        print(w3)
+def Negative_Pipeline(debug_mode=False):
+    PLOT_NEGATIVE = plot_name('183Au_negative')
+    # Experimental data for $^{183}$Au - NEGATIVE PARITY BANDS
+    AU_183_NEGATIVE = energies.Files.AU_183_DATA_NEGATIVE
+    # get the experimental data for the negative parity wobbling bands
+    x_data_1, x_data_2, y_data = Get_Experimental_Data(
+        AU_183_NEGATIVE)
+
+    if(debug_mode):
+        print('Negative Parity')
+
+    # define a set of starting parameters and the corresponding limits for every parameter
+    INITIAL_PARAMS = [10.0, 10.0, 10.0, 1, 20.0]
+    PARAMS_BOUNDS = ([1, 1, 1, 0.1, 19.0], [100, 100, 100, 9.0, 25.0])
+
+    # fit the theoretical model to the experimental data extracted at the previous step for the isotope
+    th_data = Fit_Model(model=energies.Models.Model_Energy_h9_2, initial_params=INITIAL_PARAMS, param_bounds=PARAMS_BOUNDS,
+                        x_data_1=x_data_1, x_data_2=x_data_2, y_data=y_data)
+
+    # generate a pair of bands that will be plotted via the plot module
+    # each band represents a tuple SPIN,E_EXP,E_TH
+    # the energy is the excitation energy
+    band1, band2 = Create_Band_Sequence(AU_183_NEGATIVE, th_data)
+    if(debug_mode):
+        print('First wobbling band')
+        print(band1)
+        print('Second wobbling band')
+        print(band2)
+
+    # create a graphical representation with both bands on the same plot
+    Plot_Fit_Results(band1, band2, PLOT_NEGATIVE, r'$^{183}$Au$^-$')
+
+
+def Main_183():
+    print("Starting fitting procedure for $^{183}$AU")
+    # Positive_Pipeline()
+    Negative_Pipeline(debug_mode=True)
+
+    print('Finished the fitting procedure...')
 
 
 if __name__ == '__main__':
-    # Main()
-    Omega_Tests()
+    Main_183()
