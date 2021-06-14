@@ -136,7 +136,7 @@ def Positive_Pipeline(initial_params, debug_mode=False):
         print('Positive Parity')
     # define a set of starting parameters and the corresponding limits for every parameter
     INITIAL_PARAMS = initial_params
-    PARAMS_BOUNDS = ([1, 1, 1, 0.1, 19.0], [100, 100, 100, 9.0, 25.0])
+    PARAMS_BOUNDS = ([1, 1, 1, 0.1, 18.0], [100, 100, 100, 9.0, 25.0])
 
     # fit the theoretical model to the experimental data extracted at the previous step for the isotope
     th_data = Fit_Model(model_function=energies.Models.Model_Energy_i13_2, initial_params=INITIAL_PARAMS, param_bounds=PARAMS_BOUNDS,
@@ -247,7 +247,8 @@ def Main_183_Negative():
 if __name__ == '__main__':
     P0_PLUS = [
         [80.0, 3.0, 25.0, 1.9, 20.0],
-        [60.0, 3.0, 25.0, 1.9, 20.0]
+        [60.0, 3.0, 25.0, 1.9, 20.0],
+        [70.0, 10.0, 20.0, 0.4, 19.0]
     ]
     Main_183_Positive(P0_PLUS)
     # Main_183_Negative()
