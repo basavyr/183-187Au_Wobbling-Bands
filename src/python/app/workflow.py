@@ -168,6 +168,8 @@ def Positive_Pipeline(initial_params, debug_mode=False):
     # create a graphical representation with both bands on the same plot
     Plot_Fit_Results(band1, band2, PLOT_POSITIVE, r'$^{183}$Au$^+$')
 
+    return rms_value, fit_parameters, band1, band2
+
 
 def Negative_Pipeline(initial_params, debug_mode=False):
     PLOT_NEGATIVE = plot_name('183Au_negative')
@@ -215,15 +217,17 @@ def Negative_Pipeline(initial_params, debug_mode=False):
     # create a graphical representation with both bands on the same plot
     Plot_Fit_Results(band1, band2, PLOT_NEGATIVE, r'$^{183}$Au$^-$')
 
+    return rms_value, fit_parameters, band1, band2
 
-def Main_183():
-    print("Starting fitting procedure for $^{183}$AU")
-    Positive_Pipeline([80.0, 3.0, 25.0, 1.9, 20.0], True)
-    # Negative_Pipeline([70.0, 10.0, 3.0, 0.4, 20.0], True)
-    # Negative_Pipeline([75.0, 20.0, 4.0, 0.3, 20.0])
-    # Negative_Pipeline([50.0, 20.0, 4.0, 0.4, 20.0])
-    print('Finished the fitting procedure...')
+
+def Main_183_Positive():
+    Positive_Pipeline([80.0, 3.0, 25.0, 1.9, 20.0])
+
+
+def Main_183_Negative():
+    Negative_Pipeline([70.0, 10.0, 3.0, 0.4, 20.0])
 
 
 if __name__ == '__main__':
-    Main_183()
+    Main_183_Positive()
+    Main_183_Negative()
