@@ -159,7 +159,7 @@ def Positive_Pipeline():
     Plot_Fit_Results(band1, band2, PLOT_POSITIVE, r'$^{183}$Au$^+$')
 
 
-def Negative_Pipeline(debug_mode=False):
+def Negative_Pipeline(initial_params, debug_mode=False):
     PLOT_NEGATIVE = plot_name('183Au_negative')
     # Experimental data for $^{183}$Au - NEGATIVE PARITY BANDS
     AU_183_NEGATIVE = energies.Files.AU_183_DATA_NEGATIVE
@@ -171,7 +171,7 @@ def Negative_Pipeline(debug_mode=False):
         print('Negative Parity')
 
     # define a set of starting parameters and the corresponding limits for every parameter
-    INITIAL_PARAMS = [70.0, 10.0, 3.0, 0.4, 20.0]
+    INITIAL_PARAMS = initial_params
     PARAMS_BOUNDS = ([1, 1, 1, 0.1, 18.0], [100, 100, 100, 9.0, 25.0])
 
     # fit the theoretical model to the experimental data extracted at the previous step for the isotope
@@ -195,8 +195,9 @@ def Negative_Pipeline(debug_mode=False):
 def Main_183():
     print("Starting fitting procedure for $^{183}$AU")
     # Positive_Pipeline()
-    Negative_Pipeline(debug_mode=True)
-
+    # Negative_Pipeline([70.0, 10.0, 3.0, 0.4, 20.0], debug_mode=True)
+    # Negative_Pipeline([75.0, 20.0, 4.0, 0.3, 20.0], debug_mode=True)
+    Negative_Pipeline([60.0, 20.0, 4.0, 0.2, 20.0], debug_mode=True)
     print('Finished the fitting procedure...')
 
 
