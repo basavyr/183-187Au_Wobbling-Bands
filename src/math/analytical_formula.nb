@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    165573,       3941]
-NotebookOptionsPosition[    158306,       3831]
-NotebookOutlinePosition[    158646,       3846]
-CellTagsIndexPosition[    158603,       3843]
+NotebookDataLength[    165828,       3944]
+NotebookOptionsPosition[    158561,       3834]
+NotebookOutlinePosition[    158901,       3849]
+CellTagsIndexPosition[    158858,       3846]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1855,29 +1855,30 @@ Cell[BoxData[{
           RowBox[{"FontFamily", "\[Rule]", "\"\<Times\>\""}]}], "]"}], ",", 
         RowBox[{"Scaled", "[", 
          RowBox[{"{", 
-          RowBox[{"0.8", ",", "0.2"}], "}"}], "]"}]}], "]"}]}]}], "]"}]}], 
+          RowBox[{"0.8", ",", "0.2"}], "}"}], "]"}]}], "]"}]}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "Full"}]}], "]"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"pPlus1", "=", 
    RowBox[{"plotFunction", "[", 
     RowBox[{
     "band1Plus", ",", "paramSetPlus", ",", "s1Plus", ",", "yrastPlus", ",", 
-     "\"\<183Au\\n\!\(\*SubscriptBox[\(i\), \(13/2\)]\)-bands\>\""}], "]"}]}],
-   ";"}], "\[IndentingNewLine]", 
+     "\"\<183Au\\n\!\(\*SubscriptBox[\(i\), \(13/2\)]\)-wb1\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"pPlus2", "=", 
    RowBox[{"plotFunction", "[", 
     RowBox[{
     "band2Plus", ",", "paramSetPlus", ",", "s2Plus", ",", "tw1Plus", ",", 
-     "\"\<183Au\\n\!\(\*SubscriptBox[\(i\), \(13/2\)]\)-bands\>\""}], "]"}]}],
-   ";"}], "\[IndentingNewLine]", 
+     "\"\<183Au\\n\!\(\*SubscriptBox[\(i\), \(13/2\)]\)-wb2\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"pNegative1", "=", 
    RowBox[{"plotFunction", "[", 
     RowBox[{
     "band1Negative", ",", "paramSetNegative", ",", "s1Negative", ",", 
      "yrastNegative", ",", 
-     "\"\<183Au\\n\!\(\*SubscriptBox[\(h\), \(9/2\)]\)-bands\>\""}], "]"}]}], 
+     "\"\<183Au\\n\!\(\*SubscriptBox[\(h\), \(9/2\)]\)-wb1\>\""}], "]"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"pNegative2", "=", 
@@ -1885,7 +1886,7 @@ Cell[BoxData[{
     RowBox[{
     "band2Negative", ",", "paramSetNegative", ",", "s2Negative", ",", 
      "tw1Negative", ",", 
-     "\"\<183Au\\n\!\(\*SubscriptBox[\(h\), \(9/2\)]\)-bands\>\""}], "]"}]}], 
+     "\"\<183Au\\n\!\(\*SubscriptBox[\(h\), \(9/2\)]\)-wb2\>\""}], "]"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{"Grid", "[", 
   RowBox[{
@@ -1962,9 +1963,9 @@ python/app/assets/plots/Au_183_plot2Negative.pdf\>\"", ",",
    3.832592445352583*^9, 3.832592490945179*^9}, {3.832592521074942*^9, 
    3.8325925651061087`*^9}, {3.832592743984642*^9, 3.832592940209075*^9}, {
    3.832639256468626*^9, 3.8326392618096247`*^9}, {3.832639382987481*^9, 
-   3.832639524363595*^9}},
+   3.832639524363595*^9}, {3.832639576030181*^9, 3.832639671155815*^9}},
  CellLabel->
-  "In[534]:=",ExpressionUUID->"7b7271fb-6c1a-4666-9f30-58d49434b735"],
+  "In[589]:=",ExpressionUUID->"7b7271fb-6c1a-4666-9f30-58d49434b735"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -2255,7 +2256,7 @@ Cell[BoxData[
          BoxData[
           FormBox[
            StyleBox[
-           "\"183Au\\n\\!\\(\\*SubscriptBox[\\(i\\), \\(13/2\\)]\\)-bands\"", 
+           "\"183Au\\n\\!\\(\\*SubscriptBox[\\(i\\), \\(13/2\\)]\\)-wb1\"", 
             19, 
             GrayLevel[0], Bold, FontFamily -> "Times", StripOnInput -> False],
             TraditionalForm]], 
@@ -2354,7 +2355,7 @@ Cell[BoxData[
           Identity, AspectRatio -> 0.8, Axes -> {False, False}, 
           AxesLabel -> {None, None}, AxesOrigin -> {5.958333333333334, 0}, 
           DisplayFunction :> Identity, Epilog -> Inset[
-            Style["183Au\n\!\(\*SubscriptBox[\(i\), \(13/2\)]\)-bands", 19, 
+            Style["183Au\n\!\(\*SubscriptBox[\(i\), \(13/2\)]\)-wb1", 19, 
              GrayLevel[0], Bold, FontFamily -> "Times"], 
             Scaled[{0.8, 0.2}]], Frame -> {{True, True}, {True, True}}, 
           FrameLabel -> {{
@@ -2686,7 +2687,7 @@ Cell[BoxData[
          BoxData[
           FormBox[
            StyleBox[
-           "\"183Au\\n\\!\\(\\*SubscriptBox[\\(i\\), \\(13/2\\)]\\)-bands\"", 
+           "\"183Au\\n\\!\\(\\*SubscriptBox[\\(i\\), \\(13/2\\)]\\)-wb2\"", 
             19, 
             GrayLevel[0], Bold, FontFamily -> "Times", StripOnInput -> False],
             TraditionalForm]], 
@@ -2778,7 +2779,7 @@ Cell[BoxData[
           Identity, AspectRatio -> 0.8, Axes -> {False, False}, 
           AxesLabel -> {None, None}, AxesOrigin -> {11.291666666666668`, 0}, 
           DisplayFunction :> Identity, Epilog -> Inset[
-            Style["183Au\n\!\(\*SubscriptBox[\(i\), \(13/2\)]\)-bands", 19, 
+            Style["183Au\n\!\(\*SubscriptBox[\(i\), \(13/2\)]\)-wb2", 19, 
              GrayLevel[0], Bold, FontFamily -> "Times"], 
             Scaled[{0.8, 0.2}]], Frame -> {{True, True}, {True, True}}, 
           FrameLabel -> {{
@@ -2836,9 +2837,11 @@ Cell[BoxData[
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
  CellChangeTimes->{
-  3.832639406835908*^9, {3.832639438588277*^9, 3.832639525515538*^9}},
+  3.832639406835908*^9, {3.832639438588277*^9, 3.832639525515538*^9}, {
+   3.8326395819289093`*^9, 3.832639588564733*^9}, {3.8326396444013367`*^9, 
+   3.832639671986392*^9}},
  CellLabel->
-  "Out[539]=",ExpressionUUID->"946048f8-778a-4e2d-bb94-aa33fd66cae6"],
+  "Out[594]=",ExpressionUUID->"6794be47-88c4-4a3a-b919-56d2bf40f953"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -3128,8 +3131,7 @@ Cell[BoxData[
          BoxData[
           FormBox[
            StyleBox[
-           "\"183Au\\n\\!\\(\\*SubscriptBox[\\(h\\), \\(9/2\\)]\\)-bands\"", 
-            19, 
+           "\"183Au\\n\\!\\(\\*SubscriptBox[\\(h\\), \\(9/2\\)]\\)-wb1\"", 19, 
             GrayLevel[0], Bold, FontFamily -> "Times", StripOnInput -> False],
             TraditionalForm]], 
          Scaled[{0.8, 0.2}]],
@@ -3225,7 +3227,7 @@ Cell[BoxData[
           Identity, AspectRatio -> 0.8, Axes -> {False, False}, 
           AxesLabel -> {None, None}, AxesOrigin -> {4.041666666666667, 0}, 
           DisplayFunction :> Identity, Epilog -> Inset[
-            Style["183Au\n\!\(\*SubscriptBox[\(h\), \(9/2\)]\)-bands", 19, 
+            Style["183Au\n\!\(\*SubscriptBox[\(h\), \(9/2\)]\)-wb1", 19, 
              GrayLevel[0], Bold, FontFamily -> "Times"], 
             Scaled[{0.8, 0.2}]], Frame -> {{True, True}, {True, True}}, 
           FrameLabel -> {{
@@ -3559,8 +3561,7 @@ Cell[BoxData[
          BoxData[
           FormBox[
            StyleBox[
-           "\"183Au\\n\\!\\(\\*SubscriptBox[\\(h\\), \\(9/2\\)]\\)-bands\"", 
-            19, 
+           "\"183Au\\n\\!\\(\\*SubscriptBox[\\(h\\), \\(9/2\\)]\\)-wb2\"", 19, 
             GrayLevel[0], Bold, FontFamily -> "Times", StripOnInput -> False],
             TraditionalForm]], 
          Scaled[{0.8, 0.2}]],
@@ -3654,7 +3655,7 @@ Cell[BoxData[
           Identity, AspectRatio -> 0.8, Axes -> {False, False}, 
           AxesLabel -> {None, None}, AxesOrigin -> {9.166666666666668, 0}, 
           DisplayFunction :> Identity, Epilog -> Inset[
-            Style["183Au\n\!\(\*SubscriptBox[\(h\), \(9/2\)]\)-bands", 19, 
+            Style["183Au\n\!\(\*SubscriptBox[\(h\), \(9/2\)]\)-wb2", 19, 
              GrayLevel[0], Bold, FontFamily -> "Times"], 
             Scaled[{0.8, 0.2}]], Frame -> {{True, True}, {True, True}}, 
           FrameLabel -> {{
@@ -3711,9 +3712,11 @@ Cell[BoxData[
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
  CellChangeTimes->{
-  3.832639406835908*^9, {3.832639438588277*^9, 3.8326395255952053`*^9}},
+  3.832639406835908*^9, {3.832639438588277*^9, 3.832639525515538*^9}, {
+   3.8326395819289093`*^9, 3.832639588564733*^9}, {3.8326396444013367`*^9, 
+   3.832639672069901*^9}},
  CellLabel->
-  "Out[540]=",ExpressionUUID->"027eae75-3378-4c22-b06d-535d87eaec3c"]
+  "Out[595]=",ExpressionUUID->"c81892c9-2c84-449f-867a-74d863783826"]
 }, Open  ]]
 }, Open  ]],
 
@@ -3934,14 +3937,14 @@ Cell[63961, 1738, 668, 15, 24, "Print",ExpressionUUID->"fc4cc319-10c3-4668-bfb3-
 Cell[CellGroupData[{
 Cell[64714, 1762, 154, 3, 67, "Section",ExpressionUUID->"eea07c71-2be9-4dc8-adcb-4cfdc0722a75"],
 Cell[CellGroupData[{
-Cell[64893, 1769, 7754, 197, 535, "Input",ExpressionUUID->"7b7271fb-6c1a-4666-9f30-58d49434b735"],
-Cell[72650, 1968, 40808, 872, 333, "Output",ExpressionUUID->"946048f8-778a-4e2d-bb94-aa33fd66cae6"],
-Cell[113461, 2842, 40930, 873, 367, "Output",ExpressionUUID->"027eae75-3378-4c22-b06d-535d87eaec3c"]
+Cell[64893, 1769, 7845, 198, 535, "Input",ExpressionUUID->"7b7271fb-6c1a-4666-9f30-58d49434b735"],
+Cell[72741, 1969, 40904, 874, 333, "Output",ExpressionUUID->"6794be47-88c4-4a3a-b919-56d2bf40f953"],
+Cell[113648, 2845, 40998, 873, 333, "Output",ExpressionUUID->"c81892c9-2c84-449f-867a-74d863783826"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[154440, 3721, 186, 3, 67, "Section",ExpressionUUID->"5bf86901-a994-49c6-851d-442597fe463c"],
-Cell[154629, 3726, 3661, 102, 94, "Input",ExpressionUUID->"c9d543b6-d8d1-4f19-bcd7-887dcb26fc91"]
+Cell[154695, 3724, 186, 3, 67, "Section",ExpressionUUID->"5bf86901-a994-49c6-851d-442597fe463c"],
+Cell[154884, 3729, 3661, 102, 94, "Input",ExpressionUUID->"c9d543b6-d8d1-4f19-bcd7-887dcb26fc91"]
 }, Open  ]]
 }
 ]
