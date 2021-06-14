@@ -195,9 +195,9 @@ def Negative_Pipeline(initial_params, debug_mode=False):
 def Main_183():
     print("Starting fitting procedure for $^{183}$AU")
     # Positive_Pipeline()
-    # Negative_Pipeline([70.0, 10.0, 3.0, 0.4, 20.0], debug_mode=True)
-    # Negative_Pipeline([75.0, 20.0, 4.0, 0.3, 20.0], debug_mode=True)
-    Negative_Pipeline([60.0, 20.0, 4.0, 0.2, 20.0], debug_mode=True)
+    Negative_Pipeline([70.0, 10.0, 3.0, 0.4, 20.0], debug_mode=True)
+    Negative_Pipeline([75.0, 20.0, 4.0, 0.3, 20.0], debug_mode=True)
+    Negative_Pipeline([50.0, 20.0, 4.0, 0.4, 20.0], debug_mode=True)
     print('Finished the fitting procedure...')
 
 
