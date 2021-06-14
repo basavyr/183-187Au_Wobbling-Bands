@@ -221,7 +221,22 @@ def Negative_Pipeline(initial_params, debug_mode=False):
 
 
 def Main_183_Positive():
-    Positive_Pipeline([80.0, 3.0, 25.0, 1.9, 20.0])
+    with open(energies.Files.AU_183_POSITIVE_FIT_DATA, 'w+') as writer:
+        save = lambda obj: writer.write(str(obj) + '\n')
+        RMS, FIT_PARAMETERS, BAND1, BAND2 = Positive_Pipeline(
+            [80.0, 3.0, 25.0, 1.9, 20.0])
+        save(f'*********** {1} ************')
+        save(f'P -> {FIT_PARAMETERS}')
+        save(f'RMS -> {RMS}')
+        save('First wobbling band => YRAST')
+        save(f'Spins -> {BAND1[0]}')
+        save(f'YRAST_Exp -> {BAND1[1]}')
+        save(f'YRAST_Th -> {BAND1[2]}')
+        save('Second wobbling band => TW1')
+        save(f'Spins -> {BAND2[0]}')
+        save(f'TW1_Exp -> {BAND2[1]}')
+        save(f'TW1_Th -> {BAND2[2]}')
+        save('*************************')
 
 
 def Main_183_Negative():
