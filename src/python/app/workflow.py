@@ -116,13 +116,14 @@ def Fit_Model(model_function, initial_params, param_bounds, x_data_1, x_data_2, 
         else:
             th_data_2.append(th_data[idx])
 
+    rms_value = fit.Fit.RMS(exp_data_normed, th_data)
     if(debug_mode):
-        print(f'RMS -> {fit.Fit.RMS(exp_data_normed, th_data)}')
+        print(f'RMS -> {rms_value}')
 
-    return [th_data_1, th_data_2], params
+    return [th_data_1, th_data_2], params, rms_value
 
 
-def Positive_Pipeline():
+def Positive_Pipeline(initial_params, debug_mode=False):
     PLOT_POSITIVE = plot_name('183Au_positive')
 
     # Experimental data for $^{183}$Au - POSITIVE PARITY BANDS
@@ -131,19 +132,34 @@ def Positive_Pipeline():
     # get the experimental data for the positive parity wobbling bands
     x_data_1, x_data_2, y_data = Get_Experimental_Data(AU_183_POSITIVE)
 
-    print('Positive Parity')
+    if(debug_mode):
+        print('Positive Parity')
     # define a set of starting parameters and the corresponding limits for every parameter
-    INITIAL_PARAMS = [80.0, 3.0, 25.0, 1.9, 20.0]
+    INITIAL_PARAMS = initial_params
     PARAMS_BOUNDS = ([1, 1, 1, 0.1, 19.0], [100, 100, 100, 9.0, 25.0])
 
     # fit the theoretical model to the experimental data extracted at the previous step for the isotope
     th_data = Fit_Model(model_function=energies.Models.Model_Energy_i13_2, initial_params=INITIAL_PARAMS, param_bounds=PARAMS_BOUNDS,
                         x_data_1=x_data_1, x_data_2=x_data_2, y_data=y_data)
+    # get the fitting parameters for the isotope
+    fit_parameters = th_data[1]
+    if(debug_mode):
+        print(f'P -> {fit_parameters}')
+
+    # get the RMS value
+    rms_value = th_data[2]
+    if(debug_mode):
+        print(f'RMS -> {rms_value}')
 
     # generate a pair of bands that will be plotted via the plot module
     # each band represents a tuple SPIN,E_EXP,E_TH
     # the energy is the excitation energy
-    band1, band2 = Create_Band_Sequence(AU_183_POSITIVE, th_data)
+    band1, band2 = Create_Band_Sequence(AU_183_POSITIVE, th_data[0])
+    if(debug_mode):
+        print('First wobbling band')
+        print(band1)
+        print('Second wobbling band')
+        print(band2)
 
     # create a graphical representation with both bands on the same plot
     Plot_Fit_Results(band1, band2, PLOT_POSITIVE, r'$^{183}$Au$^+$')
@@ -189,8 +205,8 @@ def Negative_Pipeline(initial_params, debug_mode=False):
 
 def Main_183():
     print("Starting fitting procedure for $^{183}$AU")
-    # Positive_Pipeline()
-    Negative_Pipeline([70.0, 10.0, 3.0, 0.4, 20.0], True)
+    Positive_Pipeline([80.0, 3.0, 25.0, 1.9, 20.0], True)
+    # Negative_Pipeline([70.0, 10.0, 3.0, 0.4, 20.0], True)
     # Negative_Pipeline([75.0, 20.0, 4.0, 0.3, 20.0])
     # Negative_Pipeline([50.0, 20.0, 4.0, 0.4, 20.0])
     print('Finished the fitting procedure...')
