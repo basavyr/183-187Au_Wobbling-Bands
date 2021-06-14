@@ -171,8 +171,8 @@ def Negative_Pipeline(debug_mode=False):
         print('Negative Parity')
 
     # define a set of starting parameters and the corresponding limits for every parameter
-    INITIAL_PARAMS = [10.0, 10.0, 10.0, 1, 20.0]
-    PARAMS_BOUNDS = ([1, 1, 1, 0.1, 19.0], [100, 100, 100, 9.0, 25.0])
+    INITIAL_PARAMS = [70.0, 10.0, 3.0, 0.4, 20.0]
+    PARAMS_BOUNDS = ([1, 1, 1, 0.1, 18.0], [100, 100, 100, 9.0, 25.0])
 
     # fit the theoretical model to the experimental data extracted at the previous step for the isotope
     th_data = Fit_Model(model=energies.Models.Model_Energy_h9_2, initial_params=INITIAL_PARAMS, param_bounds=PARAMS_BOUNDS,
