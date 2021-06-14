@@ -223,8 +223,8 @@ class Energy_Formula:
         Omega_1, Omega_2 = Energy_Formula.Omega_Frequencies(
             spin, odd_spin, I1, I2, I3, V, gamma, reversed)
 
-        print(Omega_1)
-        print(Omega_2)
+        # print(Omega_1)
+        # print(Omega_2)
 
         E = H_MIN + Omega_1 * (nw_1 + 0.5) + Omega_2 * (nw_2 + 0.5)
         return E

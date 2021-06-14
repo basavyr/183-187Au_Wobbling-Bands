@@ -20,6 +20,9 @@ def Get_Experimental_Data(isotope, debug_mode=False):
     YRAST = energies.Energy_Formula.MeV(YRAST)
     TW1 = energies.Energy_Formula.MeV(TW1)
 
+    # YRAST = [[e[0], e[1], round(e[2], 3)] for e in YRAST]
+    # TW1 = [[e[0], e[1], round(e[2], 3)] for e in TW1]
+
     EXP_DATA = fit.Fit.Concatenate_Data(YRAST, TW1)
 
     if(debug_mode):
@@ -49,7 +52,7 @@ def Create_Band_Sequence(isotope, th_data):
     # calculations for first band (experimental)
     spins = [e[0] for e in b1exp]
     expdata = [e[2] for e in b1exp]
-    expdata = [(x - e0) / 1000 for x in expdata]
+    expdata = [round((x - e0) / 1000, 3) for x in expdata]
 
     band1 = [spins, expdata]
     band1.append(th_data[0])
@@ -57,7 +60,7 @@ def Create_Band_Sequence(isotope, th_data):
     # calculations for second band (experimental)
     spins = [e[0] for e in b2exp]
     expdata = [e[2] for e in b2exp]
-    expdata = [(x - e0) / 1000 for x in expdata]
+    expdata = [round((x - e0) / 1000, 3) for x in expdata]
 
     band2 = [spins, expdata]
     band2.append(th_data[1])
@@ -192,9 +195,7 @@ def Negative_Pipeline(debug_mode=False):
 def Main_183():
     print("Starting fitting procedure for $^{183}$AU")
     # Positive_Pipeline()
-    # Negative_Pipeline(debug_mode=True)
-    energies.Energy_Formula.Energy_Expression(
-        0, 0, 6.5, 6.5, 60, 20, 3, 2.2, 19)
+    Negative_Pipeline(debug_mode=True)
 
     print('Finished the fitting procedure...')
 
