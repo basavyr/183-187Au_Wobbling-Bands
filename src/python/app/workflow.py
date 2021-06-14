@@ -72,51 +72,40 @@ def Plot_Fit_Results(band1, band2, plot_location, label):
     plot.Plot_Maker.Plot_Bands(band1, band2, plot_location, label)
 
 
-def Fit_Model(model, initial_params, param_bounds, x_data_1, x_data_2, y_data):
-
-    DEBUG_MODE = False
+def Fit_Model(model_function, initial_params, param_bounds, x_data_1, x_data_2, y_data, debug_mode=False):
 
     spins = energies.np.asarray(x_data_1)
     wobbling_phonons = energies.np.asarray(x_data_2)
-    if(DEBUG_MODE):
-        print(spins)
-        print(wobbling_phonons)
 
     # evaluation of the excitation energy for all the spins and wobbling phonon numbers of the band
     # this is a 1-D array that results from applying E_exc on the entire set of spins and wobbling phonons
     exp_data = energies.np.asarray(y_data)
-
-    if(DEBUG_MODE):
-        print(f'Band Head -> {exp_data[0]}')
 
     band_head = exp_data[0]
 
     # normalize the experimental data to the band-head
     exp_data_normed = [e - band_head for e in exp_data]
 
-    if(DEBUG_MODE):
-        print(exp_data)
-
     # Use the curve_fit function to find the best parameter set for the current experimental data-set
-    # the curve fit uses the analytical expression of the band
+    # the curve fit uses the analytical expression of the band as a model function
     # the X-data is a tuple of arrays: the spins and wobbling phonon numbers
     # the fitting procedure uses an initial set of parameters (guessed values)
     # the fitting procedure adopts fixed bounds
     fit_results = fit.curve_fit(
-        model, (spins, wobbling_phonons), exp_data_normed, p0=initial_params, bounds=param_bounds)  # Pure curve_fit
+        model_function, (spins, wobbling_phonons), exp_data_normed, p0=initial_params, bounds=param_bounds)  # Pure curve_fit
 
-    if(DEBUG_MODE):
-        print(fit_results)
-
+    # retreive the parameter set from the fitting results (unpacked value)
     params = fit_results[0]
     params = [round(p, 3) for p in params]
-    print(params)
+    if(debug_mode):
+        print(params)
 
-    th_data = model(
+    th_data = model_function(
         (spins, wobbling_phonons), params[0], params[1], params[2], params[3], params[4])
     th_data = [round(th, 3) for th in th_data]
-    if(DEBUG_MODE):
-        print(f'Data-> {th_data}')
+
+    if(debug_mode):
+        print(f'Theoretical Data-> {th_data}')
 
     # extract the theoretical data for the band1 and band2
     th_data_1 = []
@@ -127,7 +116,8 @@ def Fit_Model(model, initial_params, param_bounds, x_data_1, x_data_2, y_data):
         else:
             th_data_2.append(th_data[idx])
 
-    print(f'RMS -> {fit.Fit.RMS(exp_data_normed, th_data)}')
+    if(debug_mode):
+        print(f'RMS -> {fit.Fit.RMS(exp_data_normed, th_data)}')
 
     return [th_data_1, th_data_2]
 
@@ -175,7 +165,7 @@ def Negative_Pipeline(initial_params, debug_mode=False):
     PARAMS_BOUNDS = ([1, 1, 1, 0.1, 18.0], [100, 100, 100, 9.0, 25.0])
 
     # fit the theoretical model to the experimental data extracted at the previous step for the isotope
-    th_data = Fit_Model(model=energies.Models.Model_Energy_h9_2, initial_params=INITIAL_PARAMS, param_bounds=PARAMS_BOUNDS,
+    th_data = Fit_Model(model_function=energies.Models.Model_Energy_h9_2, initial_params=INITIAL_PARAMS, param_bounds=PARAMS_BOUNDS,
                         x_data_1=x_data_1, x_data_2=x_data_2, y_data=y_data)
 
     # generate a pair of bands that will be plotted via the plot module
@@ -195,9 +185,9 @@ def Negative_Pipeline(initial_params, debug_mode=False):
 def Main_183():
     print("Starting fitting procedure for $^{183}$AU")
     # Positive_Pipeline()
-    Negative_Pipeline([70.0, 10.0, 3.0, 0.4, 20.0], debug_mode=True)
-    Negative_Pipeline([75.0, 20.0, 4.0, 0.3, 20.0], debug_mode=True)
-    Negative_Pipeline([50.0, 20.0, 4.0, 0.4, 20.0], debug_mode=True)
+    Negative_Pipeline([70.0, 10.0, 3.0, 0.4, 20.0])
+    Negative_Pipeline([75.0, 20.0, 4.0, 0.3, 20.0])
+    Negative_Pipeline([50.0, 20.0, 4.0, 0.4, 20.0])
     print('Finished the fitting procedure...')
 
 
