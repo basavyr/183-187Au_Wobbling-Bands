@@ -240,8 +240,24 @@ def Main_183_Positive(initial_params):
             save(f'TW1_Th -> {BAND2[2]}')
 
 
-def Main_183_Negative():
-    Negative_Pipeline([70.0, 10.0, 3.0, 0.4, 20.0])
+def Main_183_Negative(initial_params):
+    with open(energies.Files.AU_183_NEGATIVE_FIT_DATA, 'w+') as writer:
+        save = lambda obj: writer.write(str(obj) + '\n')
+        for p0 in initial_params:
+            RMS, FIT_PARAMETERS, BAND1, BAND2 = Negative_Pipeline(
+                p0)
+            save(f'*********** Fit results for P0 ************')
+            save(f'*********** {p0} ************')
+            save(f'P -> {FIT_PARAMETERS}')
+            save(f'RMS -> {RMS}')
+            save('First wobbling band => YRAST')
+            save(f'Spins -> {BAND1[0]}')
+            save(f'YRAST_Exp -> {BAND1[1]}')
+            save(f'YRAST_Th -> {BAND1[2]}')
+            save('Second wobbling band => TW1')
+            save(f'Spins -> {BAND2[0]}')
+            save(f'TW1_Exp -> {BAND2[1]}')
+            save(f'TW1_Th -> {BAND2[2]}')
 
 
 if __name__ == '__main__':
@@ -250,5 +266,6 @@ if __name__ == '__main__':
         [60.0, 3.0, 25.0, 1.9, 20.0],
         [70.0, 10.0, 20.0, 0.4, 19.0]
     ]
+
     Main_183_Positive(P0_PLUS)
-    # Main_183_Negative()
+    Main_183_Negative([[70.0, 10.0, 3.0, 0.4, 20.0]])
