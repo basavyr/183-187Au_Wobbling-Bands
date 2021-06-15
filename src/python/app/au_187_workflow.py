@@ -125,7 +125,7 @@ def Au187_Pipeline(initial_params, debug_mode=False):
     AU_187 = energies.Files.AU_187_DATA_NEGATIVE
 
     # set the maximum allowed values for each parameter
-    PARAMS_BOUNDS = ([1, 1, 1, 0.1, 18.0], [100, 100, 100, 9.0, 25.0])
+    PARAMS_BOUNDS = ([1, 1, 1, 0.1, 15], [100, 100, 100, 9.0, 25.0])
 
     # get the experimental data for the positive parity wobbling bands
     x_data_1, x_data_2, y_data = Get_Experimental_Data(AU_187)
@@ -162,6 +162,36 @@ def Au187_Pipeline(initial_params, debug_mode=False):
     return rms_value, fit_parameters, band1, band2
 
 
+def Main_Pipeline(initial_params):
+    with open(energies.Files.AU_187_FIT_DATA, 'w+') as writer:
+        def save(obj): return writer.write(str(obj) + '\n')
+        for p0 in initial_params:
+            RMS, FIT_PARAMETERS, BAND1, BAND2 = Au187_Pipeline(
+                p0)
+            if(energies.np.isnan(RMS)):
+                print(f'Encountered invalid RMS value for P0={p0}')
+            else:
+                save(f'*********** Fit results for P0 ************')
+                save(f'*********** {p0} ************')
+                save(f'P -> {FIT_PARAMETERS}')
+                save(f'RMS -> {RMS}')
+                save('First wobbling band => YRAST')
+                save(f'Spins -> {BAND1[0]}')
+                save(f'YRAST_Exp -> {BAND1[1]}')
+                save(f'YRAST_Th -> {BAND1[2]}')
+                save('Second wobbling band => TW1')
+                save(f'Spins -> {BAND2[0]}')
+                save(f'TW1_Exp -> {BAND2[1]}')
+                save(f'TW1_Th -> {BAND2[2]}')
+
+
 if __name__ == '__main__':
-    initial_params = [60, 20, 5, 2.1, 21]
-    Au187_Pipeline(initial_params,True)
+    initial_params = [
+        [60, 20, 5, 2.1, 21],
+        [60, 5, 20, 2.2, 22],
+        [50, 60, 1, 2.2, 20],
+        [50, 60, 1, 2.2, 17],
+        [50, 60, 1, 2.2, 15],
+        [50, 60, 1, 2.2, 19]
+    ]
+    Main_Pipeline(initial_params)

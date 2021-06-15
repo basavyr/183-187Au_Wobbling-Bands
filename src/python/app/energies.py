@@ -25,6 +25,7 @@ class Files:
 
     AU_183_POSITIVE_FIT_DATA = data_directory + '183_Positive_Fit_Data.dat'
     AU_183_NEGATIVE_FIT_DATA = data_directory + '183_Negative_Fit_Data.dat'
+    AU_187_FIT_DATA = data_directory + '187_Fit_Data.dat'
 
 
 class Extract_Data:
