@@ -9,7 +9,7 @@ def plot_name(label):
 
 def Get_Experimental_Data(isotope, debug_mode=False):
     """Read the experimental data for a particular band sequence of an isotope.
-    The data corresponds to the wobbling excitations of an isotope with a defined parity. Namely, there can be band sequences that correspond to positive parity and sequences which correspond to negative parity.
+    The data corresponds to the wobbling excitations of an isotope with a defined parity.
     """
 
     # DEBUG_MODE = False
