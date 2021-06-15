@@ -13,15 +13,19 @@ class Files:
     AU_183_DATA_POSITIVE = data_directory + '183_positive_data.md'
     AU_183_DATA_NEGATIVE = data_directory + '183_negative_data.md'
     # store the experimental data for 187Au
-    AU_187_DATA_POSITIVE = data_directory + '187_positive_data.md'
+    # AU_187_DATA_POSITIVE = data_directory + '187_positive_data.md'
     AU_187_DATA_NEGATIVE = data_directory + '187_negative_data.md'
 
     # store the plots for 183Au
     AU_183_POSITIVE_ENERGY_PLOT = plot_directory + '183_positive_energies_plot.pdf'
     AU_183_NEGATIVE_ENERGY_PLOT = plot_directory + '183_negative_energies_plot.pdf'
     # store the plots for 187Au
-    AU_187_POSITIVE_ENERGY_PLOT = plot_directory + '187_positive_energies_plot.pdf'
+    # AU_187_POSITIVE_ENERGY_PLOT = plot_directory + '187_positive_energies_plot.pdf'
     AU_187_NEGATIVE_ENERGY_PLOT = plot_directory + '187_negative_energies_plot.pdf'
+
+    AU_183_POSITIVE_FIT_DATA = data_directory + '183_Positive_Fit_Data.dat'
+    AU_183_NEGATIVE_FIT_DATA = data_directory + '183_Negative_Fit_Data.dat'
+    AU_187_FIT_DATA = data_directory + '187_Fit_Data.dat'
 
 
 class Extract_Data:
@@ -305,6 +309,37 @@ class Models:
 
         model_function = Energy_Formula.Excitation_Energy(
             phonons, 0, spins, SPIN_ZERO, ODD_SPIN, P_1, P_2, P_3, P_4, P_5)
+
+        if(DEBUG_MODE):
+            print(f'E_EXC(X,P) -> {model_function}')
+        return model_function
+
+    @staticmethod
+    def Model_Energy_i11_2(X, P_1, P_2, P_3, P_4, P_5):
+        """
+        Describes the analytical expressions for the energies that correspond to the positive parity states.
+        This is the model function that needs to be numerically fitted.
+
+        The argument X represents the spin I and the wobbling phonon number n_w -> X = [I, n_w1].
+
+        P represents the parameter set: P = [I1, I2, I3, V, gamma].
+        """
+        DEBUG_MODE = False
+
+        # The band head of the positive parity sequences
+        # Band head corresponds to the first level of the yrast band
+        SPIN_ZERO = 4.5
+        # The odd single-particle angular momentum which couples to the triaxial even-even core
+        ODD_SPIN = 5.5
+
+        # unpack the spins and the wobbling phonon numbers from the experimental data of the band
+        spins, wobbling_phonons = X
+
+        if(DEBUG_MODE):
+            print(f'in model ->Spins: {spins}\n nw_1: {wobbling_phonons}')
+
+        model_function = Energy_Formula.Excitation_Energy(
+            wobbling_phonons, 0, spins, SPIN_ZERO, ODD_SPIN, P_1, P_2, P_3, P_4, P_5)
 
         if(DEBUG_MODE):
             print(f'E_EXC(X,P) -> {model_function}')
