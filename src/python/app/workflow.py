@@ -222,7 +222,7 @@ def Negative_Pipeline(initial_params, debug_mode=False):
 
 def Main_183_Positive(initial_params):
     with open(energies.Files.AU_183_POSITIVE_FIT_DATA, 'w+') as writer:
-        save = lambda obj: writer.write(str(obj) + '\n')
+        def save(obj): return writer.write(str(obj) + '\n')
         for p0 in initial_params:
             RMS, FIT_PARAMETERS, BAND1, BAND2 = Positive_Pipeline(
                 p0)
@@ -242,7 +242,7 @@ def Main_183_Positive(initial_params):
 
 def Main_183_Negative(initial_params):
     with open(energies.Files.AU_183_NEGATIVE_FIT_DATA, 'w+') as writer:
-        save = lambda obj: writer.write(str(obj) + '\n')
+        def save(obj): return writer.write(str(obj) + '\n')
         for p0 in initial_params:
             RMS, FIT_PARAMETERS, BAND1, BAND2 = Negative_Pipeline(
                 p0)
@@ -277,5 +277,5 @@ if __name__ == '__main__':
         [85.0, 20.0, 5.0, 1.1, 23.8]
     ]
 
-    Main_183_Positive(P0_PLUS)
-    Main_183_Negative(P0_NEGATIVE)
+    # Main_183_Positive(P0_PLUS)
+    # Main_183_Negative(P0_NEGATIVE)

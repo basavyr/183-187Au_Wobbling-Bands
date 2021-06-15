@@ -13,14 +13,14 @@ class Files:
     AU_183_DATA_POSITIVE = data_directory + '183_positive_data.md'
     AU_183_DATA_NEGATIVE = data_directory + '183_negative_data.md'
     # store the experimental data for 187Au
-    AU_187_DATA_POSITIVE = data_directory + '187_positive_data.md'
+    # AU_187_DATA_POSITIVE = data_directory + '187_positive_data.md'
     AU_187_DATA_NEGATIVE = data_directory + '187_negative_data.md'
 
     # store the plots for 183Au
     AU_183_POSITIVE_ENERGY_PLOT = plot_directory + '183_positive_energies_plot.pdf'
     AU_183_NEGATIVE_ENERGY_PLOT = plot_directory + '183_negative_energies_plot.pdf'
     # store the plots for 187Au
-    AU_187_POSITIVE_ENERGY_PLOT = plot_directory + '187_positive_energies_plot.pdf'
+    # AU_187_POSITIVE_ENERGY_PLOT = plot_directory + '187_positive_energies_plot.pdf'
     AU_187_NEGATIVE_ENERGY_PLOT = plot_directory + '187_negative_energies_plot.pdf'
 
     AU_183_POSITIVE_FIT_DATA = data_directory + '183_Positive_Fit_Data.dat'
