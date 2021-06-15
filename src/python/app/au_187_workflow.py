@@ -125,7 +125,7 @@ def Au187_Pipeline(initial_params, debug_mode=False):
     AU_187 = energies.Files.AU_187_DATA_NEGATIVE
 
     # set the maximum allowed values for each parameter
-    PARAMS_BOUNDS = ([1, 1, 1, 0.1, 15], [100, 100, 100, 9.0, 25.0])
+    PARAMS_BOUNDS = ([1, 1, 1, 0.1, 20], [100, 100, 100, 9.0, 25.0])
 
     # get the experimental data for the positive parity wobbling bands
     x_data_1, x_data_2, y_data = Get_Experimental_Data(AU_187)
@@ -166,8 +166,11 @@ def Main_Pipeline(initial_params):
     with open(energies.Files.AU_187_FIT_DATA, 'w+') as writer:
         def save(obj): return writer.write(str(obj) + '\n')
         for p0 in initial_params:
-            RMS, FIT_PARAMETERS, BAND1, BAND2 = Au187_Pipeline(
-                p0)
+            try:
+                RMS, FIT_PARAMETERS, BAND1, BAND2 = Au187_Pipeline(
+                    p0)
+            except Exception:
+                pass
             if(energies.np.isnan(RMS)):
                 print(f'Encountered invalid RMS value for P0={p0}')
             else:
@@ -192,6 +195,7 @@ if __name__ == '__main__':
         [50, 60, 1, 2.2, 20],
         [50, 60, 1, 2.2, 17],
         [50, 60, 1, 2.2, 15],
-        [50, 60, 1, 2.2, 19]
+        [50, 60, 1, 2.2, 19],
+        [50, 60, 1, 2.2, 23]
     ]
     Main_Pipeline(initial_params)
