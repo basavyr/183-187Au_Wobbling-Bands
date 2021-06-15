@@ -226,18 +226,21 @@ def Main_183_Positive(initial_params):
         for p0 in initial_params:
             RMS, FIT_PARAMETERS, BAND1, BAND2 = Positive_Pipeline(
                 p0)
-            save(f'*********** Fit results for P0 ************')
-            save(f'*********** {p0} ************')
-            save(f'P -> {FIT_PARAMETERS}')
-            save(f'RMS -> {RMS}')
-            save('First wobbling band => YRAST')
-            save(f'Spins -> {BAND1[0]}')
-            save(f'YRAST_Exp -> {BAND1[1]}')
-            save(f'YRAST_Th -> {BAND1[2]}')
-            save('Second wobbling band => TW1')
-            save(f'Spins -> {BAND2[0]}')
-            save(f'TW1_Exp -> {BAND2[1]}')
-            save(f'TW1_Th -> {BAND2[2]}')
+            if(energies.np.isnan(RMS)):
+                print(f'Encountered invalid RMS value for P0={p0}')
+            else:
+                save(f'*********** Fit results for P0 ************')
+                save(f'*********** {p0} ************')
+                save(f'P -> {FIT_PARAMETERS}')
+                save(f'RMS -> {RMS}')
+                save('First wobbling band => YRAST')
+                save(f'Spins -> {BAND1[0]}')
+                save(f'YRAST_Exp -> {BAND1[1]}')
+                save(f'YRAST_Th -> {BAND1[2]}')
+                save('Second wobbling band => TW1')
+                save(f'Spins -> {BAND2[0]}')
+                save(f'TW1_Exp -> {BAND2[1]}')
+                save(f'TW1_Th -> {BAND2[2]}')
 
 
 def Main_183_Negative(initial_params):
