@@ -157,7 +157,7 @@ def Au187_Pipeline(initial_params, debug_mode=False):
         print('*************************')
 
     # create a graphical representation with both bands on the same plot
-    Plot_Fit_Results(band1, band2, PLOT_FILE, r'$^{187}$Au$^-$')
+    Plot_Fit_Results(band1, band2, PLOT_FILE, r'$^{187}$Au')
 
     return rms_value, fit_parameters, band1, band2
 
