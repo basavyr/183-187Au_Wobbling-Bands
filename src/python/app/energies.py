@@ -312,3 +312,34 @@ class Models:
         if(DEBUG_MODE):
             print(f'E_EXC(X,P) -> {model_function}')
         return model_function
+
+    @staticmethod
+    def Model_Energy_i11_2(X, P_1, P_2, P_3, P_4, P_5):
+        """
+        Describes the analytical expressions for the energies that correspond to the positive parity states.
+        This is the model function that needs to be numerically fitted.
+
+        The argument X represents the spin I and the wobbling phonon number n_w -> X = [I, n_w1].
+
+        P represents the parameter set: P = [I1, I2, I3, V, gamma].
+        """
+        DEBUG_MODE = False
+
+        # The band head of the positive parity sequences
+        # Band head corresponds to the first level of the yrast band
+        SPIN_ZERO = 4.5
+        # The odd single-particle angular momentum which couples to the triaxial even-even core
+        ODD_SPIN = 5.5
+
+        # unpack the spins and the wobbling phonon numbers from the experimental data of the band
+        spins, wobbling_phonons = X
+
+        if(DEBUG_MODE):
+            print(f'in model ->Spins: {spins}\n nw_1: {wobbling_phonons}')
+
+        model_function = Energy_Formula.Excitation_Energy(
+            wobbling_phonons, 0, spins, SPIN_ZERO, ODD_SPIN, P_1, P_2, P_3, P_4, P_5)
+
+        if(DEBUG_MODE):
+            print(f'E_EXC(X,P) -> {model_function}')
+        return model_function

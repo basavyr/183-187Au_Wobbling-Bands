@@ -84,15 +84,23 @@ def Fit_Model(model_function, initial_params, param_bounds, x_data_1, x_data_2, 
 
 def Au187_Pipeline(initial_params, debug_mode=False):
 
-    # PLOT_FILE = plot_name('187Au')
+    model = energies.Models.Model_Energy_i11_2
+
+    PLOT_FILE = plot_name('187Au')
 
     # data for $^{187}$Au - POSITIVE PARITY BANDS
     AU_187 = energies.Files.AU_187_DATA_NEGATIVE
 
+    # set the maximum allowed values for each parameter
+    PARAMS_BOUNDS = ([1, 1, 1, 0.1, 18.0], [100, 100, 100, 9.0, 25.0])
+
     # get the experimental data for the positive parity wobbling bands
     x_data_1, x_data_2, y_data = Get_Experimental_Data(AU_187)
 
-    # fit_results=Fit_Model()
+    fit_results = Fit_Model(model_function=model, initial_params=initial_params, param_bounds=PARAMS_BOUNDS,
+                            x_data_1=x_data_1, x_data_2=x_data_2, y_data=y_data, debug_mode=True)
+
+    print(fit_results)
 
 
 if __name__ == '__main__':
