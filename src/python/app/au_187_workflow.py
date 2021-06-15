@@ -15,12 +15,6 @@ def Get_Experimental_Data(isotope, debug_mode=False):
     # DEBUG_MODE = False
 
     YRAST, TW1, LABEL = energies.Extract_Data.Get_Energies(isotope)
-    YRAST = energies.Energy_Formula.MeV(YRAST)
-    TW1 = energies.Energy_Formula.MeV(TW1)
-
-    # YRAST = [[e[0], e[1], round(e[2], 3)] for e in YRAST]
-    # TW1 = [[e[0], e[1], round(e[2], 3)] for e in TW1]
-
     EXP_DATA = fit.Fit.Concatenate_Data(YRAST, TW1)
 
     if(debug_mode):
@@ -40,14 +34,20 @@ def Get_Experimental_Data(isotope, debug_mode=False):
     return [X_DATA_SPINS, X_DATA_PHONONS, Y_DATA]
 
 
-PLOT_FILE = plot_name('187Au')
+def Au187_Pipeline():
 
-# data for $^{187}$Au - POSITIVE PARITY BANDS
-AU_187 = energies.Files.AU_187_DATA_NEGATIVE
+    PLOT_FILE = plot_name('187Au')
 
-# get the experimental data for the positive parity wobbling bands
-x_data_1, x_data_2, y_data = Get_Experimental_Data(AU_187)
+    # data for $^{187}$Au - POSITIVE PARITY BANDS
+    AU_187 = energies.Files.AU_187_DATA_NEGATIVE
 
-print(x_data_1)
-print(x_data_2)
-print(y_data)
+    # get the experimental data for the positive parity wobbling bands
+    x_data_1, x_data_2, y_data = Get_Experimental_Data(AU_187)
+
+    print(x_data_1)
+    print(x_data_2)
+    print(y_data)
+
+
+if __name__ == '__main__':
+    Au187_Pipeline()
