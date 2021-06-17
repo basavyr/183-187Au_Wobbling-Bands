@@ -282,16 +282,19 @@ if __name__ == '__main__':
     ]
 
     # Main_183_Positive(P0_PLUS)
-    # Main_183_Negative(P0_NEGATIVE)
 
-    ptest = [30, 30, 30, 0.2, 20]
-    spins = energies.np.arange(4.5, 35.5, 2)
-    spins = [x for x in spins]
-    phonons = [0 if x % 2 == 0 else 1 for x in range(len(spins) + 1)]
-    for idx in range(len(spins)):
-        # x = spin, energies.Energy_Formula.Excitation_Energy(
-        #     0, 0, spin, 4.5, 4.5, ptest[0], ptest[1], ptest[2], ptest[3], ptest[4]), energies.Energy_Formula.Excitation_Energy(
-        #     1, 0, spin, 4.5, 4.5, ptest[0], ptest[1], ptest[2], ptest[3], ptest[4])
-        # print(x)
-        print(energies.Models.Model_Energy_h9_2(
-            (spins[idx], phonons[idx]), ptest[0], ptest[1], ptest[2], ptest[3], ptest[4]))
+    ptest = [
+        [10, 30, 30, 0.2, 20],
+        [50, 30, 20, 0.4, 18]
+    ]
+    Main_183_Negative(ptest)
+    # spins = energies.np.arange(4.5, 35.5, 2)
+    # spins = [x for x in spins]
+    # phonons = [0 if x % 2 == 0 else 1 for x in range(len(spins) + 1)]
+    # for idx in range(len(spins)):
+    #     # x = spin, energies.Energy_Formula.Excitation_Energy(
+    #     #     0, 0, spin, 4.5, 4.5, ptest[0], ptest[1], ptest[2], ptest[3], ptest[4]), energies.Energy_Formula.Excitation_Energy(
+    #     #     1, 0, spin, 4.5, 4.5, ptest[0], ptest[1], ptest[2], ptest[3], ptest[4])
+    #     # print(x)
+    #     print(energies.Models.Model_Energy_h9_2(
+    #         (spins[idx], phonons[idx]), ptest[0], ptest[1], ptest[2], ptest[3], ptest[4]))
