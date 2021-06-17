@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     84738,       2068]
-NotebookOptionsPosition[     82384,       2019]
-NotebookOutlinePosition[     82724,       2034]
-CellTagsIndexPosition[     82681,       2031]
+NotebookDataLength[     79446,       1927]
+NotebookOptionsPosition[     77096,       1878]
+NotebookOutlinePosition[     77436,       1893]
+CellTagsIndexPosition[     77393,       1890]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -703,155 +703,12 @@ Cell[BoxData[{
 
 Cell[CellGroupData[{
 
-Cell[BoxData[{
- RowBox[{
-  RowBox[{
-  "label1", "=", 
-   "\"\<\!\(\*SuperscriptBox[\(\), \(183\)]\)Au\\n\!\(\*SubscriptBox[\(h\), \
-\(9/2\)]\)-yrast\>\""}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-  "label2", "=", 
-   "\"\<\!\(\*SuperscriptBox[\(\), \(183\)]\)Au\\n\!\(\*SubscriptBox[\(h\), \
-\(9/2\)]\)-wob\>\""}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"plotFunction", "[", 
-    RowBox[{
-    "band_", ",", "params_", ",", "spins_", ",", "expData_", ",", "label_"}], 
-    "]"}], ":=", 
-   RowBox[{"ListPlot", "[", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{
-       RowBox[{"Table", "[", 
-        RowBox[{
-         RowBox[{"{", 
-          RowBox[{
-           RowBox[{"spins", "[", 
-            RowBox[{"[", "i", "]"}], "]"}], ",", 
-           RowBox[{"expData", "[", 
-            RowBox[{"[", "i", "]"}], "]"}]}], "}"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"i", ",", "1", ",", 
-           RowBox[{"Length", "[", "spins", "]"}]}], "}"}]}], "]"}], ",", 
-       RowBox[{"Table", "[", 
-        RowBox[{
-         RowBox[{"{", 
-          RowBox[{
-           RowBox[{"spins", "[", 
-            RowBox[{"[", "i", "]"}], "]"}], ",", 
-           RowBox[{"band", "[", 
-            RowBox[{
-             RowBox[{"spins", "[", 
-              RowBox[{"[", "i", "]"}], "]"}], ",", 
-             RowBox[{"params", "[", 
-              RowBox[{"[", "1", "]"}], "]"}], ",", 
-             RowBox[{"params", "[", 
-              RowBox[{"[", "2", "]"}], "]"}], ",", 
-             RowBox[{"params", "[", 
-              RowBox[{"[", "3", "]"}], "]"}], ",", 
-             RowBox[{"params", "[", 
-              RowBox[{"[", "4", "]"}], "]"}], ",", 
-             RowBox[{"params", "[", 
-              RowBox[{"[", "5", "]"}], "]"}]}], "]"}]}], "}"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"i", ",", "1", ",", 
-           RowBox[{"Length", "[", "spins", "]"}]}], "}"}]}], "]"}]}], "}"}], 
-     ",", 
-     RowBox[{"Frame", "\[Rule]", "True"}], ",", 
-     RowBox[{"Axes", "\[Rule]", "False"}], ",", 
-     RowBox[{"AspectRatio", "\[Rule]", "0.8"}], ",", 
-     RowBox[{"FrameLabel", "\[Rule]", 
-      RowBox[{"{", 
-       RowBox[{
-       "\"\<I [\[HBar]]\>\"", ",", 
-        "\"\<\!\(\*SubscriptBox[\(E\), \(Exc\)]\) [MeV]\>\""}], "}"}]}], ",", 
-     
-     RowBox[{"PlotLegends", "\[Rule]", 
-      RowBox[{"Placed", "[", 
-       RowBox[{
-        RowBox[{"{", 
-         RowBox[{"\"\<Exp.\>\"", ",", "\"\<Th\>\""}], "}"}], ",", 
-        RowBox[{"{", 
-         RowBox[{"0.25", ",", "0.75"}], "}"}]}], "]"}]}], ",", 
-     RowBox[{"FrameStyle", "\[Rule]", 
-      RowBox[{"Directive", "[", 
-       RowBox[{"Thick", ",", "Black"}], "]"}]}], ",", 
-     RowBox[{"LabelStyle", "\[Rule]", 
-      RowBox[{"{", 
-       RowBox[{"19", ",", "Black", ",", "Bold", ",", 
-        RowBox[{"FontFamily", "\[Rule]", "\"\<Times\>\""}]}], "}"}]}], ",", 
-     RowBox[{"Joined", "\[Rule]", 
-      RowBox[{"{", 
-       RowBox[{"False", ",", " ", "True"}], "}"}]}], ",", 
-     RowBox[{"PlotStyle", "\[Rule]", 
-      RowBox[{"{", 
-       RowBox[{"Blue", ",", "Black"}], "}"}]}], ",", 
-     RowBox[{"PlotMarkers", "\[Rule]", 
-      RowBox[{"{", 
-       RowBox[{
-        RowBox[{"{", 
-         RowBox[{"Automatic", ",", "11"}], "}"}], ",", "None"}], "}"}]}], ",", 
-     RowBox[{"Epilog", "\[Rule]", 
-      RowBox[{"Inset", "[", 
-       RowBox[{
-        RowBox[{"Style", "[", 
-         RowBox[{"label", ",", "19", ",", "Black", ",", "Bold", ",", 
-          RowBox[{"FontFamily", "\[Rule]", "\"\<Times\>\""}]}], "]"}], ",", 
-        RowBox[{"Scaled", "[", 
-         RowBox[{"{", 
-          RowBox[{"0.8", ",", "0.2"}], "}"}], "]"}]}], "]"}]}], ",", 
-     RowBox[{"PlotRange", "\[Rule]", "Full"}]}], "]"}]}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"pNegative1", "=", 
-   RowBox[{"plotFunction", "[", 
-    RowBox[{
-    "band1Negative", ",", "paramSetNegative", ",", "s1Negative", ",", 
-     "yrastNegative", ",", "label1"}], "]"}]}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"pNegative2", "=", 
-   RowBox[{"plotFunction", "[", 
-    RowBox[{
-    "band2Negative", ",", "paramSetNegative", ",", "s2Negative", ",", 
-     "tw1Negative", ",", "label2"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"Export", "[", 
-   RowBox[{
-   "\"\</Users/robertpoenaru/Library/Mobile \
-Documents/com~apple~CloudDocs/Work/Pipeline/DFT/183-187Au_Wobbling-Bands/src/\
-python/app/assets/plots/Au_183_plot1Negative.pdf\>\"", ",", 
-    RowBox[{"Show", "[", "pNegative1", "]"}], ",", 
-    RowBox[{"ImageResolution", "\[Rule]", "1200"}]}], "]"}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"Export", "[", 
-   RowBox[{
-   "\"\</Users/robertpoenaru/Library/Mobile \
-Documents/com~apple~CloudDocs/Work/Pipeline/DFT/183-187Au_Wobbling-Bands/src/\
-python/app/assets/plots/Au_183_plot2Negative.pdf\>\"", ",", 
-    RowBox[{"Show", "[", "pNegative2", "]"}], ",", 
-    RowBox[{"ImageResolution", "\[Rule]", "1200"}]}], "]"}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{"Grid", "[", 
-  RowBox[{
-   RowBox[{"{", 
-    RowBox[{"{", 
-     RowBox[{
-      RowBox[{"Show", "[", 
-       RowBox[{"pNegative1", ",", 
-        RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}], ",", 
-      RowBox[{"Show", "[", 
-       RowBox[{"pNegative2", ",", 
-        RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}]}], "}"}], "}"}], 
-   ",", 
-   RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}]}], "Input",
+Cell[BoxData["\[AliasDelimiter]"], "Input",
  CellChangeTimes->{{3.832643907182249*^9, 3.832643921094554*^9}, {
   3.832645751229814*^9, 3.8326457646661043`*^9}, {3.8327388512944317`*^9, 
-  3.8327389161042557`*^9}},
- CellLabel->"In[86]:=",ExpressionUUID->"8c09033b-cd6d-48a2-a36b-5e032f10b5a0"],
+  3.8327389161042557`*^9}, {3.8329101325258303`*^9, 
+  3.8329101424834423`*^9}},ExpressionUUID->"8c09033b-cd6d-48a2-a36b-\
+5e032f10b5a0"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -1823,7 +1680,7 @@ Cell[BoxData[{
        RowBox[{"{", 
         RowBox[{
          RowBox[{
-         "StringTemplate", "[", "\"\<P=I1=`` I2=`` I3=``\\nV=`` gm=``\>\"", 
+         "StringTemplate", "[", "\"\<I1=`` I2=`` I3=``\\nV=`` gm=``\>\"", 
           "]"}], "[", 
          RowBox[{
           RowBox[{"params", "[", 
@@ -1860,8 +1717,10 @@ Cell[BoxData[{
    3.8326710754748697`*^9}, {3.832671144264661*^9, 3.832671313566424*^9}, {
    3.8326715652529783`*^9, 3.832671716176908*^9}, 3.8326717659810266`*^9, {
    3.832671870717989*^9, 3.832671899350275*^9}, {3.832671948988453*^9, 
-   3.832671994857338*^9}, {3.832672249214768*^9, 3.832672315353702*^9}},
- CellLabel->"In[94]:=",ExpressionUUID->"40382da8-3bc3-4b7c-a4f9-3e8c51c44c83"],
+   3.832671994857338*^9}, {3.832672249214768*^9, 3.832672315353702*^9}, {
+   3.8329101464481897`*^9, 
+   3.832910146648737*^9}},ExpressionUUID->"40382da8-3bc3-4b7c-a4f9-\
+3e8c51c44c83"],
 
 Cell[CellGroupData[{
 
@@ -2055,19 +1914,19 @@ Cell[16714, 516, 174, 3, 45, "Subsubsection",ExpressionUUID->"361855eb-3a51-4ec0
 Cell[16891, 521, 6620, 166, 415, "Input",ExpressionUUID->"e517a049-1d3c-4a7a-b0c4-a7c63cced655"],
 Cell[23514, 689, 518, 12, 52, "Input",ExpressionUUID->"54a6c5d0-dc04-45c4-8b63-9821512f3317"],
 Cell[CellGroupData[{
-Cell[24057, 705, 5643, 148, 430, "Input",ExpressionUUID->"8c09033b-cd6d-48a2-a36b-5e032f10b5a0"],
-Cell[29703, 855, 41169, 878, 333, "Output",ExpressionUUID->"ab280c95-3701-4403-8164-48ac19ae9215"]
+Cell[24057, 705, 323, 5, 30, "Input",ExpressionUUID->"8c09033b-cd6d-48a2-a36b-5e032f10b5a0"],
+Cell[24383, 712, 41169, 878, 333, "Output",ExpressionUUID->"ab280c95-3701-4403-8164-48ac19ae9215"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[70945, 1741, 161, 3, 67, "Section",ExpressionUUID->"35df9cd1-ea83-4736-a89f-b261cb13bd20"],
-Cell[71109, 1746, 4566, 117, 241, "Input",ExpressionUUID->"40382da8-3bc3-4b7c-a4f9-3e8c51c44c83"],
+Cell[65625, 1598, 161, 3, 67, "Section",ExpressionUUID->"35df9cd1-ea83-4736-a89f-b261cb13bd20"],
+Cell[65789, 1603, 4598, 119, 241, "Input",ExpressionUUID->"40382da8-3bc3-4b7c-a4f9-3e8c51c44c83"],
 Cell[CellGroupData[{
-Cell[75700, 1867, 2980, 70, 157, "Input",ExpressionUUID->"e8ba7ba3-02ed-4429-b2f6-7f5ccbc33c7a"],
-Cell[78683, 1939, 1834, 37, 347, "Output",ExpressionUUID->"c84f4357-a57f-4099-8b88-05fb91203590"],
-Cell[80520, 1978, 1836, 37, 381, "Output",ExpressionUUID->"7f043351-3581-4b06-81d7-bf989beb3e7f"]
+Cell[70412, 1726, 2980, 70, 157, "Input",ExpressionUUID->"e8ba7ba3-02ed-4429-b2f6-7f5ccbc33c7a"],
+Cell[73395, 1798, 1834, 37, 347, "Output",ExpressionUUID->"c84f4357-a57f-4099-8b88-05fb91203590"],
+Cell[75232, 1837, 1836, 37, 347, "Output",ExpressionUUID->"7f043351-3581-4b06-81d7-bf989beb3e7f"]
 }, Open  ]]
 }, Open  ]]
 }
