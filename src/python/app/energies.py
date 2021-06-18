@@ -223,7 +223,7 @@ class Energy_Formula:
 
         # Use the reversed variable for the wobbling frequency ordering.
         # Depending on its value, the frequencies will be interchanged for further computations
-        reversed = True
+        reversed = False
         Omega_1, Omega_2 = Energy_Formula.Omega_Frequencies(
             spin, odd_spin, I1, I2, I3, V, gamma, reversed)
 
