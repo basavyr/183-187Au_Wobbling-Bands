@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex main"] 1624111985 "main.aux" "main.bbl" "main" 1624111990
+["bibtex main"] 1624112536 "main.aux" "main.bbl" "main" 1624112545
   "/usr/local/texlive/2020/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1624111986 733 8a3a711052d7f15b68ccc36265cf7579 "pdflatex"
-  "references.bib" 1624083410 760 ec898fc0b56188e9a46f4702abb53dc7 ""
+  "main.aux" 1624112545 603 0a42a99f8e2c3fccbf36545e42236992 "pdflatex"
+  "references.bib" 1624112130 760 ec898fc0b56188e9a46f4702abb53dc7 ""
   (generated)
-  "main.bbl"
   "main.blg"
-["pdflatex"] 1624111986 "main.tex" "main.pdf" "main" 1624111990
+  "main.bbl"
+["pdflatex"] 1624112544 "main.tex" "main.pdf" "main" 1624112545
   "/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -69,13 +69,13 @@
   "/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1612011118 5160756 0c9b358d94d8d050dff33fac8e57ecb7 ""
   "/usr/local/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1612011165 2568493 a81c2f837273648acb4bf09d3029e063 ""
   "/usr/local/texlive/2020/texmf.cnf" 1586288231 577 d60164b4589a341208aff7a667fbbdcb ""
-  "figs/negative_Au183.png" 1624001262 87715 2e4bc97f4588a87a31e4b506722e05ae ""
-  "figs/positive_Au183.png" 1624001347 89199 790c0c577de150315d746da08a9aafcc ""
-  "figs/spectrum_Au187.png" 1624005551 95319 555308b26fbde1311ceb7eb32f882d5d ""
-  "main.aux" 1624111986 733 8a3a711052d7f15b68ccc36265cf7579 "pdflatex"
-  "main.bbl" 1624111986 636 d5a820717cc021ca28af84b575235faa "bibtex main"
-  "main.tex" 1624111984 1610 fd248bd8ad912e7c926835f918a583bb ""
+  "figs/negative_Au183.png" 1624112130 87715 2e4bc97f4588a87a31e4b506722e05ae ""
+  "figs/positive_Au183.png" 1624112130 89199 790c0c577de150315d746da08a9aafcc ""
+  "figs/spectrum_Au187.png" 1624112130 95319 555308b26fbde1311ceb7eb32f882d5d ""
+  "main.aux" 1624112545 603 0a42a99f8e2c3fccbf36545e42236992 "pdflatex"
+  "main.bbl" 1624112536 636 d5a820717cc021ca28af84b575235faa "bibtex main"
+  "main.tex" 1624112544 1543 a9ad0b21c25c82efe3cc8ac2ecb4cf38 ""
   (generated)
   "main.pdf"
-  "main.log"
   "main.aux"
+  "main.log"
