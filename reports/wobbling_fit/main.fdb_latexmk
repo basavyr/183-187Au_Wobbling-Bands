@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex main"] 1624083475 "main.aux" "main.bbl" "main" 1624083558
+["bibtex main"] 1624111415 "main.aux" "main.bbl" "main" 1624111568
   "/usr/local/texlive/2020/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1624083558 214 1e5725a0a446204d5c2e7165d8918c03 "pdflatex"
+  "main.aux" 1624111483 214 1e5725a0a446204d5c2e7165d8918c03 "pdflatex"
   "references.bib" 1624083410 760 ec898fc0b56188e9a46f4702abb53dc7 ""
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1624083557 "main.tex" "main.pdf" "main" 1624083558
+["pdflatex"] 1624111482 "main.tex" "main.pdf" "main" 1624111568
   "/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -25,6 +25,7 @@
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmr10.tfm" 1136768653 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "/usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmb8a.pfb" 1136849748 44729 811d6c62865936705a31c797a1d5dada ""
   "/usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb" 1136849748 46026 6dab18b61c907687b520c72847215a68 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb" 1136849748 45458 a3faba884469519614ca56ba5f6b1de1 ""
@@ -68,9 +69,11 @@
   "/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1612011118 5160756 0c9b358d94d8d050dff33fac8e57ecb7 ""
   "/usr/local/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1612011165 2568493 a81c2f837273648acb4bf09d3029e063 ""
   "/usr/local/texlive/2020/texmf.cnf" 1586288231 577 d60164b4589a341208aff7a667fbbdcb ""
-  "main.aux" 1624083558 214 1e5725a0a446204d5c2e7165d8918c03 "pdflatex"
-  "main.bbl" 1624083475 379 1cf9ebfeea57dc3ac821eab7d7fc1d64 "bibtex main"
-  "main.tex" 1624083557 743 8306a855c75982c53e235c4d0eb08d3f ""
+  "figs/negative_Au183.png" 1624001262 87715 2e4bc97f4588a87a31e4b506722e05ae ""
+  "figs/positive_Au183.png" 1624001347 89199 790c0c577de150315d746da08a9aafcc ""
+  "main.aux" 1624111483 214 1e5725a0a446204d5c2e7165d8918c03 "pdflatex"
+  "main.bbl" 1624111415 379 1cf9ebfeea57dc3ac821eab7d7fc1d64 "bibtex main"
+  "main.tex" 1624111566 1014 e4f69ec1e92155826f312edfea818480 ""
   (generated)
   "main.aux"
   "main.pdf"
