@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.1.30)  19 JUN 2021 17:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.1.30)  19 JUN 2021 17:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -270,29 +270,34 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 <figs/negative_Au183.png, id=1, 300.12125pt x 804.00375pt>
 File: figs/negative_Au183.png Graphic file (type png)
 <use figs/negative_Au183.png>
-Package pdftex.def Info: figs/negative_Au183.png  used on input line 25.
+Package pdftex.def Info: figs/negative_Au183.png  used on input line 26.
 (pdftex.def)             Requested size: 75.03012pt x 201.00044pt.
 <figs/positive_Au183.png, id=3, 324.21124pt x 862.22125pt>
 File: figs/positive_Au183.png Graphic file (type png)
 <use figs/positive_Au183.png>
-Package pdftex.def Info: figs/positive_Au183.png  used on input line 26.
+Package pdftex.def Info: figs/positive_Au183.png  used on input line 27.
 (pdftex.def)             Requested size: 81.05261pt x 215.55478pt.
- (./main.bbl) [1
+<figs/spectrum_Au187.png, id=4, 411.5375pt x 712.6625pt>
+File: figs/spectrum_Au187.png Graphic file (type png)
+<use figs/spectrum_Au187.png>
+Package pdftex.def Info: figs/spectrum_Au187.png  used on input line 36.
+(pdftex.def)             Requested size: 123.4622pt x 213.8004pt.
+ [1
 
-{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figs/negative_Au183.png> <./figs/positive_Au183.png>] (./main.aux) ) 
+{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figs/negative_Au183.png> <./figs/positive_Au183.png>] (./main.bbl) [2 <./figs/spectrum_Au187.png>] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 3201 strings out of 479304
- 43764 string characters out of 5867281
- 334656 words of memory out of 5000000
- 20344 multiletter control sequences out of 15000+600000
- 440010 words of font info for 98 fonts, out of 8000000 for 9000
+ 3211 strings out of 479304
+ 43965 string characters out of 5867281
+ 334675 words of memory out of 5000000
+ 20352 multiletter control sequences out of 15000+600000
+ 441117 words of font info for 99 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 81i,6n,89p,432b,212s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 81i,6n,89p,432b,222s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ./main.pdf (1 page, 177727 bytes).
+Output written on ./main.pdf (2 pages, 255780 bytes).
 PDF statistics:
- 34 PDF objects out of 1000 (max. 8388607)
- 21 compressed objects within 1 object stream
+ 39 PDF objects out of 1000 (max. 8388607)
+ 23 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

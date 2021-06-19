@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex main"] 1624111415 "main.aux" "main.bbl" "main" 1624111568
+["bibtex main"] 1624111985 "main.aux" "main.bbl" "main" 1624111990
   "/usr/local/texlive/2020/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1624111483 214 1e5725a0a446204d5c2e7165d8918c03 "pdflatex"
+  "main.aux" 1624111986 733 8a3a711052d7f15b68ccc36265cf7579 "pdflatex"
   "references.bib" 1624083410 760 ec898fc0b56188e9a46f4702abb53dc7 ""
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1624111482 "main.tex" "main.pdf" "main" 1624111568
+["pdflatex"] 1624111986 "main.tex" "main.pdf" "main" 1624111990
   "/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -71,10 +71,11 @@
   "/usr/local/texlive/2020/texmf.cnf" 1586288231 577 d60164b4589a341208aff7a667fbbdcb ""
   "figs/negative_Au183.png" 1624001262 87715 2e4bc97f4588a87a31e4b506722e05ae ""
   "figs/positive_Au183.png" 1624001347 89199 790c0c577de150315d746da08a9aafcc ""
-  "main.aux" 1624111483 214 1e5725a0a446204d5c2e7165d8918c03 "pdflatex"
-  "main.bbl" 1624111415 379 1cf9ebfeea57dc3ac821eab7d7fc1d64 "bibtex main"
-  "main.tex" 1624111566 1014 e4f69ec1e92155826f312edfea818480 ""
+  "figs/spectrum_Au187.png" 1624005551 95319 555308b26fbde1311ceb7eb32f882d5d ""
+  "main.aux" 1624111986 733 8a3a711052d7f15b68ccc36265cf7579 "pdflatex"
+  "main.bbl" 1624111986 636 d5a820717cc021ca28af84b575235faa "bibtex main"
+  "main.tex" 1624111984 1610 fd248bd8ad912e7c926835f918a583bb ""
   (generated)
-  "main.aux"
   "main.pdf"
   "main.log"
+  "main.aux"
