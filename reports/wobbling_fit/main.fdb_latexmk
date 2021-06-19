@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex main"] 1624112536 "main.aux" "main.bbl" "main" 1624112545
-  "/usr/local/texlive/2020/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1624112545 603 0a42a99f8e2c3fccbf36545e42236992 "pdflatex"
-  "references.bib" 1624112130 760 ec898fc0b56188e9a46f4702abb53dc7 ""
+["bibtex main"] 1624112694 "main.aux" "main.bbl" "main" 1624112806
+  "/usr/local/texlive/2020/texmf-dist/bibtex/bst/base/unsrt.bst" 1292289607 18030 1376b4b231b50c66211e47e42eda2875 ""
+  "main.aux" 1624112797 772 11aff94ea0cf3341c4732ca4d05b049a "pdflatex"
+  "references.bib" 1624112663 1087 b40b55eff852885bdbf8519d602079d5 ""
   (generated)
   "main.blg"
   "main.bbl"
-["pdflatex"] 1624112544 "main.tex" "main.pdf" "main" 1624112545
+["pdflatex"] 1624112796 "main.tex" "main.pdf" "main" 1624112806
   "/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -72,10 +72,10 @@
   "figs/negative_Au183.png" 1624112130 87715 2e4bc97f4588a87a31e4b506722e05ae ""
   "figs/positive_Au183.png" 1624112130 89199 790c0c577de150315d746da08a9aafcc ""
   "figs/spectrum_Au187.png" 1624112130 95319 555308b26fbde1311ceb7eb32f882d5d ""
-  "main.aux" 1624112545 603 0a42a99f8e2c3fccbf36545e42236992 "pdflatex"
-  "main.bbl" 1624112536 636 d5a820717cc021ca28af84b575235faa "bibtex main"
-  "main.tex" 1624112544 1543 a9ad0b21c25c82efe3cc8ac2ecb4cf38 ""
+  "main.aux" 1624112797 772 11aff94ea0cf3341c4732ca4d05b049a "pdflatex"
+  "main.bbl" 1624112694 911 189fdd15eab86ba0efde7d55b838c569 "bibtex main"
+  "main.tex" 1624112804 1831 98475c9382fc07437cee5f6e2671ce3a ""
   (generated)
   "main.pdf"
-  "main.aux"
   "main.log"
+  "main.aux"

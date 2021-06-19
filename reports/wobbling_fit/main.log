@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.1.30)  19 JUN 2021 17:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.1.30)  19 JUN 2021 17:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -286,15 +286,15 @@ Package pdftex.def Info: figs/spectrum_Au187.png  used on input line 28.
 
 {/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figs/negative_Au183.png> <./figs/positive_Au183.png> <./figs/spectrum_Au187.png>] (./main.bbl) [2] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 3210 strings out of 479304
- 43956 string characters out of 5867281
- 334667 words of memory out of 5000000
- 20351 multiletter control sequences out of 15000+600000
+ 3211 strings out of 479304
+ 43975 string characters out of 5867281
+ 335670 words of memory out of 5000000
+ 20352 multiletter control sequences out of 15000+600000
  441117 words of font info for 99 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  81i,6n,89p,432b,222s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ./main.pdf (2 pages, 255932 bytes).
+Output written on ./main.pdf (2 pages, 259509 bytes).
 PDF statistics:
  39 PDF objects out of 1000 (max. 8388607)
  23 compressed objects within 1 object stream
