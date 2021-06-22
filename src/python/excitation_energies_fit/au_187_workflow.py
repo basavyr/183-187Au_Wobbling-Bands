@@ -190,6 +190,7 @@ def Main_Pipeline(initial_params):
 
 if __name__ == '__main__':
     initial_params = [
+
         [60, 20, 5, 2.1, 21],
         [60, 5, 20, 2.2, 22],
         [50, 60, 1, 2.2, 20],
@@ -197,5 +198,6 @@ if __name__ == '__main__':
         [50, 60, 1, 2.2, 15],
         [50, 60, 1, 2.2, 19],
         [50, 60, 1, 2.2, 23]
+        
     ]
     Main_Pipeline(initial_params)
