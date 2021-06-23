@@ -29,9 +29,10 @@ class MOI:
         pure_mois = list(map(sin_squared, SIN_ARGS))
 
         # return the normalized moments of inertia
-        return pure_mois
+        mois = list(map(lambda x: I0 * x, pure_mois))
+        return mois
 
 
 if __name__ == '__main__':
-    mois = MOI.Irrotational(1, 1)
+    mois = MOI.Irrotational(30, 15)
     print(mois)
