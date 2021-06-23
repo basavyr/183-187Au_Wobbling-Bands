@@ -161,7 +161,7 @@ class Energy_Formula:
         return H_MIN
 
     @staticmethod
-    def Omega_Frequencies(spin, odd_spin, I1, I2, I3, V, gamma, reversed=True):
+    def Omega_Frequencies(spin, odd_spin, I1, I2, I3, V, gamma, reversed=False):
 
         B = Energy_Formula.B_Term(spin, odd_spin, I1, I2, I3, V, gamma)
         C = Energy_Formula.C_Term(spin, odd_spin, I1, I2, I3, V, gamma)

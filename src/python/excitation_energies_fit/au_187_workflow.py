@@ -125,12 +125,12 @@ def Au187_Pipeline(initial_params, debug_mode=False):
     AU_187 = energies.Files.AU_187_DATA_NEGATIVE
 
     # set the maximum allowed values for each parameter
-    PARAMS_BOUNDS = ([1, 1, 1, 0.1, 20], [100, 100, 100, 9.0, 25.0])
+    PARAMS_BOUNDS = ([1, 1, 1, 0.1, 17.0], [100, 100, 100, 9.0, 25.0])
 
     # get the experimental data for the positive parity wobbling bands
     x_data_1, x_data_2, y_data = Get_Experimental_Data(AU_187)
 
-    fit_results = Fit_Model(model_function=model, initial_params=initial_params, param_bounds=PARAMS_BOUNDS,
+    fit_results = Fit_Model(model_function=model, initial_params=initial_params, param_bounds=PARAMS_BOUNDS, 
                             x_data_1=x_data_1, x_data_2=x_data_2, y_data=y_data, debug_mode=False)
 
     # get the fitting parameters for the isotope
@@ -169,8 +169,8 @@ def Main_Pipeline(initial_params):
             try:
                 RMS, FIT_PARAMETERS, BAND1, BAND2 = Au187_Pipeline(
                     p0)
-            except Exception:
-                pass
+            except Exception as error:
+                print(error)
             if(energies.np.isnan(RMS)):
                 print(f'Encountered invalid RMS value for P0={p0}')
             else:
@@ -190,14 +190,12 @@ def Main_Pipeline(initial_params):
 
 if __name__ == '__main__':
     initial_params = [
-
-        [60, 20, 5, 2.1, 21],
-        [60, 5, 20, 2.2, 22],
-        [50, 60, 1, 2.2, 20],
-        [50, 60, 1, 2.2, 17],
-        [50, 60, 1, 2.2, 15],
-        [50, 60, 1, 2.2, 19],
-        [50, 60, 1, 2.2, 23]
-        
+        # [80, 20, 5, 2.1, 21]
+        [55, 5, 20, 2.2, 20]
+        # [50, 60, 1, 2.2, 20],
+        # [50, 60, 1, 2.2, 17],
+        # [50, 60, 1, 2.2, 15],
+        # [50, 60, 1, 2.2, 19],
+        # [50, 60, 1, 2.2, 23]
     ]
     Main_Pipeline(initial_params)
