@@ -33,12 +33,22 @@ class MOI:
         return mois
 
 
-def Plot_MOIs(moi_type):
+def Plot_MOIs(moi_type, I0):
     plot_file = f'./assets/plots/{moi_type.__name__}_MOIS.pdf'
-    print(plot_file)
+
+    # define the limits of the gamma parameter (in degrees)
+    gamma_limits = [0, 60]
+    # define the step of the x-data (in degrees)
+    x_data_step = 5
+    x_data = np.arange(
+        gamma_limits[0], gamma_limits[1] + x_data_step, x_data_step)
+
+    moi_data = [moi_type(I0, x) for x in x_data]
+    for moi_tuple in moi_data:
+        print(moi_tuple)
 
 
 if __name__ == '__main__':
     # mois = MOI.Irrotational(30, 15)
     # print(mois)
-    Plot_MOIs(MOI.Irrotational)
+    Plot_MOIs(MOI.Irrotational, 10)
