@@ -50,6 +50,7 @@ def Plot_MOIs(moi_type, I0):
     i3_data = [x[2] for x in moi_data]
 
     plt.plot(x_data, i1_data, '-r', label=r'$\mathcal{I}_1$')
+    plt.plot(x_data, i2_data, '-k', label=r'$\mathcal{I}_2$')
     plt.legend(loc='best')
     plt.savefig(plot_file, bbox_inches='tight', dpi=300)
     plt.close()
