@@ -13,6 +13,12 @@ class MOI:
     def Rad(angle):
         return angle * np.pi / 180.0
 
+    @staticmethod
+    def Irrotational(I0, gm):
+        gm_rad = MOI.Rad(gm)
+        k = 1
+        return k
 
-if __name__=='__main__':
-    print('OK')
+
+if __name__ == '__main__':
+    MOI.Irrotational(1,1)
