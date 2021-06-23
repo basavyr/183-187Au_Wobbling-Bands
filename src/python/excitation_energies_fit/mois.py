@@ -44,8 +44,15 @@ def Plot_MOIs(moi_type, I0):
         gamma_limits[0], gamma_limits[1] + x_data_step, x_data_step)
 
     moi_data = [moi_type(I0, x) for x in x_data]
-    for moi_tuple in moi_data:
-        print(moi_tuple)
+
+    i1_data = [x[0] for x in moi_data]
+    i2_data = [x[1] for x in moi_data]
+    i3_data = [x[2] for x in moi_data]
+
+    plt.plot(x_data, i1_data, '-r', label=r'$\mathcal{I}_1$')
+    plt.legend(loc='best')
+    plt.savefig(plot_file, bbox_inches='tight', dpi=300)
+    plt.close()
 
 
 if __name__ == '__main__':
