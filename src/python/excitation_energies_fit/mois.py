@@ -16,9 +16,11 @@ class MOI:
     @staticmethod
     def Irrotational(I0, gm):
         gm_rad = MOI.Rad(gm)
-        k = 1
-        return k
+        PI3 = np.pi / 3.0
+        SIN_ARGS = [gm_rad - 2 * PI3 * k for k in range(1, 4)]
+        return SIN_ARGS
 
 
 if __name__ == '__main__':
-    MOI.Irrotational(1,1)
+    mois=MOI.Irrotational(1, 1)
+    print(mois)
