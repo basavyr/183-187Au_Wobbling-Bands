@@ -33,6 +33,12 @@ class MOI:
         return mois
 
 
+def Plot_MOIs(moi_type):
+    plot_file = f'./assets/plots/{moi_type.__name__}_MOIS.pdf'
+    print(plot_file)
+
+
 if __name__ == '__main__':
-    mois = MOI.Irrotational(30, 15)
-    print(mois)
+    # mois = MOI.Irrotational(30, 15)
+    # print(mois)
+    Plot_MOIs(MOI.Irrotational)
