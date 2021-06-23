@@ -52,6 +52,8 @@ def Plot_MOIs(moi_type, I0):
     plt.plot(x_data, i1_data, '-r', label=r'$\mathcal{I}_1$')
     plt.plot(x_data, i2_data, '-k', label=r'$\mathcal{I}_2$')
     plt.plot(x_data, i3_data, '-b', label=r'$\mathcal{I}_3$')
+    plt.xlabel(r'$\gamma$ [deg]')
+    plt.ylabel(r'$\mathcal{I}$ [$\hbar^2/MeV$]]')
     plt.legend(loc='best')
     plt.savefig(plot_file, bbox_inches='tight', dpi=300)
     plt.close()
