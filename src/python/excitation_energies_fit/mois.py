@@ -15,12 +15,20 @@ class MOI:
 
     @staticmethod
     def Irrotational(I0, gm):
+        # define the trigonometric function for generating the un-normalized moments of inertia
         sin_squared = lambda x: np.power(np.sin(x), 2)
+
+        # transform the angle into radians from degrees
         gm_rad = MOI.Rad(gm)
         PI3 = np.pi / 3.0
+
+        # generate the tuple of arguments that go inside the trigonometric function
         SIN_ARGS = [gm_rad - 2 * PI3 * k for k in range(1, 4)]
 
+        # apply the trigonometric function to the list of tuples
         pure_mois = list(map(sin_squared, SIN_ARGS))
+
+        # return the normalized moments of inertia
         return pure_mois
 
 
