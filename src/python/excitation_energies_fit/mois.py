@@ -88,8 +88,16 @@ class MOI:
         # transform gamma from degrees into radians
         gm_rad = MOI.Rad(gm)
 
+        pi_value = 5.0 / (16.0 * np.pi)
+        c_down = 1.0 + np.sqrt(pi_value) * beta
+        c_up = float(I0 / c_down)
+        result = c_up
+
+        return result
+
 
 if __name__ == '__main__':
 
     # MOI.Plot_MOIs(MOI.plot_file(MOI.Irrotational), MOI.Irrotational, 10)
-    MOI.Plot_MOIs(MOI.plot_file(MOI.Hydrodynamic), MOI.Hydrodynamic, 10)
+    # MOI.Plot_MOIs(MOI.plot_file(MOI.Hydrodynamic), MOI.Hydrodynamic, 10)
+    print(MOI.Rigid(10, 10, 0.3))
