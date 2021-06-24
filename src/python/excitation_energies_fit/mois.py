@@ -49,9 +49,10 @@ def Plot_MOIs(moi_type, I0):
     i2_data = [x[1] for x in moi_data]
     i3_data = [x[2] for x in moi_data]
 
-    fig, ax=plt.subplots()
+    fig, ax = plt.subplots()
 
-    plt.text(0.25, 0.65, f'label', horizontalalignment='center',
+    plot_label = r'$\mathcal{I}_0$' + f' = {I0}'
+    plt.text(0.25, 0.65, plot_label, horizontalalignment='center',
              verticalalignment='center', transform=ax.transAxes, fontsize=8)
 
     plt.plot(x_data, i1_data, '-r', label=r'$\mathcal{I}_1$')
