@@ -83,6 +83,11 @@ class MOI:
         mois = list(map(lambda x: (4.0 / 3.0 * I0) * x, pure_mois))
         return mois
 
+    @staticmethod
+    def Rigid(I0, gm, beta):
+        # transform gamma from degrees into radians
+        gm_rad = MOI.Rad(gm)
+
 
 if __name__ == '__main__':
 
