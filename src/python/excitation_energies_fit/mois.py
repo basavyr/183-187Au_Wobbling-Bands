@@ -93,6 +93,9 @@ class MOI:
         c_up = float(I0 / c_down)
         result = c_up
 
+        pi23 = 2.0 / (3.0 * np.pi)
+        cos_function = lambda c, x: [
+            1 - c * np.cos(x + pi_value * k) for k in range(1, 4, 1)]
         return result
 
 
