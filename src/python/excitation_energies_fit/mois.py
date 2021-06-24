@@ -64,7 +64,27 @@ class MOI:
         mois = list(map(lambda x: I0 * x, pure_mois))
         return mois
 
+    @staticmethod
+    def Hydrodynamic(I0, gm):
+        # define the trigonometric function for generating the un-normalized moments of inertia
+        sin_squared = lambda x: np.power(np.sin(x), 2)
+
+        # transform the angle into radians from degrees
+        gm_rad = MOI.Rad(gm)
+        PI3 = np.pi / 3.0
+
+        # generate the tuple of arguments that go inside the trigonometric function
+        SIN_ARGS = [gm_rad + 2 * PI3 * k for k in range(1, 4)]
+
+        # apply the trigonometric function to the list of tuples
+        pure_mois = list(map(sin_squared, SIN_ARGS))
+
+        # return the normalized moments of inertia
+        mois = list(map(lambda x: (4.0 / 3.0 * I0) * x, pure_mois))
+        return mois
+
 
 if __name__ == '__main__':
 
-    MOI.Plot_MOIs(MOI.plot_file(MOI.Irrotational), MOI.Irrotational, 10)
+    # MOI.Plot_MOIs(MOI.plot_file(MOI.Irrotational), MOI.Irrotational, 10)
+    MOI.Plot_MOIs(MOI.plot_file(MOI.Hydrodynamic), MOI.Hydrodynamic, 10)
