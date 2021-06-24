@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 
 
 class MOI:
+    plot_file = lambda moi_type: f'./assets/plots/{moi_type.__name__}_MOIS.pdf'
+
     @staticmethod
     def Plot_MOIs(plot_file, moi_type, I0):
         # define the limits of the gamma parameter (in degrees)
@@ -63,5 +65,5 @@ class MOI:
 
 
 if __name__ == '__main__':
-    plot_file = lambda moi_type: f'./assets/plots/{moi_type.__name__}_MOIS.pdf'
-    MOI.Plot_MOIs(plot_file(MOI.Irrotational), MOI.Irrotational, 10)
+ 
+    MOI.Plot_MOIs(MOI.plot_file(MOI.Irrotational), MOI.Irrotational, 10)
