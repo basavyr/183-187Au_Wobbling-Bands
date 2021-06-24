@@ -30,6 +30,7 @@ class MOI:
         plt.plot(x_data, i1_data, '-r', label=r'$\mathcal{I}_1$')
         plt.plot(x_data, i2_data, '-k', label=r'$\mathcal{I}_2$')
         plt.plot(x_data, i3_data, '-b', label=r'$\mathcal{I}_3$')
+        plt.title(f'{moi_type.__name__} - Moments of Inertia')
         plt.xlabel(r'$\gamma$ [deg]')
         plt.ylabel(r'$\mathcal{I}$ [$\hbar^2/MeV$]]')
         plt.legend(loc='best')
@@ -65,5 +66,5 @@ class MOI:
 
 
 if __name__ == '__main__':
- 
+
     MOI.Plot_MOIs(MOI.plot_file(MOI.Irrotational), MOI.Irrotational, 10)
