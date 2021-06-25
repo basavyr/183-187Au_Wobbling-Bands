@@ -38,6 +38,40 @@ class MOI:
         plt.close()
 
     @staticmethod
+    def Plot_Rigid_MOIs(plot_file, moi_type, I0, beta):
+        # define the limits of the gamma parameter (in degrees)
+        gamma_limits = [0, 60]
+        # define the step of the x-data (in degrees)
+        x_data_step = 5
+        x_data = np.arange(
+            gamma_limits[0], gamma_limits[1] + x_data_step, x_data_step)
+
+        moi_data = [moi_type(I0, x, beta) for x in x_data]
+
+        i1_data = [x[0] for x in moi_data]
+        i2_data = [x[1] for x in moi_data]
+        i3_data = [x[2] for x in moi_data]
+
+        fig, ax = plt.subplots()
+
+        plot_label = r'$\mathcal{I}_0$' + f' = {I0}'
+        plt.text(0.25, 0.65, plot_label, horizontalalignment='center',
+                 verticalalignment='center', transform=ax.transAxes, fontsize=8)
+
+        plt.plot(x_data, i1_data, '-r', label=r'$\mathcal{I}_1$')
+        plt.plot(x_data, i2_data, '-k', label=r'$\mathcal{I}_2$')
+        plt.plot(x_data, i3_data, '-b', label=r'$\mathcal{I}_3$')
+        plt.title(f'{moi_type.__name__} - Moments of Inertia')
+        plt.xlabel(r'$\gamma$ [deg]')
+        plt.ylabel(r'$\mathcal{I}$ [$\hbar^2/MeV$]]')
+        plt.legend(loc='best')
+        try:
+            plt.savefig(plot_file, bbox_inches='tight', dpi=300)
+        except Exception:
+            pass
+        plt.close()
+
+    @staticmethod
     def InertiaFactor(MOI):
         return 1.0 / (2.0 * MOI)
 
@@ -89,11 +123,11 @@ class MOI:
         gm_rad = MOI.Rad(gm)
 
         pi_5_16 = 5.0 / (16.0 * np.pi)
-        pi_2_3 = 2.0 / (3.0 * np.pi)
         pi_5_4 = 5.0 / (4.0 * np.pi)
+        pi_2_3 = 2.0 / (3.0 * np.pi)
 
         COS_ARGS = [np.cos(gm_rad + pi_2_3 * k) for k in range(1, 4, 1)]
-        COS_TERMS = [1 - np.sqrt(pi_5_16) * beta * x for x in COS_ARGS]
+        COS_TERMS = [1 - np.sqrt(pi_5_4) * beta * x for x in COS_ARGS]
 
         C_BETA = 1.0 + np.sqrt(pi_5_16) * beta
         CONST = float(I0 / C_BETA)
@@ -106,4 +140,4 @@ if __name__ == '__main__':
 
     # MOI.Plot_MOIs(MOI.plot_file(MOI.Irrotational), MOI.Irrotational, 10)
     # MOI.Plot_MOIs(MOI.plot_file(MOI.Hydrodynamic), MOI.Hydrodynamic, 10)
-    print(MOI.Rigid(10, 10, 0.3))
+    MOI.Plot_Rigid_MOIs(MOI.plot_file(MOI.Rigid), MOI.Rigid, 10, 0.3)
