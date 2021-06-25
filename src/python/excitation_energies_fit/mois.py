@@ -88,14 +88,14 @@ class MOI:
         # transform gamma from degrees into radians
         gm_rad = MOI.Rad(gm)
 
-        pi_value = 5.0 / (16.0 * np.pi)
-        c_down = 1.0 + np.sqrt(pi_value) * beta
-        c_up = float(I0 / c_down)
-        result = c_up
+        pi_5_16 = 5.0 / (16.0 * np.pi)
+        pi_2_3 = 2.0 / (3.0 * np.pi)
+        pi_5_4 = 5.0 / (4.0 * np.pi)
 
-        pi23 = 2.0 / (3.0 * np.pi)
-        cos_function = lambda c, x: [
-            1 - c * np.cos(x + pi_value * k) for k in range(1, 4, 1)]
+        c_down = 1.0 + np.sqrt(pi_5_16) * beta
+        c_up = float(I0 / c_down)
+
+        result = c_up
         return result
 
 
