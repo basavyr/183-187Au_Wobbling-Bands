@@ -94,11 +94,13 @@ class MOI:
 
         COS_ARGS = [np.cos(gm_rad + pi_2_3 * k) for k in range(1, 4, 1)]
 
-        c_down = 1.0 + np.sqrt(pi_5_16) * beta
-        c_up = float(I0 / c_down)
+        COS_TERMS = [1 - np.sqrt(pi_5_16) * beta * x for x in COS_ARGS]
 
-        result = c_up
-        return result
+        c_down = 1.0 + np.sqrt(pi_5_16) * beta
+        C = float(I0 / c_down)
+
+        RESULT_TUPLE = [C * x for x in COS_TERMS]
+        return RESULT_TUPLE
 
 
 if __name__ == '__main__':
