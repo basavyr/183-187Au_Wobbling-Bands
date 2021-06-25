@@ -54,7 +54,8 @@ class MOI:
 
         fig, ax = plt.subplots()
 
-        plot_label = r'$\mathcal{I}_0$' + f' = {I0}'
+        plot_label = r'$\mathcal{I}_0$' + \
+            f' = {I0}' + '\n' + r'$\beta=$' + f' ={beta}'
         plt.text(0.25, 0.65, plot_label, horizontalalignment='center',
                  verticalalignment='center', transform=ax.transAxes, fontsize=8)
 
