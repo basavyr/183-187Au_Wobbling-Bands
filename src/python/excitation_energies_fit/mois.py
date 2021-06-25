@@ -140,4 +140,6 @@ if __name__ == '__main__':
 
     # MOI.Plot_MOIs(MOI.plot_file(MOI.Irrotational), MOI.Irrotational, 10)
     # MOI.Plot_MOIs(MOI.plot_file(MOI.Hydrodynamic), MOI.Hydrodynamic, 10)
+    pf = MOI.plot_file(MOI.Rigid)
+    print(pf)
     MOI.Plot_Rigid_MOIs(MOI.plot_file(MOI.Rigid), MOI.Rigid, 10, 0.3)
