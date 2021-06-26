@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 
 class MOI:
     plot_file = lambda moi_type: f'./assets/plots/{moi_type.__name__}_MOIS.pdf'
+    plot_bundle_file = lambda file: f'./assets/plots/{file}.pdf'
 
     @staticmethod
     def Plot_MOIs(plot_file, moi_type, I0):
@@ -73,6 +74,11 @@ class MOI:
         plt.close()
 
     @staticmethod
+    def Plot_MOI_1(plot_file, args):
+        for arg in args:
+            print(arg)
+
+    @staticmethod
     def InertiaFactor(MOI):
         return 1.0 / (2.0 * MOI)
 
@@ -138,6 +144,7 @@ class MOI:
 
 
 if __name__ == '__main__':
-    MOI.Plot_MOIs(MOI.plot_file(MOI.Irrotational), MOI.Irrotational, 10)
-    MOI.Plot_MOIs(MOI.plot_file(MOI.Hydrodynamic), MOI.Hydrodynamic, 10)
-    MOI.Plot_Rigid_MOIs(MOI.plot_file(MOI.Rigid), MOI.Rigid, 10, 0.3)
+    # MOI.Plot_MOIs(MOI.plot_file(MOI.Irrotational), MOI.Irrotational, 10)
+    # MOI.Plot_MOIs(MOI.plot_file(MOI.Hydrodynamic), MOI.Hydrodynamic, 10)
+    # MOI.Plot_Rigid_MOIs(MOI.plot_file(MOI.Rigid), MOI.Rigid, 10, 0.3)
+    MOI.Plot_MOI_1(MOI.plot_bundle_file('moi_1'), [1, 2])
