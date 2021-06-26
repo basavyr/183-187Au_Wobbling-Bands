@@ -125,7 +125,7 @@ class MOI:
 
         pi_5_16 = 5.0 / (16.0 * np.pi)
         pi_5_4 = 5.0 / (4.0 * np.pi)
-        pi_2_3 = 2.0 / (3.0 * np.pi)
+        pi_2_3 = 2.0 / 3.0 * np.pi
 
         COS_ARGS = [np.cos(gm_rad + pi_2_3 * k) for k in range(1, 4, 1)]
         COS_TERMS = [1 - np.sqrt(pi_5_4) * beta * x for x in COS_ARGS]
@@ -138,9 +138,6 @@ class MOI:
 
 
 if __name__ == '__main__':
-
-    # MOI.Plot_MOIs(MOI.plot_file(MOI.Irrotational), MOI.Irrotational, 10)
-    # MOI.Plot_MOIs(MOI.plot_file(MOI.Hydrodynamic), MOI.Hydrodynamic, 10)
-    pf = MOI.plot_file(MOI.Rigid)
-    print(pf)
+    MOI.Plot_MOIs(MOI.plot_file(MOI.Irrotational), MOI.Irrotational, 10)
+    MOI.Plot_MOIs(MOI.plot_file(MOI.Hydrodynamic), MOI.Hydrodynamic, 10)
     MOI.Plot_Rigid_MOIs(MOI.plot_file(MOI.Rigid), MOI.Rigid, 10, 0.3)
