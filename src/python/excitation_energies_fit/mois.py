@@ -74,6 +74,10 @@ class MOI:
         plt.close()
 
     @staticmethod
+    def Plot_Axes(plot_file, axis, I0, beta):
+        return [1, 2, 3]
+
+    @staticmethod
     def Plot_Bundle(plot_file, axis, *params):
         do_plot = True
         try:
@@ -83,19 +87,24 @@ class MOI:
             do_plot = False
         else:
             do_plot = True
-            pass
-        # for param in params:
-            # print(param)
+        if(do_plot):
+            param_size = len(params)
+            if(param_size == 2):
+                I0 = params[0]
+                beta = params[1]
+                MOI.Plot_Axes(plot_file, axis, I0, beta)
+            else:
+                print('Cannot plot the three MOIs')
 
-    @staticmethod
+    @ staticmethod
     def InertiaFactor(MOI):
         return 1.0 / (2.0 * MOI)
 
-    @staticmethod
+    @ staticmethod
     def Rad(angle):
         return angle * np.pi / 180.0
 
-    @staticmethod
+    @ staticmethod
     def Irrotational(I0, gm):
         # define the trigonometric function for generating the un-normalized moments of inertia
         sin_squared = lambda x: np.power(np.sin(x), 2)
@@ -114,7 +123,7 @@ class MOI:
         mois = list(map(lambda x: I0 * x, pure_mois))
         return mois
 
-    @staticmethod
+    @ staticmethod
     def Hydrodynamic(I0, gm):
         # define the trigonometric function for generating the un-normalized moments of inertia
         sin_squared = lambda x: np.power(np.sin(x), 2)
@@ -133,7 +142,7 @@ class MOI:
         mois = list(map(lambda x: (4.0 / 3.0 * I0) * x, pure_mois))
         return mois
 
-    @staticmethod
+    @ staticmethod
     def Rigid(I0, gm, beta):
         # transform gamma from degrees into radians
         gm_rad = MOI.Rad(gm)
@@ -156,4 +165,4 @@ if __name__ == '__main__':
     # MOI.Plot_MOIs(MOI.plot_file(MOI.Irrotational), MOI.Irrotational, 10)
     # MOI.Plot_MOIs(MOI.plot_file(MOI.Hydrodynamic), MOI.Hydrodynamic, 10)
     # MOI.Plot_Rigid_MOIs(MOI.plot_file(MOI.Rigid), MOI.Rigid, 10, 0.3)
-    MOI.Plot_Bundle(MOI.plot_bundle_file('moi_1'), 4, [1, 2])
+    MOI.Plot_Bundle(MOI.plot_bundle_file('moi_1'), 1, 25, 0.3)
