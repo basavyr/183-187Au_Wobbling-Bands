@@ -79,7 +79,7 @@ class MOI:
         x_data = np.arange(0, 60 + gm_step, gm_step)
         y_rigid = [MOI.Rigid(I0, x, beta)[axis] for x in x_data]
         y_hydro = [MOI.Hydrodynamic(I0, x)[axis] for x in x_data]
-        # y_data3 = [MOI.Irrotational(I0, x)[axis] for x in x_data]
+        y_irrot = [MOI.Irrotational(I0, x)[axis] for x in x_data]
 
         fig, ax = plt.subplots()
 
@@ -90,7 +90,7 @@ class MOI:
 
         plt.plot(x_data, y_rigid, '-r', label=f'Rigid-Like')
         plt.plot(x_data, y_hydro, '-k', label=f'Hydro-Like')
-        # plt.plot(x_data, i3_data, '-b', label=r'$\mathcal{I}_3$')
+        plt.plot(x_data, y_irrot, '-b', label=f'Irrot-Like')
         # plt.title(f'{moi_type.__name__} - Moments of Inertia')
         plt.xlabel(r'$\gamma$ [deg]')
         plt.ylabel(r'$\mathcal{I}$ [$\hbar^2/MeV$]]')
@@ -100,6 +100,8 @@ class MOI:
 
     @staticmethod
     def Plot_Bundle(plot_file, axis, *params):
+        """Generates a graphical representation with the moments of inertia along one of the three principal axes of the rotational ellipsoid.
+        Uses the Irrotational, Hydrodynamic and Rigid types."""
         do_plot = True
         try:
             assert axis == 1 or axis == 2 or axis == 3, 'Wrong axes'
