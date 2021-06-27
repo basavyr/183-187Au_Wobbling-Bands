@@ -78,7 +78,7 @@ class MOI:
         gm_step = 5
         x_data = np.arange(0, 60 + gm_step, gm_step)
         y_rigid = [MOI.Rigid(I0, x, beta)[axis] for x in x_data]
-        # y_data2 = [MOI.Hydrodynamic(I0, x)[axis] for x in x_data]
+        y_hydro = [MOI.Hydrodynamic(I0, x)[axis] for x in x_data]
         # y_data3 = [MOI.Irrotational(I0, x)[axis] for x in x_data]
 
         fig, ax = plt.subplots()
@@ -88,8 +88,8 @@ class MOI:
         plt.text(0.25, 0.65, plot_label, horizontalalignment='center',
                  verticalalignment='center', transform=ax.transAxes, fontsize=8)
 
-        plt.plot(x_data, y_rigid, '-r', label=r'$Rigid-Like$')
-        # plt.plot(x_data, i2_data, '-k', label=r'$\mathcal{I}_2$')
+        plt.plot(x_data, y_rigid, '-r', label=f'Rigid-Like')
+        plt.plot(x_data, y_hydro, '-k', label=f'Hydro-Like')
         # plt.plot(x_data, i3_data, '-b', label=r'$\mathcal{I}_3$')
         # plt.title(f'{moi_type.__name__} - Moments of Inertia')
         plt.xlabel(r'$\gamma$ [deg]')
