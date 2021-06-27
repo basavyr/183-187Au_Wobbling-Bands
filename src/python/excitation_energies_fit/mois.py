@@ -77,9 +77,26 @@ class MOI:
     def Plot_Axes(plot_file, axis, I0, beta):
         gm_step = 5
         x_data = np.arange(0, 60 + gm_step, gm_step)
-        y_data1 = [MOI.Rigid(I0, x, beta) for x in x_data]
-        print(x_data)
-        print(y_data1)
+        y_rigid = [MOI.Rigid(I0, x, beta)[axis] for x in x_data]
+        # y_data2 = [MOI.Hydrodynamic(I0, x)[axis] for x in x_data]
+        # y_data3 = [MOI.Irrotational(I0, x)[axis] for x in x_data]
+
+        fig, ax = plt.subplots()
+
+        plot_label = r'$\mathcal{I}_0$' + \
+            f' = {I0}' + '\n' + r'$\beta=$' + f' ={beta}'
+        plt.text(0.25, 0.65, plot_label, horizontalalignment='center',
+                 verticalalignment='center', transform=ax.transAxes, fontsize=8)
+
+        plt.plot(x_data, y_rigid, '-r', label=r'$Rigid-Like$')
+        # plt.plot(x_data, i2_data, '-k', label=r'$\mathcal{I}_2$')
+        # plt.plot(x_data, i3_data, '-b', label=r'$\mathcal{I}_3$')
+        # plt.title(f'{moi_type.__name__} - Moments of Inertia')
+        plt.xlabel(r'$\gamma$ [deg]')
+        plt.ylabel(r'$\mathcal{I}$ [$\hbar^2/MeV$]]')
+        plt.legend(loc='best')
+        plt.savefig(plot_file, bbox_inches='tight', dpi=300)
+        plt.close()
 
     @staticmethod
     def Plot_Bundle(plot_file, axis, *params):
