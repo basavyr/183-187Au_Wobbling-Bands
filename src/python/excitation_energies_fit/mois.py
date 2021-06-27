@@ -75,7 +75,11 @@ class MOI:
 
     @staticmethod
     def Plot_Axes(plot_file, axis, I0, beta):
-        return [1, 2, 3]
+        gm_step = 5
+        x_data = np.arange(0, 60 + gm_step, gm_step)
+        y_data1 = [MOI.Rigid(I0, x, beta) for x in x_data]
+        print(x_data)
+        print(y_data1)
 
     @staticmethod
     def Plot_Bundle(plot_file, axis, *params):
