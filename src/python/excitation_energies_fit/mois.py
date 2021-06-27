@@ -74,9 +74,18 @@ class MOI:
         plt.close()
 
     @staticmethod
-    def Plot_Bundle(plot_file, axis, args):
-        for arg in args:
-            print(arg)
+    def Plot_Bundle(plot_file, axis, *params):
+        do_plot = True
+        try:
+            assert axis == 1 or axis == 2 or axis == 3, 'Wrong axes'
+        except AssertionError as err:
+            print(err)
+            do_plot = False
+        else:
+            do_plot = True
+            pass
+        # for param in params:
+            # print(param)
 
     @staticmethod
     def InertiaFactor(MOI):
@@ -147,4 +156,4 @@ if __name__ == '__main__':
     # MOI.Plot_MOIs(MOI.plot_file(MOI.Irrotational), MOI.Irrotational, 10)
     # MOI.Plot_MOIs(MOI.plot_file(MOI.Hydrodynamic), MOI.Hydrodynamic, 10)
     # MOI.Plot_Rigid_MOIs(MOI.plot_file(MOI.Rigid), MOI.Rigid, 10, 0.3)
-    MOI.Plot_Bundle(MOI.plot_bundle_file('moi_1'), 1, [1, 2])
+    MOI.Plot_Bundle(MOI.plot_bundle_file('moi_1'), 4, [1, 2])
