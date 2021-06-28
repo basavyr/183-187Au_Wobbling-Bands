@@ -77,9 +77,9 @@ class MOI:
     def Plot_Axes(plot_file, axis, I0, beta):
         gm_step = 5
         x_data = np.arange(0, 60 + gm_step, gm_step)
-        y_rigid = [MOI.Rigid(I0, x, beta)[axis] for x in x_data]
-        y_hydro = [MOI.Hydrodynamic(I0, x)[axis] for x in x_data]
-        y_irrot = [MOI.Irrotational(I0, x)[axis] for x in x_data]
+        y_rigid = [MOI.Rigid(I0, x, beta)[axis - 1] for x in x_data]
+        y_hydro = [MOI.Hydrodynamic(I0, x)[axis - 1] for x in x_data]
+        y_irrot = [MOI.Irrotational(I0, x)[axis - 1] for x in x_data]
 
         fig, ax = plt.subplots()
 
@@ -91,7 +91,7 @@ class MOI:
         plt.plot(x_data, y_rigid, '-r', label=f'Rigid-Like')
         plt.plot(x_data, y_hydro, '-k', label=f'Hydro-Like')
         plt.plot(x_data, y_irrot, '-b', label=f'Irrot-Like')
-        # plt.title(f'{moi_type.__name__} - Moments of Inertia')
+        plt.title(f'{axis}-axis - Moments of Inertia')
         plt.xlabel(r'$\gamma$ [deg]')
         plt.ylabel(r'$\mathcal{I}$ [$\hbar^2/MeV$]]')
         plt.legend(loc='best')
@@ -189,3 +189,5 @@ if __name__ == '__main__':
     # MOI.Plot_MOIs(MOI.plot_file(MOI.Hydrodynamic), MOI.Hydrodynamic, 10)
     # MOI.Plot_Rigid_MOIs(MOI.plot_file(MOI.Rigid), MOI.Rigid, 10, 0.3)
     MOI.Plot_Bundle(MOI.plot_bundle_file('moi_1'), 1, 25, 0.3)
+    MOI.Plot_Bundle(MOI.plot_bundle_file('moi_2'), 2, 25, 0.3)
+    MOI.Plot_Bundle(MOI.plot_bundle_file('moi_3'), 3, 25, 0.3)
